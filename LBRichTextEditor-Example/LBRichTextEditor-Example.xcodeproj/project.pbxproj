@@ -17,17 +17,14 @@
 		D66944121FFC748A00CCD597 /* LBRichTextEditor_ExampleUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = D66944111FFC748A00CCD597 /* LBRichTextEditor_ExampleUITests.m */; };
 		D66944EB1FFC794400CCD597 /* WPEditorToolbarButton.m in Sources */ = {isa = PBXBuildFile; fileRef = D66944C81FFC793F00CCD597 /* WPEditorToolbarButton.m */; };
 		D66944EC1FFC794400CCD597 /* WPEditorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D66944C91FFC793F00CCD597 /* WPEditorViewController.m */; };
-		D66944ED1FFC794400CCD597 /* WPLegacyEditorFormatToolbar.m in Sources */ = {isa = PBXBuildFile; fileRef = D66944CD1FFC793F00CCD597 /* WPLegacyEditorFormatToolbar.m */; };
 		D66944EE1FFC794400CCD597 /* ZSSTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = D66944CF1FFC793F00CCD597 /* ZSSTextView.m */; };
 		D66944EF1FFC794400CCD597 /* ZSSBarButtonItem.m in Sources */ = {isa = PBXBuildFile; fileRef = D66944D31FFC794000CCD597 /* ZSSBarButtonItem.m */; };
 		D66944F01FFC794400CCD597 /* WPEditorView.m in Sources */ = {isa = PBXBuildFile; fileRef = D66944D41FFC794000CCD597 /* WPEditorView.m */; };
-		D66944F11FFC794400CCD597 /* WPLegacyEditorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D66944D51FFC794000CCD597 /* WPLegacyEditorViewController.m */; };
 		D66944F21FFC794400CCD597 /* LBEditorToolView.m in Sources */ = {isa = PBXBuildFile; fileRef = D66944D61FFC794100CCD597 /* LBEditorToolView.m */; };
 		D66944F31FFC794400CCD597 /* WPEditorLoggingConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = D66944D91FFC794100CCD597 /* WPEditorLoggingConfiguration.m */; };
 		D66944F41FFC794400CCD597 /* ZBEditorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D66944DC1FFC794100CCD597 /* ZBEditorViewController.m */; };
 		D66944F51FFC794400CCD597 /* WPEditorField.m in Sources */ = {isa = PBXBuildFile; fileRef = D66944DE1FFC794200CCD597 /* WPEditorField.m */; };
 		D66944F61FFC794400CCD597 /* WPEditorFormatbarView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D66944DF1FFC794200CCD597 /* WPEditorFormatbarView.xib */; };
-		D66944F71FFC794400CCD597 /* WPLegacyEditorFormatAction.m in Sources */ = {isa = PBXBuildFile; fileRef = D66944E21FFC794300CCD597 /* WPLegacyEditorFormatAction.m */; };
 		D66944F81FFC794400CCD597 /* ZBFontSelectController.m in Sources */ = {isa = PBXBuildFile; fileRef = D66944E41FFC794300CCD597 /* ZBFontSelectController.m */; };
 		D66944F91FFC794400CCD597 /* UIWebView+GUIFixes.m in Sources */ = {isa = PBXBuildFile; fileRef = D66944E61FFC794300CCD597 /* UIWebView+GUIFixes.m */; };
 		D66944FA1FFC794400CCD597 /* WPImageMeta.m in Sources */ = {isa = PBXBuildFile; fileRef = D66944E81FFC794400CCD597 /* WPImageMeta.m */; };
@@ -120,9 +117,6 @@
 		D66944C81FFC793F00CCD597 /* WPEditorToolbarButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WPEditorToolbarButton.m; sourceTree = "<group>"; };
 		D66944C91FFC793F00CCD597 /* WPEditorViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WPEditorViewController.m; sourceTree = "<group>"; };
 		D66944CA1FFC793F00CCD597 /* WPEditorStat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WPEditorStat.h; sourceTree = "<group>"; };
-		D66944CB1FFC793F00CCD597 /* WPLegacyEditorViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WPLegacyEditorViewController.h; sourceTree = "<group>"; };
-		D66944CC1FFC793F00CCD597 /* WPLegacyEditorFormatToolbar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WPLegacyEditorFormatToolbar.h; sourceTree = "<group>"; };
-		D66944CD1FFC793F00CCD597 /* WPLegacyEditorFormatToolbar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WPLegacyEditorFormatToolbar.m; sourceTree = "<group>"; };
 		D66944CE1FFC793F00CCD597 /* ZBFontSelectController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZBFontSelectController.h; sourceTree = "<group>"; };
 		D66944CF1FFC793F00CCD597 /* ZSSTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZSSTextView.m; sourceTree = "<group>"; };
 		D66944D01FFC794000CCD597 /* UIWebView+GUIFixes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIWebView+GUIFixes.h"; sourceTree = "<group>"; };
@@ -130,12 +124,10 @@
 		D66944D21FFC794000CCD597 /* WPEditorToolbarButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WPEditorToolbarButton.h; sourceTree = "<group>"; };
 		D66944D31FFC794000CCD597 /* ZSSBarButtonItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZSSBarButtonItem.m; sourceTree = "<group>"; };
 		D66944D41FFC794000CCD597 /* WPEditorView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WPEditorView.m; sourceTree = "<group>"; };
-		D66944D51FFC794000CCD597 /* WPLegacyEditorViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WPLegacyEditorViewController.m; sourceTree = "<group>"; };
 		D66944D61FFC794100CCD597 /* LBEditorToolView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LBEditorToolView.m; sourceTree = "<group>"; };
 		D66944D71FFC794100CCD597 /* WPEditorField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WPEditorField.h; sourceTree = "<group>"; };
 		D66944D81FFC794100CCD597 /* WPEditorFormatbarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WPEditorFormatbarView.h; sourceTree = "<group>"; };
 		D66944D91FFC794100CCD597 /* WPEditorLoggingConfiguration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WPEditorLoggingConfiguration.m; sourceTree = "<group>"; };
-		D66944DA1FFC794100CCD597 /* WPLegacyEditorFormatAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WPLegacyEditorFormatAction.h; sourceTree = "<group>"; };
 		D66944DB1FFC794100CCD597 /* ZSSTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZSSTextView.h; sourceTree = "<group>"; };
 		D66944DC1FFC794100CCD597 /* ZBEditorViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZBEditorViewController.m; sourceTree = "<group>"; };
 		D66944DD1FFC794100CCD597 /* ZBEditorViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZBEditorViewController.h; sourceTree = "<group>"; };
@@ -143,7 +135,6 @@
 		D66944DF1FFC794200CCD597 /* WPEditorFormatbarView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WPEditorFormatbarView.xib; sourceTree = "<group>"; };
 		D66944E01FFC794200CCD597 /* WPEditorLoggingConfiguration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WPEditorLoggingConfiguration.h; sourceTree = "<group>"; };
 		D66944E11FFC794200CCD597 /* WPImageMeta.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WPImageMeta.h; sourceTree = "<group>"; };
-		D66944E21FFC794300CCD597 /* WPLegacyEditorFormatAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WPLegacyEditorFormatAction.m; sourceTree = "<group>"; };
 		D66944E31FFC794300CCD597 /* WPEditorView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WPEditorView.h; sourceTree = "<group>"; };
 		D66944E41FFC794300CCD597 /* ZBFontSelectController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZBFontSelectController.m; sourceTree = "<group>"; };
 		D66944E51FFC794300CCD597 /* ZSSBarButtonItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZSSBarButtonItem.h; sourceTree = "<group>"; };
@@ -389,12 +380,6 @@
 				D66944C91FFC793F00CCD597 /* WPEditorViewController.m */,
 				D66944E11FFC794200CCD597 /* WPImageMeta.h */,
 				D66944E81FFC794400CCD597 /* WPImageMeta.m */,
-				D66944DA1FFC794100CCD597 /* WPLegacyEditorFormatAction.h */,
-				D66944E21FFC794300CCD597 /* WPLegacyEditorFormatAction.m */,
-				D66944CC1FFC793F00CCD597 /* WPLegacyEditorFormatToolbar.h */,
-				D66944CD1FFC793F00CCD597 /* WPLegacyEditorFormatToolbar.m */,
-				D66944CB1FFC793F00CCD597 /* WPLegacyEditorViewController.h */,
-				D66944D51FFC794000CCD597 /* WPLegacyEditorViewController.m */,
 				D66944DD1FFC794100CCD597 /* ZBEditorViewController.h */,
 				D66944DC1FFC794100CCD597 /* ZBEditorViewController.m */,
 				D66944CE1FFC793F00CCD597 /* ZBFontSelectController.h */,
@@ -624,7 +609,6 @@
 				D66943FD1FFC748A00CCD597 /* main.m in Sources */,
 				D66944F21FFC794400CCD597 /* LBEditorToolView.m in Sources */,
 				D66943EF1FFC748A00CCD597 /* AppDelegate.m in Sources */,
-				D66944F71FFC794400CCD597 /* WPLegacyEditorFormatAction.m in Sources */,
 				D66944EC1FFC794400CCD597 /* WPEditorViewController.m in Sources */,
 				D66944EF1FFC794400CCD597 /* ZSSBarButtonItem.m in Sources */,
 				D669451E1FFC796700CCD597 /* CYRTextView.m in Sources */,
@@ -632,11 +616,9 @@
 				D66944F81FFC794400CCD597 /* ZBFontSelectController.m in Sources */,
 				D66945181FFC796700CCD597 /* HRColorPickerView.m in Sources */,
 				D66944EB1FFC794400CCD597 /* WPEditorToolbarButton.m in Sources */,
-				D66944ED1FFC794400CCD597 /* WPLegacyEditorFormatToolbar.m in Sources */,
 				D66944F41FFC794400CCD597 /* ZBEditorViewController.m in Sources */,
 				D66945201FFC796700CCD597 /* HRBrightnessCursor.m in Sources */,
 				D66944F31FFC794400CCD597 /* WPEditorLoggingConfiguration.m in Sources */,
-				D66944F11FFC794400CCD597 /* WPLegacyEditorViewController.m in Sources */,
 				D66944F91FFC794400CCD597 /* UIWebView+GUIFixes.m in Sources */,
 				D669451D1FFC796700CCD597 /* CYRToken.m in Sources */,
 				D66944FB1FFC794400CCD597 /* WPEditorFormatbarView.m in Sources */,

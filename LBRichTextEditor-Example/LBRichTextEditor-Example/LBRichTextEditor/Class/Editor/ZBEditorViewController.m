@@ -9,7 +9,7 @@
 #import "ZBEditorViewController.h"
 #import <Photos/Photos.h>
 #import "WPEditorView.h"
-#import "ZBReleaseTrainingViewModel.h"
+//#import "ZBReleaseTrainingViewModel.h"
 #import "ZBFontSelectController.h"
 #import "UIViewController+LBAnimator.h"
 
