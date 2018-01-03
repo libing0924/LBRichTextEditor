@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12120" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="WPEditorFormatbarView">
+            <rect key="frame" x="0.0" y="0.0" width="482" height="42"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="n1r-fs-i80">
+                    <rect key="frame" x="0.0" y="0.0" width="482" height="44"/>
+                    <items>
+                        <barButtonItem style="plain" systemItem="flexibleSpace" id="dUc-fD-xmY"/>
+                        <barButtonItem image="ZSSbold.png" width="44" style="plain" id="IvH-tE-Dmv" customClass="ZSSBarButtonItem">
+                            <connections>
+                                <action selector="boldAction:" destination="iN0-l3-epB" id="K9N-F7-1O7"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem style="plain" systemItem="flexibleSpace" id="8tY-Io-jbX"/>
+                        <barButtonItem image="ZSSunderline.png" width="44" style="plain" id="UaL-xN-YGn" customClass="ZSSBarButtonItem">
+                            <connections>
+                                <action selector="underLineAction:" destination="iN0-l3-epB" id="TIh-2W-OnB"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem style="plain" systemItem="flexibleSpace" id="scv-Yr-SA3"/>
+                        <barButtonItem image="ZSStextcolor.png" width="44" style="plain" id="ThL-hp-nFs" customClass="ZSSBarButtonItem">
+                            <connections>
+                                <action selector="textColorAction:" destination="iN0-l3-epB" id="n5V-mx-FQ9"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem style="plain" systemItem="flexibleSpace" id="9eN-WO-Qi6"/>
+                        <barButtonItem image="ZSSbgcolor.png" width="44" style="plain" id="NqK-FO-OGY" customClass="ZSSBarButtonItem">
+                            <connections>
+                                <action selector="backColorAction:" destination="iN0-l3-epB" id="XgS-qv-PR6"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem style="plain" systemItem="flexibleSpace" id="JWL-9j-hbf"/>
+                        <barButtonItem image="ZSSfonts.png" width="44" style="plain" id="TxB-Wv-LZc" customClass="ZSSBarButtonItem">
+                            <connections>
+                                <action selector="fontAction:" destination="iN0-l3-epB" id="T3f-kD-kq4"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem style="plain" systemItem="flexibleSpace" id="Hki-Yp-Bcj"/>
+                        <barButtonItem image="ZSSimageDevice.png" width="44" style="plain" id="qmO-QZ-Xg8" customClass="ZSSBarButtonItem">
+                            <connections>
+                                <action selector="imageAction:" destination="iN0-l3-epB" id="BQS-FA-X8Q"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem style="plain" systemItem="flexibleSpace" id="AxR-HN-bG5"/>
+                        <barButtonItem image="ZSSleftjustify.png" id="Htp-FN-Ffy" customClass="ZSSBarButtonItem">
+                            <connections>
+                                <action selector="leftAction:" destination="iN0-l3-epB" id="zwD-bR-H3e"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem style="plain" systemItem="flexibleSpace" id="pW9-Yi-LvS"/>
+                        <barButtonItem image="ZSScenterjustify.png" id="iAV-wy-m8r" customClass="ZSSBarButtonItem">
+                            <connections>
+                                <action selector="centerAction:" destination="iN0-l3-epB" id="WjP-UG-xtn"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem style="plain" systemItem="flexibleSpace" id="lPj-fb-q6r"/>
+                        <barButtonItem image="ZSSrightjustify.png" id="wcL-4T-2Ya" customClass="ZSSBarButtonItem">
+                            <connections>
+                                <action selector="rightAction:" destination="iN0-l3-epB" id="knq-sc-1BZ"/>
+                            </connections>
+                        </barButtonItem>
+                    </items>
+                </toolbar>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5oj-N8-CBI">
+                    <rect key="frame" x="0.0" y="0.0" width="482" height="1"/>
+                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="1" id="DQc-We-xJ8"/>
+                    </constraints>
+                    <variation key="default">
+                        <mask key="constraints">
+                            <exclude reference="DQc-We-xJ8"/>
+                        </mask>
+                    </variation>
+                    <variation key="widthClass=compact">
+                        <mask key="constraints">
+                            <include reference="DQc-We-xJ8"/>
+                        </mask>
+                    </variation>
+                    <variation key="widthClass=regular">
+                        <mask key="constraints">
+                            <include reference="DQc-We-xJ8"/>
+                        </mask>
+                    </variation>
+                </view>
+            </subviews>
+            <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="5oj-N8-CBI" secondAttribute="trailing" id="3Qa-Uv-8nO"/>
+                <constraint firstItem="n1r-fs-i80" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="KLa-wT-1Gc"/>
+                <constraint firstItem="n1r-fs-i80" firstAttribute="top" secondItem="5oj-N8-CBI" secondAttribute="top" id="MY8-Yb-Zho"/>
+                <constraint firstItem="n1r-fs-i80" firstAttribute="leading" secondItem="5oj-N8-CBI" secondAttribute="leading" id="Yfe-DH-K5f"/>
+                <constraint firstItem="5oj-N8-CBI" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="hKN-cF-AOT"/>
+                <constraint firstItem="n1r-fs-i80" firstAttribute="trailing" secondItem="5oj-N8-CBI" secondAttribute="trailing" id="kVg-01-4Kx"/>
+            </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
+            <nil key="simulatedTopBarMetrics"/>
+            <nil key="simulatedBottomBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <variation key="default">
+                <mask key="subviews">
+                    <exclude reference="n1r-fs-i80"/>
+                    <exclude reference="5oj-N8-CBI"/>
+                </mask>
+                <mask key="constraints">
+                    <exclude reference="3Qa-Uv-8nO"/>
+                    <exclude reference="hKN-cF-AOT"/>
+                    <exclude reference="KLa-wT-1Gc"/>
+                    <exclude reference="MY8-Yb-Zho"/>
+                    <exclude reference="Yfe-DH-K5f"/>
+                    <exclude reference="kVg-01-4Kx"/>
+                </mask>
+            </variation>
+            <variation key="widthClass=compact">
+                <mask key="subviews">
+                    <include reference="n1r-fs-i80"/>
+                    <include reference="5oj-N8-CBI"/>
+                </mask>
+                <mask key="constraints">
+                    <include reference="3Qa-Uv-8nO"/>
+                    <include reference="hKN-cF-AOT"/>
+                    <include reference="KLa-wT-1Gc"/>
+                    <include reference="MY8-Yb-Zho"/>
+                    <include reference="Yfe-DH-K5f"/>
+                    <include reference="kVg-01-4Kx"/>
+                </mask>
+            </variation>
+            <variation key="widthClass=regular">
+                <mask key="subviews">
+                    <include reference="5oj-N8-CBI"/>
+                </mask>
+                <mask key="constraints">
+                    <exclude reference="hKN-cF-AOT"/>
+                </mask>
+            </variation>
+            <connections>
+                <outlet property="backColor" destination="NqK-FO-OGY" id="kwE-VN-VCv"/>
+                <outlet property="boldButton" destination="IvH-tE-Dmv" id="frZ-lm-H3K"/>
+                <outlet property="centerButton" destination="iAV-wy-m8r" id="RMz-2x-p3M"/>
+                <outlet property="fontButton" destination="TxB-Wv-LZc" id="vq0-yX-vdy"/>
+                <outlet property="horizontalBorder" destination="5oj-N8-CBI" id="5yq-QA-5ve"/>
+                <outlet property="imageButton" destination="qmO-QZ-Xg8" id="ogP-W9-rcY"/>
+                <outlet property="leftButton" destination="Htp-FN-Ffy" id="jED-fa-Wqq"/>
+                <outlet property="leftToolbar" destination="n1r-fs-i80" id="4SU-EE-SOx"/>
+                <outlet property="rightButton" destination="wcL-4T-2Ya" id="ios-jO-vAj"/>
+                <outlet property="textColor" destination="ThL-hp-nFs" id="VEs-Ms-4yX"/>
+                <outlet property="underLine" destination="UaL-xN-YGn" id="aGi-VU-SsV"/>
+            </connections>
+            <point key="canvasLocation" x="-312" y="-175"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="ZSSbgcolor.png" width="28" height="28"/>
+        <image name="ZSSbold.png" width="28" height="28"/>
+        <image name="ZSScenterjustify.png" width="28" height="28"/>
+        <image name="ZSSfonts.png" width="28" height="28"/>
+        <image name="ZSSimageDevice.png" width="28" height="28"/>
+        <image name="ZSSleftjustify.png" width="28" height="28"/>
+        <image name="ZSSrightjustify.png" width="28" height="28"/>
+        <image name="ZSStextcolor.png" width="28" height="28"/>
+        <image name="ZSSunderline.png" width="28" height="28"/>
+    </resources>
+</document>

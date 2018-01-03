@@ -1,0 +1,925 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 48;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		D66943EF1FFC748A00CCD597 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D66943EE1FFC748A00CCD597 /* AppDelegate.m */; };
+		D66943F21FFC748A00CCD597 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D66943F11FFC748A00CCD597 /* ViewController.m */; };
+		D66943F51FFC748A00CCD597 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D66943F31FFC748A00CCD597 /* Main.storyboard */; };
+		D66943F71FFC748A00CCD597 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D66943F61FFC748A00CCD597 /* Assets.xcassets */; };
+		D66943FA1FFC748A00CCD597 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D66943F81FFC748A00CCD597 /* LaunchScreen.storyboard */; };
+		D66943FD1FFC748A00CCD597 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D66943FC1FFC748A00CCD597 /* main.m */; };
+		D66944071FFC748A00CCD597 /* LBRichTextEditor_ExampleTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D66944061FFC748A00CCD597 /* LBRichTextEditor_ExampleTests.m */; };
+		D66944121FFC748A00CCD597 /* LBRichTextEditor_ExampleUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = D66944111FFC748A00CCD597 /* LBRichTextEditor_ExampleUITests.m */; };
+		D66944EB1FFC794400CCD597 /* WPEditorToolbarButton.m in Sources */ = {isa = PBXBuildFile; fileRef = D66944C81FFC793F00CCD597 /* WPEditorToolbarButton.m */; };
+		D66944EC1FFC794400CCD597 /* WPEditorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D66944C91FFC793F00CCD597 /* WPEditorViewController.m */; };
+		D66944ED1FFC794400CCD597 /* WPLegacyEditorFormatToolbar.m in Sources */ = {isa = PBXBuildFile; fileRef = D66944CD1FFC793F00CCD597 /* WPLegacyEditorFormatToolbar.m */; };
+		D66944EE1FFC794400CCD597 /* ZSSTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = D66944CF1FFC793F00CCD597 /* ZSSTextView.m */; };
+		D66944EF1FFC794400CCD597 /* ZSSBarButtonItem.m in Sources */ = {isa = PBXBuildFile; fileRef = D66944D31FFC794000CCD597 /* ZSSBarButtonItem.m */; };
+		D66944F01FFC794400CCD597 /* WPEditorView.m in Sources */ = {isa = PBXBuildFile; fileRef = D66944D41FFC794000CCD597 /* WPEditorView.m */; };
+		D66944F11FFC794400CCD597 /* WPLegacyEditorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D66944D51FFC794000CCD597 /* WPLegacyEditorViewController.m */; };
+		D66944F21FFC794400CCD597 /* LBEditorToolView.m in Sources */ = {isa = PBXBuildFile; fileRef = D66944D61FFC794100CCD597 /* LBEditorToolView.m */; };
+		D66944F31FFC794400CCD597 /* WPEditorLoggingConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = D66944D91FFC794100CCD597 /* WPEditorLoggingConfiguration.m */; };
+		D66944F41FFC794400CCD597 /* ZBEditorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D66944DC1FFC794100CCD597 /* ZBEditorViewController.m */; };
+		D66944F51FFC794400CCD597 /* WPEditorField.m in Sources */ = {isa = PBXBuildFile; fileRef = D66944DE1FFC794200CCD597 /* WPEditorField.m */; };
+		D66944F61FFC794400CCD597 /* WPEditorFormatbarView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D66944DF1FFC794200CCD597 /* WPEditorFormatbarView.xib */; };
+		D66944F71FFC794400CCD597 /* WPLegacyEditorFormatAction.m in Sources */ = {isa = PBXBuildFile; fileRef = D66944E21FFC794300CCD597 /* WPLegacyEditorFormatAction.m */; };
+		D66944F81FFC794400CCD597 /* ZBFontSelectController.m in Sources */ = {isa = PBXBuildFile; fileRef = D66944E41FFC794300CCD597 /* ZBFontSelectController.m */; };
+		D66944F91FFC794400CCD597 /* UIWebView+GUIFixes.m in Sources */ = {isa = PBXBuildFile; fileRef = D66944E61FFC794300CCD597 /* UIWebView+GUIFixes.m */; };
+		D66944FA1FFC794400CCD597 /* WPImageMeta.m in Sources */ = {isa = PBXBuildFile; fileRef = D66944E81FFC794400CCD597 /* WPImageMeta.m */; };
+		D66944FB1FFC794400CCD597 /* WPEditorFormatbarView.m in Sources */ = {isa = PBXBuildFile; fileRef = D66944E91FFC794400CCD597 /* WPEditorFormatbarView.m */; };
+		D66944FC1FFC794400CCD597 /* ZBFontSelectController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D66944EA1FFC794400CCD597 /* ZBFontSelectController.xib */; };
+		D66945171FFC796700CCD597 /* HRColorCursor.m in Sources */ = {isa = PBXBuildFile; fileRef = D66944FF1FFC796400CCD597 /* HRColorCursor.m */; };
+		D66945181FFC796700CCD597 /* HRColorPickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = D66945011FFC796400CCD597 /* HRColorPickerView.m */; };
+		D66945191FFC796700CCD597 /* CYRLayoutManager.m in Sources */ = {isa = PBXBuildFile; fileRef = D66945021FFC796400CCD597 /* CYRLayoutManager.m */; };
+		D669451A1FFC796700CCD597 /* HRColorPickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D66945031FFC796400CCD597 /* HRColorPickerViewController.m */; };
+		D669451B1FFC796700CCD597 /* HRColorUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = D66945061FFC796500CCD597 /* HRColorUtil.m */; };
+		D669451C1FFC796700CCD597 /* NSDictionary+SafeExpectations.m in Sources */ = {isa = PBXBuildFile; fileRef = D669450A1FFC796500CCD597 /* NSDictionary+SafeExpectations.m */; };
+		D669451D1FFC796700CCD597 /* CYRToken.m in Sources */ = {isa = PBXBuildFile; fileRef = D669450E1FFC796600CCD597 /* CYRToken.m */; };
+		D669451E1FFC796700CCD597 /* CYRTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = D66945101FFC796600CCD597 /* CYRTextView.m */; };
+		D669451F1FFC796700CCD597 /* HRCgUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = D66945131FFC796600CCD597 /* HRCgUtil.m */; };
+		D66945201FFC796700CCD597 /* HRBrightnessCursor.m in Sources */ = {isa = PBXBuildFile; fileRef = D66945151FFC796700CCD597 /* HRBrightnessCursor.m */; };
+		D66945211FFC796700CCD597 /* CYRTextStorage.m in Sources */ = {isa = PBXBuildFile; fileRef = D66945161FFC796700CCD597 /* CYRTextStorage.m */; };
+		D66945351FFC797F00CCD597 /* editor.css in Resources */ = {isa = PBXBuildFile; fileRef = D66945221FFC797C00CCD597 /* editor.css */; };
+		D66945361FFC797F00CCD597 /* rangy-highlighter.js in Resources */ = {isa = PBXBuildFile; fileRef = D66945231FFC797C00CCD597 /* rangy-highlighter.js */; };
+		D66945371FFC797F00CCD597 /* rangy-serializer.js in Resources */ = {isa = PBXBuildFile; fileRef = D66945241FFC797C00CCD597 /* rangy-serializer.js */; };
+		D66945381FFC797F00CCD597 /* jquery.mobile-events.min.js in Resources */ = {isa = PBXBuildFile; fileRef = D66945251FFC797D00CCD597 /* jquery.mobile-events.min.js */; };
+		D66945391FFC797F00CCD597 /* jquery.js in Resources */ = {isa = PBXBuildFile; fileRef = D66945261FFC797D00CCD597 /* jquery.js */; };
+		D669453A1FFC797F00CCD597 /* underscore-min.js in Resources */ = {isa = PBXBuildFile; fileRef = D66945271FFC797D00CCD597 /* underscore-min.js */; };
+		D669453B1FFC797F00CCD597 /* wpload.js in Resources */ = {isa = PBXBuildFile; fileRef = D66945281FFC797D00CCD597 /* wpload.js */; };
+		D669453C1FFC797F00CCD597 /* editor.html in Resources */ = {isa = PBXBuildFile; fileRef = D66945291FFC797D00CCD597 /* editor.html */; };
+		D669453D1FFC797F00CCD597 /* rangy-selectionsaverestore.js in Resources */ = {isa = PBXBuildFile; fileRef = D669452A1FFC797D00CCD597 /* rangy-selectionsaverestore.js */; };
+		D669453E1FFC797F00CCD597 /* wpsave.js in Resources */ = {isa = PBXBuildFile; fileRef = D669452B1FFC797D00CCD597 /* wpsave.js */; };
+		D669453F1FFC797F00CCD597 /* shortcode.js in Resources */ = {isa = PBXBuildFile; fileRef = D669452C1FFC797E00CCD597 /* shortcode.js */; };
+		D66945401FFC797F00CCD597 /* ZSSRichTextEditor.js in Resources */ = {isa = PBXBuildFile; fileRef = D669452D1FFC797E00CCD597 /* ZSSRichTextEditor.js */; };
+		D66945411FFC797F00CCD597 /* wpposter.svg in Resources */ = {isa = PBXBuildFile; fileRef = D669452E1FFC797E00CCD597 /* wpposter.svg */; };
+		D66945421FFC797F00CCD597 /* js-beautifier.js in Resources */ = {isa = PBXBuildFile; fileRef = D669452F1FFC797E00CCD597 /* js-beautifier.js */; };
+		D66945431FFC797F00CCD597 /* rangy-core.js in Resources */ = {isa = PBXBuildFile; fileRef = D66945301FFC797E00CCD597 /* rangy-core.js */; };
+		D66945441FFC797F00CCD597 /* WPHybridCallbacker.js in Resources */ = {isa = PBXBuildFile; fileRef = D66945311FFC797F00CCD597 /* WPHybridCallbacker.js */; };
+		D66945451FFC797F00CCD597 /* rangy-classapplier.js in Resources */ = {isa = PBXBuildFile; fileRef = D66945321FFC797F00CCD597 /* rangy-classapplier.js */; };
+		D66945461FFC797F00CCD597 /* WPHybridLogger.js in Resources */ = {isa = PBXBuildFile; fileRef = D66945331FFC797F00CCD597 /* WPHybridLogger.js */; };
+		D66945471FFC797F00CCD597 /* rangy-textrange.js in Resources */ = {isa = PBXBuildFile; fileRef = D66945341FFC797F00CCD597 /* rangy-textrange.js */; };
+		D669455A1FFC798B00CCD597 /* ZSSbgcolor.png in Resources */ = {isa = PBXBuildFile; fileRef = D66945481FFC798800CCD597 /* ZSSbgcolor.png */; };
+		D669455B1FFC798B00CCD597 /* ZSSleftjustify@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D66945491FFC798800CCD597 /* ZSSleftjustify@2x.png */; };
+		D669455C1FFC798B00CCD597 /* ZSSunderline.png in Resources */ = {isa = PBXBuildFile; fileRef = D669454A1FFC798800CCD597 /* ZSSunderline.png */; };
+		D669455D1FFC798B00CCD597 /* ZSStextcolor.png in Resources */ = {isa = PBXBuildFile; fileRef = D669454B1FFC798900CCD597 /* ZSStextcolor.png */; };
+		D669455E1FFC798B00CCD597 /* ZSSleftjustify.png in Resources */ = {isa = PBXBuildFile; fileRef = D669454C1FFC798900CCD597 /* ZSSleftjustify.png */; };
+		D669455F1FFC798B00CCD597 /* ZSScenterjustify.png in Resources */ = {isa = PBXBuildFile; fileRef = D669454D1FFC798900CCD597 /* ZSScenterjustify.png */; };
+		D66945601FFC798B00CCD597 /* ZSSimageDevice@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D669454E1FFC798900CCD597 /* ZSSimageDevice@2x.png */; };
+		D66945611FFC798B00CCD597 /* ZSSfonts.png in Resources */ = {isa = PBXBuildFile; fileRef = D669454F1FFC798900CCD597 /* ZSSfonts.png */; };
+		D66945621FFC798B00CCD597 /* ZSSbold@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D66945501FFC798900CCD597 /* ZSSbold@2x.png */; };
+		D66945631FFC798B00CCD597 /* ZSScenterjustify@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D66945511FFC798900CCD597 /* ZSScenterjustify@2x.png */; };
+		D66945641FFC798B00CCD597 /* ZSSrightjustify.png in Resources */ = {isa = PBXBuildFile; fileRef = D66945521FFC798A00CCD597 /* ZSSrightjustify.png */; };
+		D66945651FFC798B00CCD597 /* ZSSrightjustify@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D66945531FFC798A00CCD597 /* ZSSrightjustify@2x.png */; };
+		D66945661FFC798B00CCD597 /* ZSSfonts@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D66945541FFC798A00CCD597 /* ZSSfonts@2x.png */; };
+		D66945671FFC798B00CCD597 /* ZSStextcolor@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D66945551FFC798A00CCD597 /* ZSStextcolor@2x.png */; };
+		D66945681FFC798B00CCD597 /* ZSSbold.png in Resources */ = {isa = PBXBuildFile; fileRef = D66945561FFC798A00CCD597 /* ZSSbold.png */; };
+		D66945691FFC798B00CCD597 /* ZSSimageDevice.png in Resources */ = {isa = PBXBuildFile; fileRef = D66945571FFC798A00CCD597 /* ZSSimageDevice.png */; };
+		D669456A1FFC798B00CCD597 /* ZSSunderline@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D66945581FFC798A00CCD597 /* ZSSunderline@2x.png */; };
+		D669456B1FFC798B00CCD597 /* ZSSbgcolor@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D66945591FFC798B00CCD597 /* ZSSbgcolor@2x.png */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		D66944031FFC748A00CCD597 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D66943E21FFC748A00CCD597 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = D66943E91FFC748A00CCD597;
+			remoteInfo = "LBRichTextEditor-Example";
+		};
+		D669440E1FFC748A00CCD597 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D66943E21FFC748A00CCD597 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = D66943E91FFC748A00CCD597;
+			remoteInfo = "LBRichTextEditor-Example";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		D66943EA1FFC748A00CCD597 /* LBRichTextEditor-Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "LBRichTextEditor-Example.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		D66943ED1FFC748A00CCD597 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		D66943EE1FFC748A00CCD597 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		D66943F01FFC748A00CCD597 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		D66943F11FFC748A00CCD597 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		D66943F41FFC748A00CCD597 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		D66943F61FFC748A00CCD597 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		D66943F91FFC748A00CCD597 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		D66943FB1FFC748A00CCD597 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D66943FC1FFC748A00CCD597 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		D66944021FFC748A00CCD597 /* LBRichTextEditor-ExampleTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "LBRichTextEditor-ExampleTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		D66944061FFC748A00CCD597 /* LBRichTextEditor_ExampleTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LBRichTextEditor_ExampleTests.m; sourceTree = "<group>"; };
+		D66944081FFC748A00CCD597 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D669440D1FFC748A00CCD597 /* LBRichTextEditor-ExampleUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "LBRichTextEditor-ExampleUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		D66944111FFC748A00CCD597 /* LBRichTextEditor_ExampleUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LBRichTextEditor_ExampleUITests.m; sourceTree = "<group>"; };
+		D66944131FFC748A00CCD597 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D66944C81FFC793F00CCD597 /* WPEditorToolbarButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WPEditorToolbarButton.m; sourceTree = "<group>"; };
+		D66944C91FFC793F00CCD597 /* WPEditorViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WPEditorViewController.m; sourceTree = "<group>"; };
+		D66944CA1FFC793F00CCD597 /* WPEditorStat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WPEditorStat.h; sourceTree = "<group>"; };
+		D66944CB1FFC793F00CCD597 /* WPLegacyEditorViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WPLegacyEditorViewController.h; sourceTree = "<group>"; };
+		D66944CC1FFC793F00CCD597 /* WPLegacyEditorFormatToolbar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WPLegacyEditorFormatToolbar.h; sourceTree = "<group>"; };
+		D66944CD1FFC793F00CCD597 /* WPLegacyEditorFormatToolbar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WPLegacyEditorFormatToolbar.m; sourceTree = "<group>"; };
+		D66944CE1FFC793F00CCD597 /* ZBFontSelectController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZBFontSelectController.h; sourceTree = "<group>"; };
+		D66944CF1FFC793F00CCD597 /* ZSSTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZSSTextView.m; sourceTree = "<group>"; };
+		D66944D01FFC794000CCD597 /* UIWebView+GUIFixes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIWebView+GUIFixes.h"; sourceTree = "<group>"; };
+		D66944D11FFC794000CCD597 /* WPEditorViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WPEditorViewController.h; sourceTree = "<group>"; };
+		D66944D21FFC794000CCD597 /* WPEditorToolbarButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WPEditorToolbarButton.h; sourceTree = "<group>"; };
+		D66944D31FFC794000CCD597 /* ZSSBarButtonItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZSSBarButtonItem.m; sourceTree = "<group>"; };
+		D66944D41FFC794000CCD597 /* WPEditorView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WPEditorView.m; sourceTree = "<group>"; };
+		D66944D51FFC794000CCD597 /* WPLegacyEditorViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WPLegacyEditorViewController.m; sourceTree = "<group>"; };
+		D66944D61FFC794100CCD597 /* LBEditorToolView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LBEditorToolView.m; sourceTree = "<group>"; };
+		D66944D71FFC794100CCD597 /* WPEditorField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WPEditorField.h; sourceTree = "<group>"; };
+		D66944D81FFC794100CCD597 /* WPEditorFormatbarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WPEditorFormatbarView.h; sourceTree = "<group>"; };
+		D66944D91FFC794100CCD597 /* WPEditorLoggingConfiguration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WPEditorLoggingConfiguration.m; sourceTree = "<group>"; };
+		D66944DA1FFC794100CCD597 /* WPLegacyEditorFormatAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WPLegacyEditorFormatAction.h; sourceTree = "<group>"; };
+		D66944DB1FFC794100CCD597 /* ZSSTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZSSTextView.h; sourceTree = "<group>"; };
+		D66944DC1FFC794100CCD597 /* ZBEditorViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZBEditorViewController.m; sourceTree = "<group>"; };
+		D66944DD1FFC794100CCD597 /* ZBEditorViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZBEditorViewController.h; sourceTree = "<group>"; };
+		D66944DE1FFC794200CCD597 /* WPEditorField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WPEditorField.m; sourceTree = "<group>"; };
+		D66944DF1FFC794200CCD597 /* WPEditorFormatbarView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WPEditorFormatbarView.xib; sourceTree = "<group>"; };
+		D66944E01FFC794200CCD597 /* WPEditorLoggingConfiguration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WPEditorLoggingConfiguration.h; sourceTree = "<group>"; };
+		D66944E11FFC794200CCD597 /* WPImageMeta.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WPImageMeta.h; sourceTree = "<group>"; };
+		D66944E21FFC794300CCD597 /* WPLegacyEditorFormatAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WPLegacyEditorFormatAction.m; sourceTree = "<group>"; };
+		D66944E31FFC794300CCD597 /* WPEditorView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WPEditorView.h; sourceTree = "<group>"; };
+		D66944E41FFC794300CCD597 /* ZBFontSelectController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZBFontSelectController.m; sourceTree = "<group>"; };
+		D66944E51FFC794300CCD597 /* ZSSBarButtonItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZSSBarButtonItem.h; sourceTree = "<group>"; };
+		D66944E61FFC794300CCD597 /* UIWebView+GUIFixes.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIWebView+GUIFixes.m"; sourceTree = "<group>"; };
+		D66944E71FFC794400CCD597 /* LBEditorToolView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LBEditorToolView.h; sourceTree = "<group>"; };
+		D66944E81FFC794400CCD597 /* WPImageMeta.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WPImageMeta.m; sourceTree = "<group>"; };
+		D66944E91FFC794400CCD597 /* WPEditorFormatbarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WPEditorFormatbarView.m; sourceTree = "<group>"; };
+		D66944EA1FFC794400CCD597 /* ZBFontSelectController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ZBFontSelectController.xib; sourceTree = "<group>"; };
+		D66944FE1FFC796400CCD597 /* HRColorCursor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRColorCursor.h; sourceTree = "<group>"; };
+		D66944FF1FFC796400CCD597 /* HRColorCursor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRColorCursor.m; sourceTree = "<group>"; };
+		D66945001FFC796400CCD597 /* CYRLayoutManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CYRLayoutManager.h; sourceTree = "<group>"; };
+		D66945011FFC796400CCD597 /* HRColorPickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRColorPickerView.m; sourceTree = "<group>"; };
+		D66945021FFC796400CCD597 /* CYRLayoutManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CYRLayoutManager.m; sourceTree = "<group>"; };
+		D66945031FFC796400CCD597 /* HRColorPickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRColorPickerViewController.m; sourceTree = "<group>"; };
+		D66945041FFC796400CCD597 /* HRColorPickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRColorPickerViewController.h; sourceTree = "<group>"; };
+		D66945051FFC796400CCD597 /* HRColorPickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRColorPickerView.h; sourceTree = "<group>"; };
+		D66945061FFC796500CCD597 /* HRColorUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRColorUtil.m; sourceTree = "<group>"; };
+		D66945071FFC796500CCD597 /* NSObject+SafeExpectations.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+SafeExpectations.h"; sourceTree = "<group>"; };
+		D66945081FFC796500CCD597 /* NSDictionary+SafeExpectations.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+SafeExpectations.h"; sourceTree = "<group>"; };
+		D66945091FFC796500CCD597 /* NSObject-SafeExpectations-umbrella.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject-SafeExpectations-umbrella.h"; sourceTree = "<group>"; };
+		D669450A1FFC796500CCD597 /* NSDictionary+SafeExpectations.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+SafeExpectations.m"; sourceTree = "<group>"; };
+		D669450B1FFC796500CCD597 /* CYRToken.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CYRToken.h; sourceTree = "<group>"; };
+		D669450C1FFC796500CCD597 /* HRBrightnessCursor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRBrightnessCursor.h; sourceTree = "<group>"; };
+		D669450D1FFC796600CCD597 /* HRCgUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRCgUtil.h; sourceTree = "<group>"; };
+		D669450E1FFC796600CCD597 /* CYRToken.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CYRToken.m; sourceTree = "<group>"; };
+		D669450F1FFC796600CCD597 /* CYRTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CYRTextView.h; sourceTree = "<group>"; };
+		D66945101FFC796600CCD597 /* CYRTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CYRTextView.m; sourceTree = "<group>"; };
+		D66945111FFC796600CCD597 /* HRColorPickerMacros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRColorPickerMacros.h; sourceTree = "<group>"; };
+		D66945121FFC796600CCD597 /* HRColorUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRColorUtil.h; sourceTree = "<group>"; };
+		D66945131FFC796600CCD597 /* HRCgUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRCgUtil.m; sourceTree = "<group>"; };
+		D66945141FFC796700CCD597 /* CYRTextStorage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CYRTextStorage.h; sourceTree = "<group>"; };
+		D66945151FFC796700CCD597 /* HRBrightnessCursor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRBrightnessCursor.m; sourceTree = "<group>"; };
+		D66945161FFC796700CCD597 /* CYRTextStorage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CYRTextStorage.m; sourceTree = "<group>"; };
+		D66945221FFC797C00CCD597 /* editor.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = editor.css; sourceTree = "<group>"; };
+		D66945231FFC797C00CCD597 /* rangy-highlighter.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = "rangy-highlighter.js"; sourceTree = "<group>"; };
+		D66945241FFC797C00CCD597 /* rangy-serializer.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = "rangy-serializer.js"; sourceTree = "<group>"; };
+		D66945251FFC797D00CCD597 /* jquery.mobile-events.min.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = "jquery.mobile-events.min.js"; sourceTree = "<group>"; };
+		D66945261FFC797D00CCD597 /* jquery.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = jquery.js; sourceTree = "<group>"; };
+		D66945271FFC797D00CCD597 /* underscore-min.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = "underscore-min.js"; sourceTree = "<group>"; };
+		D66945281FFC797D00CCD597 /* wpload.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = wpload.js; sourceTree = "<group>"; };
+		D66945291FFC797D00CCD597 /* editor.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = editor.html; sourceTree = "<group>"; };
+		D669452A1FFC797D00CCD597 /* rangy-selectionsaverestore.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = "rangy-selectionsaverestore.js"; sourceTree = "<group>"; };
+		D669452B1FFC797D00CCD597 /* wpsave.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = wpsave.js; sourceTree = "<group>"; };
+		D669452C1FFC797E00CCD597 /* shortcode.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = shortcode.js; sourceTree = "<group>"; };
+		D669452D1FFC797E00CCD597 /* ZSSRichTextEditor.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = ZSSRichTextEditor.js; sourceTree = "<group>"; };
+		D669452E1FFC797E00CCD597 /* wpposter.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = wpposter.svg; sourceTree = "<group>"; };
+		D669452F1FFC797E00CCD597 /* js-beautifier.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = "js-beautifier.js"; sourceTree = "<group>"; };
+		D66945301FFC797E00CCD597 /* rangy-core.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = "rangy-core.js"; sourceTree = "<group>"; };
+		D66945311FFC797F00CCD597 /* WPHybridCallbacker.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = WPHybridCallbacker.js; sourceTree = "<group>"; };
+		D66945321FFC797F00CCD597 /* rangy-classapplier.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = "rangy-classapplier.js"; sourceTree = "<group>"; };
+		D66945331FFC797F00CCD597 /* WPHybridLogger.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = WPHybridLogger.js; sourceTree = "<group>"; };
+		D66945341FFC797F00CCD597 /* rangy-textrange.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = "rangy-textrange.js"; sourceTree = "<group>"; };
+		D66945481FFC798800CCD597 /* ZSSbgcolor.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ZSSbgcolor.png; sourceTree = "<group>"; };
+		D66945491FFC798800CCD597 /* ZSSleftjustify@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ZSSleftjustify@2x.png"; sourceTree = "<group>"; };
+		D669454A1FFC798800CCD597 /* ZSSunderline.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ZSSunderline.png; sourceTree = "<group>"; };
+		D669454B1FFC798900CCD597 /* ZSStextcolor.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ZSStextcolor.png; sourceTree = "<group>"; };
+		D669454C1FFC798900CCD597 /* ZSSleftjustify.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ZSSleftjustify.png; sourceTree = "<group>"; };
+		D669454D1FFC798900CCD597 /* ZSScenterjustify.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ZSScenterjustify.png; sourceTree = "<group>"; };
+		D669454E1FFC798900CCD597 /* ZSSimageDevice@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ZSSimageDevice@2x.png"; sourceTree = "<group>"; };
+		D669454F1FFC798900CCD597 /* ZSSfonts.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ZSSfonts.png; sourceTree = "<group>"; };
+		D66945501FFC798900CCD597 /* ZSSbold@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ZSSbold@2x.png"; sourceTree = "<group>"; };
+		D66945511FFC798900CCD597 /* ZSScenterjustify@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ZSScenterjustify@2x.png"; sourceTree = "<group>"; };
+		D66945521FFC798A00CCD597 /* ZSSrightjustify.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ZSSrightjustify.png; sourceTree = "<group>"; };
+		D66945531FFC798A00CCD597 /* ZSSrightjustify@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ZSSrightjustify@2x.png"; sourceTree = "<group>"; };
+		D66945541FFC798A00CCD597 /* ZSSfonts@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ZSSfonts@2x.png"; sourceTree = "<group>"; };
+		D66945551FFC798A00CCD597 /* ZSStextcolor@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ZSStextcolor@2x.png"; sourceTree = "<group>"; };
+		D66945561FFC798A00CCD597 /* ZSSbold.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ZSSbold.png; sourceTree = "<group>"; };
+		D66945571FFC798A00CCD597 /* ZSSimageDevice.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ZSSimageDevice.png; sourceTree = "<group>"; };
+		D66945581FFC798A00CCD597 /* ZSSunderline@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ZSSunderline@2x.png"; sourceTree = "<group>"; };
+		D66945591FFC798B00CCD597 /* ZSSbgcolor@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ZSSbgcolor@2x.png"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		D66943E71FFC748A00CCD597 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D66943FF1FFC748A00CCD597 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D669440A1FFC748A00CCD597 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		D66943E11FFC748A00CCD597 = {
+			isa = PBXGroup;
+			children = (
+				D66943EC1FFC748A00CCD597 /* LBRichTextEditor-Example */,
+				D66944051FFC748A00CCD597 /* LBRichTextEditor-ExampleTests */,
+				D66944101FFC748A00CCD597 /* LBRichTextEditor-ExampleUITests */,
+				D66943EB1FFC748A00CCD597 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		D66943EB1FFC748A00CCD597 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				D66943EA1FFC748A00CCD597 /* LBRichTextEditor-Example.app */,
+				D66944021FFC748A00CCD597 /* LBRichTextEditor-ExampleTests.xctest */,
+				D669440D1FFC748A00CCD597 /* LBRichTextEditor-ExampleUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		D66943EC1FFC748A00CCD597 /* LBRichTextEditor-Example */ = {
+			isa = PBXGroup;
+			children = (
+				D669441F1FFC78C800CCD597 /* LBRichTextEditor */,
+				D66943ED1FFC748A00CCD597 /* AppDelegate.h */,
+				D66943EE1FFC748A00CCD597 /* AppDelegate.m */,
+				D66943F01FFC748A00CCD597 /* ViewController.h */,
+				D66943F11FFC748A00CCD597 /* ViewController.m */,
+				D66943F31FFC748A00CCD597 /* Main.storyboard */,
+				D66943F61FFC748A00CCD597 /* Assets.xcassets */,
+				D66943F81FFC748A00CCD597 /* LaunchScreen.storyboard */,
+				D66943FB1FFC748A00CCD597 /* Info.plist */,
+				D66943FC1FFC748A00CCD597 /* main.m */,
+			);
+			path = "LBRichTextEditor-Example";
+			sourceTree = "<group>";
+		};
+		D66944051FFC748A00CCD597 /* LBRichTextEditor-ExampleTests */ = {
+			isa = PBXGroup;
+			children = (
+				D66944061FFC748A00CCD597 /* LBRichTextEditor_ExampleTests.m */,
+				D66944081FFC748A00CCD597 /* Info.plist */,
+			);
+			path = "LBRichTextEditor-ExampleTests";
+			sourceTree = "<group>";
+		};
+		D66944101FFC748A00CCD597 /* LBRichTextEditor-ExampleUITests */ = {
+			isa = PBXGroup;
+			children = (
+				D66944111FFC748A00CCD597 /* LBRichTextEditor_ExampleUITests.m */,
+				D66944131FFC748A00CCD597 /* Info.plist */,
+			);
+			path = "LBRichTextEditor-ExampleUITests";
+			sourceTree = "<group>";
+		};
+		D669441F1FFC78C800CCD597 /* LBRichTextEditor */ = {
+			isa = PBXGroup;
+			children = (
+				D66944C61FFC792100CCD597 /* Resource */,
+				D66944C51FFC791B00CCD597 /* js */,
+				D66944C41FFC791600CCD597 /* Class */,
+			);
+			path = LBRichTextEditor;
+			sourceTree = "<group>";
+		};
+		D66944C41FFC791600CCD597 /* Class */ = {
+			isa = PBXGroup;
+			children = (
+				D66944FD1FFC795800CCD597 /* Vender */,
+				D66944C71FFC793300CCD597 /* Editor */,
+			);
+			path = Class;
+			sourceTree = "<group>";
+		};
+		D66944C51FFC791B00CCD597 /* js */ = {
+			isa = PBXGroup;
+			children = (
+				D669452D1FFC797E00CCD597 /* ZSSRichTextEditor.js */,
+				D669452E1FFC797E00CCD597 /* wpposter.svg */,
+				D669452B1FFC797D00CCD597 /* wpsave.js */,
+				D66945261FFC797D00CCD597 /* jquery.js */,
+				D66945251FFC797D00CCD597 /* jquery.mobile-events.min.js */,
+				D669452F1FFC797E00CCD597 /* js-beautifier.js */,
+				D66945321FFC797F00CCD597 /* rangy-classapplier.js */,
+				D66945301FFC797E00CCD597 /* rangy-core.js */,
+				D66945231FFC797C00CCD597 /* rangy-highlighter.js */,
+				D669452A1FFC797D00CCD597 /* rangy-selectionsaverestore.js */,
+				D66945241FFC797C00CCD597 /* rangy-serializer.js */,
+				D66945341FFC797F00CCD597 /* rangy-textrange.js */,
+				D669452C1FFC797E00CCD597 /* shortcode.js */,
+				D66945271FFC797D00CCD597 /* underscore-min.js */,
+				D66945311FFC797F00CCD597 /* WPHybridCallbacker.js */,
+				D66945331FFC797F00CCD597 /* WPHybridLogger.js */,
+				D66945281FFC797D00CCD597 /* wpload.js */,
+				D66945221FFC797C00CCD597 /* editor.css */,
+				D66945291FFC797D00CCD597 /* editor.html */,
+			);
+			path = js;
+			sourceTree = "<group>";
+		};
+		D66944C61FFC792100CCD597 /* Resource */ = {
+			isa = PBXGroup;
+			children = (
+				D66945481FFC798800CCD597 /* ZSSbgcolor.png */,
+				D66945591FFC798B00CCD597 /* ZSSbgcolor@2x.png */,
+				D66945561FFC798A00CCD597 /* ZSSbold.png */,
+				D66945501FFC798900CCD597 /* ZSSbold@2x.png */,
+				D669454D1FFC798900CCD597 /* ZSScenterjustify.png */,
+				D66945511FFC798900CCD597 /* ZSScenterjustify@2x.png */,
+				D669454F1FFC798900CCD597 /* ZSSfonts.png */,
+				D66945541FFC798A00CCD597 /* ZSSfonts@2x.png */,
+				D66945571FFC798A00CCD597 /* ZSSimageDevice.png */,
+				D669454E1FFC798900CCD597 /* ZSSimageDevice@2x.png */,
+				D669454C1FFC798900CCD597 /* ZSSleftjustify.png */,
+				D66945491FFC798800CCD597 /* ZSSleftjustify@2x.png */,
+				D66945521FFC798A00CCD597 /* ZSSrightjustify.png */,
+				D66945531FFC798A00CCD597 /* ZSSrightjustify@2x.png */,
+				D669454B1FFC798900CCD597 /* ZSStextcolor.png */,
+				D66945551FFC798A00CCD597 /* ZSStextcolor@2x.png */,
+				D669454A1FFC798800CCD597 /* ZSSunderline.png */,
+				D66945581FFC798A00CCD597 /* ZSSunderline@2x.png */,
+			);
+			path = Resource;
+			sourceTree = "<group>";
+		};
+		D66944C71FFC793300CCD597 /* Editor */ = {
+			isa = PBXGroup;
+			children = (
+				D66944E71FFC794400CCD597 /* LBEditorToolView.h */,
+				D66944D61FFC794100CCD597 /* LBEditorToolView.m */,
+				D66944D01FFC794000CCD597 /* UIWebView+GUIFixes.h */,
+				D66944E61FFC794300CCD597 /* UIWebView+GUIFixes.m */,
+				D66944D71FFC794100CCD597 /* WPEditorField.h */,
+				D66944DE1FFC794200CCD597 /* WPEditorField.m */,
+				D66944D81FFC794100CCD597 /* WPEditorFormatbarView.h */,
+				D66944E91FFC794400CCD597 /* WPEditorFormatbarView.m */,
+				D66944DF1FFC794200CCD597 /* WPEditorFormatbarView.xib */,
+				D66944E01FFC794200CCD597 /* WPEditorLoggingConfiguration.h */,
+				D66944D91FFC794100CCD597 /* WPEditorLoggingConfiguration.m */,
+				D66944CA1FFC793F00CCD597 /* WPEditorStat.h */,
+				D66944D21FFC794000CCD597 /* WPEditorToolbarButton.h */,
+				D66944C81FFC793F00CCD597 /* WPEditorToolbarButton.m */,
+				D66944E31FFC794300CCD597 /* WPEditorView.h */,
+				D66944D41FFC794000CCD597 /* WPEditorView.m */,
+				D66944D11FFC794000CCD597 /* WPEditorViewController.h */,
+				D66944C91FFC793F00CCD597 /* WPEditorViewController.m */,
+				D66944E11FFC794200CCD597 /* WPImageMeta.h */,
+				D66944E81FFC794400CCD597 /* WPImageMeta.m */,
+				D66944DA1FFC794100CCD597 /* WPLegacyEditorFormatAction.h */,
+				D66944E21FFC794300CCD597 /* WPLegacyEditorFormatAction.m */,
+				D66944CC1FFC793F00CCD597 /* WPLegacyEditorFormatToolbar.h */,
+				D66944CD1FFC793F00CCD597 /* WPLegacyEditorFormatToolbar.m */,
+				D66944CB1FFC793F00CCD597 /* WPLegacyEditorViewController.h */,
+				D66944D51FFC794000CCD597 /* WPLegacyEditorViewController.m */,
+				D66944DD1FFC794100CCD597 /* ZBEditorViewController.h */,
+				D66944DC1FFC794100CCD597 /* ZBEditorViewController.m */,
+				D66944CE1FFC793F00CCD597 /* ZBFontSelectController.h */,
+				D66944E41FFC794300CCD597 /* ZBFontSelectController.m */,
+				D66944EA1FFC794400CCD597 /* ZBFontSelectController.xib */,
+				D66944E51FFC794300CCD597 /* ZSSBarButtonItem.h */,
+				D66944D31FFC794000CCD597 /* ZSSBarButtonItem.m */,
+				D66944DB1FFC794100CCD597 /* ZSSTextView.h */,
+				D66944CF1FFC793F00CCD597 /* ZSSTextView.m */,
+			);
+			path = Editor;
+			sourceTree = "<group>";
+		};
+		D66944FD1FFC795800CCD597 /* Vender */ = {
+			isa = PBXGroup;
+			children = (
+				D66945091FFC796500CCD597 /* NSObject-SafeExpectations-umbrella.h */,
+				D66945081FFC796500CCD597 /* NSDictionary+SafeExpectations.h */,
+				D669450A1FFC796500CCD597 /* NSDictionary+SafeExpectations.m */,
+				D66945071FFC796500CCD597 /* NSObject+SafeExpectations.h */,
+				D66945001FFC796400CCD597 /* CYRLayoutManager.h */,
+				D66945021FFC796400CCD597 /* CYRLayoutManager.m */,
+				D66945141FFC796700CCD597 /* CYRTextStorage.h */,
+				D66945161FFC796700CCD597 /* CYRTextStorage.m */,
+				D669450F1FFC796600CCD597 /* CYRTextView.h */,
+				D66945101FFC796600CCD597 /* CYRTextView.m */,
+				D669450B1FFC796500CCD597 /* CYRToken.h */,
+				D669450E1FFC796600CCD597 /* CYRToken.m */,
+				D669450C1FFC796500CCD597 /* HRBrightnessCursor.h */,
+				D66945151FFC796700CCD597 /* HRBrightnessCursor.m */,
+				D669450D1FFC796600CCD597 /* HRCgUtil.h */,
+				D66945131FFC796600CCD597 /* HRCgUtil.m */,
+				D66944FE1FFC796400CCD597 /* HRColorCursor.h */,
+				D66944FF1FFC796400CCD597 /* HRColorCursor.m */,
+				D66945111FFC796600CCD597 /* HRColorPickerMacros.h */,
+				D66945051FFC796400CCD597 /* HRColorPickerView.h */,
+				D66945011FFC796400CCD597 /* HRColorPickerView.m */,
+				D66945041FFC796400CCD597 /* HRColorPickerViewController.h */,
+				D66945031FFC796400CCD597 /* HRColorPickerViewController.m */,
+				D66945121FFC796600CCD597 /* HRColorUtil.h */,
+				D66945061FFC796500CCD597 /* HRColorUtil.m */,
+			);
+			path = Vender;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		D66943E91FFC748A00CCD597 /* LBRichTextEditor-Example */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D66944161FFC748A00CCD597 /* Build configuration list for PBXNativeTarget "LBRichTextEditor-Example" */;
+			buildPhases = (
+				D66943E61FFC748A00CCD597 /* Sources */,
+				D66943E71FFC748A00CCD597 /* Frameworks */,
+				D66943E81FFC748A00CCD597 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "LBRichTextEditor-Example";
+			productName = "LBRichTextEditor-Example";
+			productReference = D66943EA1FFC748A00CCD597 /* LBRichTextEditor-Example.app */;
+			productType = "com.apple.product-type.application";
+		};
+		D66944011FFC748A00CCD597 /* LBRichTextEditor-ExampleTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D66944191FFC748A00CCD597 /* Build configuration list for PBXNativeTarget "LBRichTextEditor-ExampleTests" */;
+			buildPhases = (
+				D66943FE1FFC748A00CCD597 /* Sources */,
+				D66943FF1FFC748A00CCD597 /* Frameworks */,
+				D66944001FFC748A00CCD597 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				D66944041FFC748A00CCD597 /* PBXTargetDependency */,
+			);
+			name = "LBRichTextEditor-ExampleTests";
+			productName = "LBRichTextEditor-ExampleTests";
+			productReference = D66944021FFC748A00CCD597 /* LBRichTextEditor-ExampleTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		D669440C1FFC748A00CCD597 /* LBRichTextEditor-ExampleUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D669441C1FFC748A00CCD597 /* Build configuration list for PBXNativeTarget "LBRichTextEditor-ExampleUITests" */;
+			buildPhases = (
+				D66944091FFC748A00CCD597 /* Sources */,
+				D669440A1FFC748A00CCD597 /* Frameworks */,
+				D669440B1FFC748A00CCD597 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				D669440F1FFC748A00CCD597 /* PBXTargetDependency */,
+			);
+			name = "LBRichTextEditor-ExampleUITests";
+			productName = "LBRichTextEditor-ExampleUITests";
+			productReference = D669440D1FFC748A00CCD597 /* LBRichTextEditor-ExampleUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		D66943E21FFC748A00CCD597 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0920;
+				ORGANIZATIONNAME = "李冰";
+				TargetAttributes = {
+					D66943E91FFC748A00CCD597 = {
+						CreatedOnToolsVersion = 9.2;
+						ProvisioningStyle = Automatic;
+					};
+					D66944011FFC748A00CCD597 = {
+						CreatedOnToolsVersion = 9.2;
+						ProvisioningStyle = Automatic;
+						TestTargetID = D66943E91FFC748A00CCD597;
+					};
+					D669440C1FFC748A00CCD597 = {
+						CreatedOnToolsVersion = 9.2;
+						ProvisioningStyle = Automatic;
+						TestTargetID = D66943E91FFC748A00CCD597;
+					};
+				};
+			};
+			buildConfigurationList = D66943E51FFC748A00CCD597 /* Build configuration list for PBXProject "LBRichTextEditor-Example" */;
+			compatibilityVersion = "Xcode 8.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = D66943E11FFC748A00CCD597;
+			productRefGroup = D66943EB1FFC748A00CCD597 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				D66943E91FFC748A00CCD597 /* LBRichTextEditor-Example */,
+				D66944011FFC748A00CCD597 /* LBRichTextEditor-ExampleTests */,
+				D669440C1FFC748A00CCD597 /* LBRichTextEditor-ExampleUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		D66943E81FFC748A00CCD597 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D66945391FFC797F00CCD597 /* jquery.js in Resources */,
+				D66943FA1FFC748A00CCD597 /* LaunchScreen.storyboard in Resources */,
+				D66945671FFC798B00CCD597 /* ZSStextcolor@2x.png in Resources */,
+				D669453F1FFC797F00CCD597 /* shortcode.js in Resources */,
+				D66945451FFC797F00CCD597 /* rangy-classapplier.js in Resources */,
+				D66944F61FFC794400CCD597 /* WPEditorFormatbarView.xib in Resources */,
+				D66945471FFC797F00CCD597 /* rangy-textrange.js in Resources */,
+				D66945411FFC797F00CCD597 /* wpposter.svg in Resources */,
+				D66945651FFC798B00CCD597 /* ZSSrightjustify@2x.png in Resources */,
+				D66945631FFC798B00CCD597 /* ZSScenterjustify@2x.png in Resources */,
+				D669453A1FFC797F00CCD597 /* underscore-min.js in Resources */,
+				D66945601FFC798B00CCD597 /* ZSSimageDevice@2x.png in Resources */,
+				D66945611FFC798B00CCD597 /* ZSSfonts.png in Resources */,
+				D66945351FFC797F00CCD597 /* editor.css in Resources */,
+				D66943F71FFC748A00CCD597 /* Assets.xcassets in Resources */,
+				D66945641FFC798B00CCD597 /* ZSSrightjustify.png in Resources */,
+				D66945381FFC797F00CCD597 /* jquery.mobile-events.min.js in Resources */,
+				D66945681FFC798B00CCD597 /* ZSSbold.png in Resources */,
+				D66945661FFC798B00CCD597 /* ZSSfonts@2x.png in Resources */,
+				D669455E1FFC798B00CCD597 /* ZSSleftjustify.png in Resources */,
+				D669455C1FFC798B00CCD597 /* ZSSunderline.png in Resources */,
+				D66945401FFC797F00CCD597 /* ZSSRichTextEditor.js in Resources */,
+				D669455A1FFC798B00CCD597 /* ZSSbgcolor.png in Resources */,
+				D669456A1FFC798B00CCD597 /* ZSSunderline@2x.png in Resources */,
+				D66945421FFC797F00CCD597 /* js-beautifier.js in Resources */,
+				D66945691FFC798B00CCD597 /* ZSSimageDevice.png in Resources */,
+				D669453C1FFC797F00CCD597 /* editor.html in Resources */,
+				D669453B1FFC797F00CCD597 /* wpload.js in Resources */,
+				D66945461FFC797F00CCD597 /* WPHybridLogger.js in Resources */,
+				D66945621FFC798B00CCD597 /* ZSSbold@2x.png in Resources */,
+				D66945441FFC797F00CCD597 /* WPHybridCallbacker.js in Resources */,
+				D669455F1FFC798B00CCD597 /* ZSScenterjustify.png in Resources */,
+				D66945361FFC797F00CCD597 /* rangy-highlighter.js in Resources */,
+				D669453E1FFC797F00CCD597 /* wpsave.js in Resources */,
+				D66943F51FFC748A00CCD597 /* Main.storyboard in Resources */,
+				D66945371FFC797F00CCD597 /* rangy-serializer.js in Resources */,
+				D669455D1FFC798B00CCD597 /* ZSStextcolor.png in Resources */,
+				D66944FC1FFC794400CCD597 /* ZBFontSelectController.xib in Resources */,
+				D669456B1FFC798B00CCD597 /* ZSSbgcolor@2x.png in Resources */,
+				D669455B1FFC798B00CCD597 /* ZSSleftjustify@2x.png in Resources */,
+				D669453D1FFC797F00CCD597 /* rangy-selectionsaverestore.js in Resources */,
+				D66945431FFC797F00CCD597 /* rangy-core.js in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D66944001FFC748A00CCD597 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D669440B1FFC748A00CCD597 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		D66943E61FFC748A00CCD597 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D66944F51FFC794400CCD597 /* WPEditorField.m in Sources */,
+				D66945211FFC796700CCD597 /* CYRTextStorage.m in Sources */,
+				D66945171FFC796700CCD597 /* HRColorCursor.m in Sources */,
+				D66944FA1FFC794400CCD597 /* WPImageMeta.m in Sources */,
+				D66944F01FFC794400CCD597 /* WPEditorView.m in Sources */,
+				D669451A1FFC796700CCD597 /* HRColorPickerViewController.m in Sources */,
+				D66943F21FFC748A00CCD597 /* ViewController.m in Sources */,
+				D66944EE1FFC794400CCD597 /* ZSSTextView.m in Sources */,
+				D66945191FFC796700CCD597 /* CYRLayoutManager.m in Sources */,
+				D66943FD1FFC748A00CCD597 /* main.m in Sources */,
+				D66944F21FFC794400CCD597 /* LBEditorToolView.m in Sources */,
+				D66943EF1FFC748A00CCD597 /* AppDelegate.m in Sources */,
+				D66944F71FFC794400CCD597 /* WPLegacyEditorFormatAction.m in Sources */,
+				D66944EC1FFC794400CCD597 /* WPEditorViewController.m in Sources */,
+				D66944EF1FFC794400CCD597 /* ZSSBarButtonItem.m in Sources */,
+				D669451E1FFC796700CCD597 /* CYRTextView.m in Sources */,
+				D669451F1FFC796700CCD597 /* HRCgUtil.m in Sources */,
+				D66944F81FFC794400CCD597 /* ZBFontSelectController.m in Sources */,
+				D66945181FFC796700CCD597 /* HRColorPickerView.m in Sources */,
+				D66944EB1FFC794400CCD597 /* WPEditorToolbarButton.m in Sources */,
+				D66944ED1FFC794400CCD597 /* WPLegacyEditorFormatToolbar.m in Sources */,
+				D66944F41FFC794400CCD597 /* ZBEditorViewController.m in Sources */,
+				D66945201FFC796700CCD597 /* HRBrightnessCursor.m in Sources */,
+				D66944F31FFC794400CCD597 /* WPEditorLoggingConfiguration.m in Sources */,
+				D66944F11FFC794400CCD597 /* WPLegacyEditorViewController.m in Sources */,
+				D66944F91FFC794400CCD597 /* UIWebView+GUIFixes.m in Sources */,
+				D669451D1FFC796700CCD597 /* CYRToken.m in Sources */,
+				D66944FB1FFC794400CCD597 /* WPEditorFormatbarView.m in Sources */,
+				D669451C1FFC796700CCD597 /* NSDictionary+SafeExpectations.m in Sources */,
+				D669451B1FFC796700CCD597 /* HRColorUtil.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D66943FE1FFC748A00CCD597 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D66944071FFC748A00CCD597 /* LBRichTextEditor_ExampleTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D66944091FFC748A00CCD597 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D66944121FFC748A00CCD597 /* LBRichTextEditor_ExampleUITests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		D66944041FFC748A00CCD597 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = D66943E91FFC748A00CCD597 /* LBRichTextEditor-Example */;
+			targetProxy = D66944031FFC748A00CCD597 /* PBXContainerItemProxy */;
+		};
+		D669440F1FFC748A00CCD597 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = D66943E91FFC748A00CCD597 /* LBRichTextEditor-Example */;
+			targetProxy = D669440E1FFC748A00CCD597 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		D66943F31FFC748A00CCD597 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D66943F41FFC748A00CCD597 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		D66943F81FFC748A00CCD597 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D66943F91FFC748A00CCD597 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		D66944141FFC748A00CCD597 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		D66944151FFC748A00CCD597 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		D66944171FFC748A00CCD597 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = "LBRichTextEditor-Example/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "libing.com.LBRichTextEditor-Example";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		D66944181FFC748A00CCD597 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = "LBRichTextEditor-Example/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "libing.com.LBRichTextEditor-Example";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		D669441A1FFC748A00CCD597 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = "LBRichTextEditor-ExampleTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "libing.com.LBRichTextEditor-ExampleTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/LBRichTextEditor-Example.app/LBRichTextEditor-Example";
+			};
+			name = Debug;
+		};
+		D669441B1FFC748A00CCD597 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = "LBRichTextEditor-ExampleTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "libing.com.LBRichTextEditor-ExampleTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/LBRichTextEditor-Example.app/LBRichTextEditor-Example";
+			};
+			name = Release;
+		};
+		D669441D1FFC748A00CCD597 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = "LBRichTextEditor-ExampleUITests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "libing.com.LBRichTextEditor-ExampleUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = "LBRichTextEditor-Example";
+			};
+			name = Debug;
+		};
+		D669441E1FFC748A00CCD597 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = "LBRichTextEditor-ExampleUITests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "libing.com.LBRichTextEditor-ExampleUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = "LBRichTextEditor-Example";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		D66943E51FFC748A00CCD597 /* Build configuration list for PBXProject "LBRichTextEditor-Example" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D66944141FFC748A00CCD597 /* Debug */,
+				D66944151FFC748A00CCD597 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D66944161FFC748A00CCD597 /* Build configuration list for PBXNativeTarget "LBRichTextEditor-Example" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D66944171FFC748A00CCD597 /* Debug */,
+				D66944181FFC748A00CCD597 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D66944191FFC748A00CCD597 /* Build configuration list for PBXNativeTarget "LBRichTextEditor-ExampleTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D669441A1FFC748A00CCD597 /* Debug */,
+				D669441B1FFC748A00CCD597 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D669441C1FFC748A00CCD597 /* Build configuration list for PBXNativeTarget "LBRichTextEditor-ExampleUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D669441D1FFC748A00CCD597 /* Debug */,
+				D669441E1FFC748A00CCD597 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = D66943E21FFC748A00CCD597 /* Project object */;
+}
