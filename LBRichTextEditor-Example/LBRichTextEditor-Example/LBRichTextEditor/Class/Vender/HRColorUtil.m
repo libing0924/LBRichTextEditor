@@ -26,6 +26,7 @@
  */
 
 #import "HRColorUtil.h"
+#import <UIKit/UIKit.h>
 
 void HSVColorFromRGBColor(const HRRGBColor* rgb,HRHSVColor* hsv){
     HRRGBColor rgb255 = {rgb->r * 255.0f,rgb->g * 255.0f,rgb->b * 255.0f};

@@ -81,6 +81,8 @@
 		D693AE0E2003787E005F8A1C /* LBTransitionAnimator.m in Sources */ = {isa = PBXBuildFile; fileRef = D693AE092003787E005F8A1C /* LBTransitionAnimator.m */; };
 		D693AE1520045FDB005F8A1C /* LBWebViewJavaScriptBridge.m in Sources */ = {isa = PBXBuildFile; fileRef = D693AE1420045FDB005F8A1C /* LBWebViewJavaScriptBridge.m */; };
 		D693AE182004676A005F8A1C /* LBWebViewJavaScriptBridge+RichEditor.m in Sources */ = {isa = PBXBuildFile; fileRef = D693AE172004676A005F8A1C /* LBWebViewJavaScriptBridge+RichEditor.m */; };
+		D693AE1E200605CD005F8A1C /* LBEditorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D693AE1D200605CD005F8A1C /* LBEditorViewController.m */; };
+		D693AE2120060978005F8A1C /* UIWebView+HackishAccessoryHiding.m in Sources */ = {isa = PBXBuildFile; fileRef = D693AE2020060978005F8A1C /* UIWebView+HackishAccessoryHiding.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -217,6 +219,10 @@
 		D693AE162004676A005F8A1C /* LBWebViewJavaScriptBridge+RichEditor.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "LBWebViewJavaScriptBridge+RichEditor.h"; sourceTree = "<group>"; };
 		D693AE172004676A005F8A1C /* LBWebViewJavaScriptBridge+RichEditor.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "LBWebViewJavaScriptBridge+RichEditor.m"; sourceTree = "<group>"; };
 		D693AE192004C05A005F8A1C /* LBBrigeCallbackProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LBBrigeCallbackProtocol.h; sourceTree = "<group>"; };
+		D693AE1C200605CD005F8A1C /* LBEditorViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LBEditorViewController.h; sourceTree = "<group>"; };
+		D693AE1D200605CD005F8A1C /* LBEditorViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LBEditorViewController.m; sourceTree = "<group>"; };
+		D693AE1F20060978005F8A1C /* UIWebView+HackishAccessoryHiding.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIWebView+HackishAccessoryHiding.h"; sourceTree = "<group>"; };
+		D693AE2020060978005F8A1C /* UIWebView+HackishAccessoryHiding.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIWebView+HackishAccessoryHiding.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -372,6 +378,7 @@
 		D66944C71FFC793300CCD597 /* Editor */ = {
 			isa = PBXGroup;
 			children = (
+				D693AE1B200605A4005F8A1C /* Controllers */,
 				D693AE1220045F5C005F8A1C /* Other */,
 				D693ADFB20035AF4005F8A1C /* View */,
 				D66944D01FFC794000CCD597 /* UIWebView+GUIFixes.h */,
@@ -467,8 +474,19 @@
 				D693AE1420045FDB005F8A1C /* LBWebViewJavaScriptBridge.m */,
 				D693AE162004676A005F8A1C /* LBWebViewJavaScriptBridge+RichEditor.h */,
 				D693AE172004676A005F8A1C /* LBWebViewJavaScriptBridge+RichEditor.m */,
+				D693AE1F20060978005F8A1C /* UIWebView+HackishAccessoryHiding.h */,
+				D693AE2020060978005F8A1C /* UIWebView+HackishAccessoryHiding.m */,
 			);
 			path = Other;
+			sourceTree = "<group>";
+		};
+		D693AE1B200605A4005F8A1C /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				D693AE1C200605CD005F8A1C /* LBEditorViewController.h */,
+				D693AE1D200605CD005F8A1C /* LBEditorViewController.m */,
+			);
+			path = Controllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -649,10 +667,12 @@
 				D66944FA1FFC794400CCD597 /* WPImageMeta.m in Sources */,
 				D66944F01FFC794400CCD597 /* WPEditorView.m in Sources */,
 				D693AE182004676A005F8A1C /* LBWebViewJavaScriptBridge+RichEditor.m in Sources */,
+				D693AE1E200605CD005F8A1C /* LBEditorViewController.m in Sources */,
 				D669451A1FFC796700CCD597 /* HRColorPickerViewController.m in Sources */,
 				D66943F21FFC748A00CCD597 /* ViewController.m in Sources */,
 				D66944EE1FFC794400CCD597 /* ZSSTextView.m in Sources */,
 				D66945191FFC796700CCD597 /* CYRLayoutManager.m in Sources */,
+				D693AE2120060978005F8A1C /* UIWebView+HackishAccessoryHiding.m in Sources */,
 				D66943FD1FFC748A00CCD597 /* main.m in Sources */,
 				D693AE0C2003787E005F8A1C /* LBPresentationController.m in Sources */,
 				D66943EF1FFC748A00CCD597 /* AppDelegate.m in Sources */,

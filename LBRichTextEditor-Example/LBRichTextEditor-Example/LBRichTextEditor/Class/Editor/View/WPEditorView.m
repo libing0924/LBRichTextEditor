@@ -9,11 +9,8 @@
 #import "WPEditorView.h"
 
 #import "UIWebView+GUIFixes.h"
-#import "HRColorUtil.h"
 #import "WPEditorField.h"
-#import "WPImageMeta.h"
 #import "ZSSTextView.h"
-
 // 
 #import "LBWebViewJavaScriptBridge+RichEditor.h"
 
@@ -44,11 +41,11 @@ static NSString* const WPEditorViewWebViewContentSizeKey = @"contentSize";
 
 #pragma mark - Subviews
 @property (nonatomic, strong, readwrite) UITextField *sourceViewTitleField;
-@property (nonatomic, strong, readwrite) ZSSTextView *sourceView;
-@property (nonatomic, strong, readonly) UIWebView* webView;
+
+@property (nonatomic, strong, readonly) UIWebView *webView;
 
 #pragma mark - Editor loading support
-@property (nonatomic, copy, readwrite) NSString* preloadedHTML;
+@property (nonatomic, copy, readwrite) NSString *preloadedHTML;
 
 @end
 
@@ -68,27 +65,30 @@ static NSString* const WPEditorViewWebViewContentSizeKey = @"contentSize";
 {
 	self = [super initWithFrame:frame];
 	
-	if (self) {
+	if (self)
+    {
 		CGRect childFrame = frame;
 		childFrame.origin = CGPointZero;
 		
+        // 创建源titleview
         [self createSourceTitleViewWithFrame: childFrame];
         [self createSourceDividerViewWithFrame:CGRectMake(0.0f, CGRectGetMaxY(self.sourceViewTitleField.frame), CGRectGetWidth(childFrame), 1.0f)];
         CGRect sourceViewFrame = CGRectMake(0.0f,
                                             CGRectGetMaxY(self.sourceContentDividerView.frame),
                                             CGRectGetWidth(childFrame),
                                             CGRectGetHeight(childFrame)-CGRectGetHeight(self.sourceViewTitleField.frame)-CGRectGetHeight(self.sourceContentDividerView.frame));
-        
+        // 创建源View
         [self createSourceViewWithFrame:sourceViewFrame];
+        // 创建webView
 		[self createWebViewWithFrame:childFrame];
+        // 加载HTML编辑器
 		[self setupHTMLEditor];
 	}
 	
 	return self;
 }
 
-- (void)willMoveToSuperview:(UIView *)newSuperview
-{
+- (void)willMoveToSuperview:(UIView *)newSuperview {
     if (!newSuperview) {
 		[[NSNotificationCenter defaultCenter] removeObserver:self];
     } else {
@@ -96,12 +96,8 @@ static NSString* const WPEditorViewWebViewContentSizeKey = @"contentSize";
     }
 }
 
-#pragma mark - Init helpers
-
-- (void)createSourceTitleViewWithFrame:(CGRect)frame
-{
-    NSAssert(!_sourceViewTitleField, @"The source view title field must not exist when this method is called!");	
-
+#pragma mark - setup subviews
+- (void)createSourceTitleViewWithFrame:(CGRect)frame {
     CGRect titleFrame;
     CGFloat textWidth = CGRectGetWidth(frame) - (2 * UITextFieldLeftRightInset);
     titleFrame = CGRectMake(UITextFieldLeftRightInset, SourceTitleTextFieldYOffset, textWidth, UITextFieldFieldHeight);
@@ -116,10 +112,7 @@ static NSString* const WPEditorViewWebViewContentSizeKey = @"contentSize";
     [self addSubview:_sourceViewTitleField];
 }
 
-- (void)createSourceDividerViewWithFrame:(CGRect)frame
-{
-    NSAssert(!_sourceContentDividerView, @"The source divider view must not exist when this method is called!");
-    
+- (void)createSourceDividerViewWithFrame:(CGRect)frame {
     CGFloat lineWidth = CGRectGetWidth(frame) - (2 * UITextFieldLeftRightInset);
     _sourceContentDividerView = [[UIView alloc] initWithFrame:CGRectMake(UITextFieldLeftRightInset, CGRectGetMaxY(frame), lineWidth, CGRectGetHeight(frame))];
     _sourceContentDividerView.backgroundColor = [UIColor lightGrayColor];
@@ -129,10 +122,7 @@ static NSString* const WPEditorViewWebViewContentSizeKey = @"contentSize";
     [self addSubview:_sourceContentDividerView];
 }
 
-- (void)createSourceViewWithFrame:(CGRect)frame
-{
-    NSAssert(!_sourceView, @"The source view must not exist when this method is called!");
-    
+- (void)createSourceViewWithFrame:(CGRect)frame {
     _sourceView = [[ZSSTextView alloc] initWithFrame:frame];
     _sourceView.autocapitalizationType = UITextAutocapitalizationTypeNone;
     _sourceView.autocorrectionType = UITextAutocorrectionTypeNo;
@@ -143,10 +133,7 @@ static NSString* const WPEditorViewWebViewContentSizeKey = @"contentSize";
     [self addSubview:_sourceView];
 }
 
-- (void)createWebViewWithFrame:(CGRect)frame
-{
-	NSAssert(!_webView, @"The web view must not exist when this method is called!");
-	
+- (void)createWebViewWithFrame:(CGRect)frame {
 	_webView = [[UIWebView alloc] initWithFrame:frame];
 	_webView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
 	_webView.delegate = self;
@@ -164,19 +151,15 @@ static NSString* const WPEditorViewWebViewContentSizeKey = @"contentSize";
 	[self addSubview:_webView];
 }
 
-- (void)setupHTMLEditor
-{
+// 加载HTML编辑页面
+- (void)setupHTMLEditor {
     NSBundle * bundle = [NSBundle bundleForClass:[WPEditorView class]];
     NSURL * editorURL = [bundle URLForResource:@"editor" withExtension:@"html"];
     [self.webView loadRequest:[NSURLRequest requestWithURL:editorURL]];
 }
 
 #pragma mark - KVO
-- (void)observeValueForKeyPath:(NSString *)keyPath
-                      ofObject:(id)object
-                        change:(NSDictionary *)change
-                       context:(void *)context
-{
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
     // IMPORTANT: WORKAROUND: the following code is a fix to prevent the web view from thinking it's
     // taller than it really is.  The problem we were having is that when we were switching the
     // focus from the title field to the content field, the web view was trying to scroll down, and
@@ -211,8 +194,7 @@ static NSString* const WPEditorViewWebViewContentSizeKey = @"contentSize";
 	}
 }
 
-- (void)startObservingWebViewContentSizeChanges
-{
+- (void)startObservingWebViewContentSizeChanges {
     [_webView.scrollView addObserver:self forKeyPath:WPEditorViewWebViewContentSizeKey options:NSKeyValueObservingOptionNew context:nil];
 }
 
@@ -226,8 +208,7 @@ static NSString* const WPEditorViewWebViewContentSizeKey = @"contentSize";
  *              web renderer to fail and interrupt.  Drawing doesn't finish properly.  This method
  *              offers a sort of forced redraw mechanism after a very short delay.
  */
-- (void)workaroundBrokenWebViewRendererBug
-{
+- (void)workaroundBrokenWebViewRendererBug {
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.001 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         [self redrawWebView];
     });
@@ -236,8 +217,7 @@ static NSString* const WPEditorViewWebViewContentSizeKey = @"contentSize";
 /**
  *  @brief      Redraws the web view, since [webView setNeedsDisplay] doesn't seem to work.
  */
-- (void)redrawWebView
-{
+- (void)redrawWebView {
     NSArray *views = self.webView.scrollView.subviews;
     
     for(int i = 0; i< views.count; i++){
@@ -249,8 +229,7 @@ static NSString* const WPEditorViewWebViewContentSizeKey = @"contentSize";
 
 #pragma mark - Keyboard notifications
 
-- (void)startObservingKeyboardNotifications
-{
+- (void)startObservingKeyboardNotifications {
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(keyboardDidShow:)
                                                  name:UIKeyboardDidShowNotification
@@ -268,18 +247,15 @@ static NSString* const WPEditorViewWebViewContentSizeKey = @"contentSize";
 
 #pragma mark - Keyboard status
 
-- (void)keyboardDidShow:(NSNotification *)notification
-{
+- (void)keyboardDidShow:(NSNotification *)notification {
     [self scrollToCaretAnimated:NO];
 }
 
-- (void)keyboardWillShow:(NSNotification *)notification
-{
+- (void)keyboardWillShow:(NSNotification *)notification {
     [self refreshKeyboardInsetsWithShowNotification:notification];
 }
 
-- (void)keyboardWillHide:(NSNotification *)notification
-{
+- (void)keyboardWillHide:(NSNotification *)notification {
     // WORKAROUND: sometimes the input accessory view is not taken into account and a
     // keyboardWillHide: call is triggered instead.  Since there's no way for the source view now
     // to have focus, we'll just make sure the inputAccessoryView is taken into account when
@@ -327,8 +303,7 @@ static NSString* const WPEditorViewWebViewContentSizeKey = @"contentSize";
     }
 }
 
-- (void)refreshVisibleViewportAndContentSize
-{
+- (void)refreshVisibleViewportAndContentSize {
     [self.webView stringByEvaluatingJavaScriptFromString:@"ZSSEditor.refreshVisibleViewportSize();"];
     
 #ifdef DEBUG
@@ -349,8 +324,7 @@ static NSString* const WPEditorViewWebViewContentSizeKey = @"contentSize";
  *
  *  @return the view that is the current first responder nil if none was found.
  */
-- (UIView *)findFirstResponder:(UIView *)currentView
-{
+- (UIView *)findFirstResponder:(UIView *)currentView {
     if (currentView.isFirstResponder) {
         [currentView resignFirstResponder];
         return currentView;
@@ -371,8 +345,7 @@ static NSString* const WPEditorViewWebViewContentSizeKey = @"contentSize";
  *
  *  @returns    The current viewport.
  */
-- (CGRect)viewport
-{
+- (CGRect)viewport {
     UIScrollView* scrollView = self.webView.scrollView;
     
     CGRect viewport;
@@ -387,28 +360,19 @@ static NSString* const WPEditorViewWebViewContentSizeKey = @"contentSize";
 }
 
 #pragma mark - Fields
-
-/**
- *  @brief      Creates a field for the specified id.
- *  @todo       At some point it would be nice to have WPEditorView be able to handle a custom list
- *              of fields, instead of expecting the HTML page to only have a title and a content
- *              field.
- *
- *  @param      fieldId     The id of the field to create.  This is the id of the html node that
- *                          our new field will wrap.  Cannot be nil.
- *
- *  @returns    The newly created field.
- */
-- (WPEditorField*)createFieldWithId:(NSString*)fieldId
-{
+// 根据JS回调来创建标题、内容field，此版本暂无标题field
+- (WPEditorField*)createFieldWithId:(NSString*)fieldId {
     NSAssert([fieldId isKindOfClass:[NSString class]],
              @"We're expecting a non-nil NSString object here.");
     
     WPEditorField* newField = nil;
     
-    if ([fieldId isEqualToString:kWPEditorViewFieldTitleId]) {
+    if ([fieldId isEqualToString:kWPEditorViewFieldTitleId])
+    {
         
-    } else if ([fieldId isEqualToString:kWPEditorViewFieldContentId]) {
+    }
+    else if ([fieldId isEqualToString:kWPEditorViewFieldContentId])
+    {
         NSAssert(!_contentField,
                  @"We should never have to set this twice.");
         
@@ -421,71 +385,21 @@ static NSString* const WPEditorViewWebViewContentSizeKey = @"contentSize";
     return newField;
 }
 
-#pragma mark - URL & HTML utilities
-
-/**
- *  @brief      Adds slashes to the specified HTML string, to prevent injections when calling JS
- *              code.
- *
- *  @param      html        The HTML string to add slashes to.  Cannot be nil.
- *
- *  @returns    The HTML string with the added slashes.
- */
-- (NSString *)addSlashes:(NSString *)html
-{
-    html = [html stringByReplacingOccurrencesOfString:@"\\" withString:@"\\\\"];
-    html = [html stringByReplacingOccurrencesOfString:@"\"" withString:@"\\\""];
-    html = [html stringByReplacingOccurrencesOfString:@"\r"  withString:@"\\r"];
-    html = [html stringByReplacingOccurrencesOfString:@"\n"  withString:@"\\n"];
-    
-    return html;
-}
-
-- (NSString *)stringByDecodingURLFormat:(NSString *)string
-{
-    NSString *result = [string stringByReplacingOccurrencesOfString:@"+" withString:@" "];
-    result = [result stringByRemovingPercentEncoding];
-    return result;
-}
-
-#pragma mark - Interaction
-
-- (void)undo
-{
-    [self.webView stringByEvaluatingJavaScriptFromString:@"ZSSEditor.undo();"];
-}
-
-- (void)redo
-{
-    [self.webView stringByEvaluatingJavaScriptFromString:@"ZSSEditor.redo();"];
-}
-
 #pragma mark - Text Access
 
-- (NSString*)contents
-{
-    NSString* contents = nil;
+- (NSString *)contents {
+    NSString *contents = nil;
     
-    if ([self isInCommonMode]) {
+    if ([self isInCommonMode])
+    {
         contents = [self.contentField html];
-    } else {
+    }
+    else
+    {
         contents =  self.sourceView.text;
     }
     
     return contents;
-}
-
-- (NSString*)title
-{
-    NSString* title = nil;
-    
-    if ([self isInCommonMode]) {
-        title = [self.titleField strippedHtml];
-    } else {
-        title =  self.sourceViewTitleField.text;
-    }
-    
-    return title;
 }
 
 #pragma mark - Scrolling support
@@ -494,8 +408,7 @@ static NSString* const WPEditorViewWebViewContentSizeKey = @"contentSize";
  *  @brief      Scrolls to a position where the caret is visible. This uses the values stored in caretYOffest and lineHeight properties.
  *  @param      animated    If the scrolling shoud be animated  The offset to show.
  */
-- (void)scrollToCaretAnimated:(BOOL)animated
-{
+- (void)scrollToCaretAnimated:(BOOL)animated {
     BOOL notEnoughInfoToScroll = self.caretYOffset == nil || self.lineHeight == nil;
     
     if (notEnoughInfoToScroll) {
@@ -530,86 +443,9 @@ static NSString* const WPEditorViewWebViewContentSizeKey = @"contentSize";
     }
 }
 
-#pragma mark - Selection
-
-- (void)restoreSelection
-{
-    if (self.isInCommonMode) {
-        [self.webView stringByEvaluatingJavaScriptFromString:@"ZSSEditor.restoreRange();"];
-    } else {
-        [self.sourceView select:self];
-        [self.sourceView setSelectedRange:self.selectionBackup];
-        self.selectionBackup = NSMakeRange(0, 0);
-    }
-    
-}
-
-- (void)saveSelection
-{
-    if (self.isInCommonMode) {
-        [self.webView stringByEvaluatingJavaScriptFromString:@"ZSSEditor.backupRange();"];
-    } else {
-        self.selectionBackup = self.sourceView.selectedRange;
-    }
-}
-
-- (NSString*)selectedText
-{
-    NSString* selectedText;
-    if (self.isInCommonMode) {
-        selectedText = [self.webView stringByEvaluatingJavaScriptFromString:@"ZSSEditor.getSelectedText();"];
-    } else {
-        NSRange range = [self.sourceView selectedRange];
-        selectedText = [self.sourceView.text substringWithRange:range];
-    }
-    
-	return selectedText;
-}
-
-- (void)setSelectedColor:(UIColor*)color tag:(int)tag
-{
-    NSString *hex = [NSString stringWithFormat:@"#%06x",HexColorFromUIColor(color)];
-    NSString *trigger;
-    if (tag == 1) {
-        trigger = [NSString stringWithFormat:@"ZSSEditor.setTextColor(\"%@\");", hex];
-    } else if (tag == 2) {
-        trigger = [NSString stringWithFormat:@"ZSSEditor.setBackgroundColor(\"%@\");", hex];
-    }
-	
-	[self.webView stringByEvaluatingJavaScriptFromString:trigger];
-	
-}
-
-#pragma mark - URL normalization
-- (NSString*)normalizeURL:(NSString*)url
-{
-    static NSString* const kDefaultScheme = @"http://";
-    static NSString* const kURLSchemePrefix = @"://";
-    
-    NSString* normalizedURL = url;
-    NSRange substringRange = [url rangeOfString:kURLSchemePrefix];
-
-    if (substringRange.length == 0) {
-        normalizedURL = [kDefaultScheme stringByAppendingString:url];
-    }
-    
-    return normalizedURL;
-}
-
-#pragma mark - Editor: HTML interaction
-
-// Inserts HTML at the caret position
-- (void)insertHTML:(NSString *)html
-{
-    NSString *cleanedHTML = [self addSlashes:html];
-    NSString *trigger = [NSString stringWithFormat:@"ZSSEditor.insertHTML(\"%@\");", cleanedHTML];
-    [self.webView stringByEvaluatingJavaScriptFromString:trigger];
-}
-
 #pragma mark - Editing
-
-- (void)wrapSourceViewSelectionWithTag:(NSString *)tag
-{
+// 修改sourceView选择部分的标签, 此版本暂未使用
+- (void)wrapSourceViewSelectionWithTag:(NSString *)tag {
     NSParameterAssert([tag isKindOfClass:[NSString class]]);
     NSRange range = self.sourceView.selectedRange;
     NSString *selection = [self.sourceView.text substringWithRange:range];
@@ -629,21 +465,18 @@ static NSString* const WPEditorViewWebViewContentSizeKey = @"contentSize";
     [self.sourceView insertText:replacement];
 }
 
-- (void)endEditing;
-{
+- (void)endEditing {
 	[self.webView endEditing:YES];
 	[self.sourceView endEditing:YES];
 }
 
 #pragma mark - Editor mode
 
-- (BOOL)isInCommonMode
-{
+- (BOOL)isInCommonMode {
 	return !self.webView.hidden;
 }
 
-- (void)showHTMLSource
-{
+- (void)showHTMLSource {
 	self.sourceView.text = [self.contentField html];
 	self.sourceView.hidden = NO;
     self.sourceViewTitleField.hidden = NO;
@@ -658,8 +491,7 @@ static NSString* const WPEditorViewWebViewContentSizeKey = @"contentSize";
     [self.sourceView setSelectedTextRange:[self.sourceView textRangeFromPosition:position toPosition:position]];
 }
 
-- (void)showCommonEditor
-{
+- (void)showCommonEditor {
     BOOL titleHadFocus = self.sourceViewTitleField.isFirstResponder;
     
 	[self.contentField setHtml:self.sourceView.text];
@@ -678,8 +510,7 @@ static NSString* const WPEditorViewWebViewContentSizeKey = @"contentSize";
 }
 
 #pragma mark - Editing lock
-- (void)disableEditing
-{
+- (void)disableEditing {
     if (!self.sourceView.hidden) {
         [self showCommonEditor];
     }
@@ -689,8 +520,7 @@ static NSString* const WPEditorViewWebViewContentSizeKey = @"contentSize";
     [self.sourceView setEditable:NO];
 }
 
-- (void)enableEditing
-{
+- (void)enableEditing {
     [self.contentField enableEditing];
     [self.sourceViewTitleField setEnabled:YES];
     [self.sourceView setEditable:YES];
@@ -756,6 +586,16 @@ static NSString* const WPEditorViewWebViewContentSizeKey = @"contentSize";
 }
 - (void)setFontSize:(NSInteger) size {
     [self.javaScriptBridge setFontSize:size];
+}
+- (void)setSelectedColor:(UIColor*)color tag:(int)tag {
+    if (tag == 1)
+    {
+        [self.javaScriptBridge setTextColor:color];
+    }
+    else if (tag == 2)
+    {
+        [self.javaScriptBridge setBackgroundColor:color];
+    }
 }
 - (void)insertLocalImage:(NSString *)url uniqueId:(NSString *)uniqueId {
     [self.javaScriptBridge insertLocalImage:url uniqueId:uniqueId];
@@ -830,6 +670,58 @@ static NSString* const WPEditorViewWebViewContentSizeKey = @"contentSize";
     [self quickLink];
 }
 
+- (void)undo {
+    [self.javaScriptBridge undo];
+}
+- (void)redo {
+    [self.javaScriptBridge redo];
+}
+- (void)insertHTML:(NSString *)html {
+    [self.javaScriptBridge insertHTML:html];
+}
+- (void)restoreSelection
+{
+    if (self.isInCommonMode)
+    {
+        [self.javaScriptBridge restoreSelection];
+    }
+    else
+    {
+        [self.sourceView select:self];
+        [self.sourceView setSelectedRange:self.selectionBackup];
+        self.selectionBackup = NSMakeRange(0, 0);
+    }
+    
+}
+
+- (void)saveSelection
+{
+    if (self.isInCommonMode)
+    {
+        [self.javaScriptBridge saveSelection];
+    }
+    else
+    {
+        self.selectionBackup = self.sourceView.selectedRange;
+    }
+}
+
+- (NSString*)selectedText
+{
+    NSString* selectedText;
+    if (self.isInCommonMode)
+    {
+        selectedText = [self.javaScriptBridge getSelectedText];
+    }
+    else
+    {
+        NSRange range = [self.sourceView selectedRange];
+        selectedText = [self.sourceView.text substringWithRange:range];
+    }
+    
+    return selectedText;
+}
+
 #pragma mark - JS的回调
 - (void)javaScriptBridgeTextDidChange:(LBWebViewJavaScriptBridge *)bridge fieldId:(NSString *)fieldId yOffset:(CGFloat)yOffset height:(CGFloat)height{
 
@@ -854,10 +746,12 @@ static NSString* const WPEditorViewWebViewContentSizeKey = @"contentSize";
 
 - (BOOL)javaScriptBridge:(LBWebViewJavaScriptBridge *)bridge linkTapped:(NSURL *)url title:(NSString *)title {
     
+    return YES;
 }
 
 - (BOOL)javaScriptBridge:(LBWebViewJavaScriptBridge *)bridge imageTapped:(NSString *)imageId url:(NSURL *)url {
     
+    return YES;
 }
 
 - (void)javaScriptBridge:(LBWebViewJavaScriptBridge *)bridge imageTapped:(NSString *)imageId url:(NSURL *)url imageMeta:(WPImageMeta *)imageMeta {

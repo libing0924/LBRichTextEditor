@@ -8,24 +8,63 @@
 
 #import <UIKit/UIKit.h>
 
-typedef NS_ENUM(NSInteger, LBEditorToolBarButtonType){
+typedef NS_ENUM(NSInteger, JSMessageType) {
     
-    LBEditorToolBarButtonTypeBold = 100, // 粗体
-    LBEditorToolBarButtonTypeUnderLine, // 下划线
-    LBEditorToolBarButtonTypeTextColor, // 文本颜色
-    LBEditorToolBarButtonTypeBackColor, // 背景色
-    LBEditorToolBarButtonTypeFont, // 字体大小
-    LBEditorToolBarButtonTypeImage, // 图片
-    LBEditorToolBarButtonTypeAligmentLeft, // 左对齐
-    LBEditorToolBarButtonTypeAligmentCenter, // 居中对齐
-    LBEditorToolBarButtonTypeAligmentRight // 右对齐
+    JSMessageTypeAttributeJustifyLeft = 1,
+    JSMessageTypeAttributeJustifyCenter,
+    JSMessageTypeAttributeJustifyRight,
+    JSMessageTypeAttributeJustifyFull,
+    JSMessageTypeAttributeBlod,
+    JSMessageTypeAttributeBlockquote,
+    JSMessageTypeAttributeItalic,
+    JSMessageTypeAttributeSubscript,
+    JSMessageTypeAttributeUnderline,
+    JSMessageTypeAttributeSuperscript,
+    JSMessageTypeAttributeStrikeThrough,
+    JSMessageTypeAttributeUnorderedList,
+    JSMessageTypeAttributeOrderedList,
+    JSMessageTypeAttributeHorizontalRule,
+    JSMessageTypeAttributeIndent,
+    JSMessageTypeAttributeOutdent,
+    JSMessageTypeAttributeFontSize,
+    JSMessageTypeAttributeHeading,
+    JSMessageTypeAttributeParagraph,
+    JSMessageTypeAttributeFormating,
+    
+    JSMessageTypeImageInsertLocal = 200,
+    JSMessageTypeImageInsertRemote,
+    JSMessageTypeImageReplaceLocalWithRemote,
+    JSMessageTypeImageUpdate,
+    JSMessageTypeImageUpdateMeta,
+    JSMessageTypeImageSetProgress,
+    JSMessageTypeImageMarkUploadFailed,
+    JSMessageTypeImageUnmarkUploadFailed,
+    JSMessageTypeImageRemove,
+    JSMessageTypeImageSetEditText,
+    
+    JSMessageTypeVideoInsertLocal = 300,
+    JSMessageTypeVideoInsertRemote,
+    JSMessageTypeVideoInsertProgressPoster,
+    JSMessageTypeVideoSetProgress,
+    JSMessageTypeVideoReplaceLocalWithRemote,
+    JSMessageTypeVideoMarkUploadFailed,
+    JSMessageTypeVideoUnmarkUploadFailed,
+    JSMessageTypeVideoRemove,
+    JSMessageTypeVideoSetVideoPressLinks,
+    JSMessageTypeVideoPauseAll,
+    
+    JSMessageTypeLinkInsert = 400,
+    JSMessageTypeLinkUpdate,
+    JSMessageTypeLinkUnlink,
+    JSMessageTypeLinkQuick
+    
 };
 
 @interface LBEditorToolBarButton : UIButton
 
-@property (nonatomic, readonly, assign) LBEditorToolBarButtonType type;
+@property (nonatomic, readonly, assign) JSMessageType type;
 
-+ (instancetype)buttonWithFrame:(CGRect)frame normalImage:(UIImage *) normalImage selectedImage:(UIImage *) selectedImage type:(LBEditorToolBarButtonType)type;
-- (instancetype)initWithFrame:(CGRect)frame normalImage:(UIImage *) normalImage selectedImage:(UIImage *) selectedImage type:(LBEditorToolBarButtonType)type;
++ (instancetype)buttonWithFrame:(CGRect)frame normalImage:(UIImage *) normalImage selectedImage:(UIImage *) selectedImage type:(JSMessageType)type;
+- (instancetype)initWithFrame:(CGRect)frame normalImage:(UIImage *) normalImage selectedImage:(UIImage *) selectedImage type:(JSMessageType)type;
 
 @end

@@ -7,6 +7,7 @@
 //
 
 #import "LBWebViewJavaScriptBridge+RichEditor.h"
+#import "HRColorUtil.h"
 
 // 基本属性
 NSString * const JSMessageJustifyLeft        = @"ZSSEditor.setJustifyLeft();";
@@ -29,6 +30,8 @@ NSString * const JSMessageFontSize           = @"ZSSEditor.setFontSize(%ld);"; /
 NSString * const JSMessageHeading            = @"ZSSEditor.setHeading('%@');"; // h1 h2 h3 h4 h5 h6
 NSString * const JSMessageParagraph          = @"ZSSEditor.setParagraph()";
 NSString * const JSMessageFormating          = @"ZSSEditor.removeFormating();";
+NSString * const JSMessageTextColor          = @"ZSSEditor.setTextColor(\"%@\");";
+NSString * const JSMessageBackgroundColor    = @"ZSSEditor.setBackgroundColor(\"%@\");";
 // image
 NSString * const JSMessageInsertLocalImage              = @"ZSSEditor.insertLocalImage(\"%@\", \"%@\");";
 NSString * const JSMessageInsertRemoteImage             = @"ZSSEditor.insertImage(\"%@\", \"%@\");";
@@ -55,6 +58,13 @@ NSString * const JSMessageInsertLink    = @"ZSSEditor.insertLink(\"%@\",\"%@\");
 NSString * const JSMessageUpdateLink    = @"ZSSEditor.updateLink(\"%@\",\"%@\");";
 NSString * const JSMessageUnlink        = @"ZSSEditor.unlink();";
 NSString * const JSMessageQuickLink     = @"ZSSEditor.quickLink();";
+// control
+NSString * const JSMessageUndo = @"ZSSEditor.undo();";
+NSString * const JSMessageRedo = @"ZSSEditor.redo();";
+NSString * const JSMessageRestoreRange = @"ZSSEditor.restoreRange();";
+NSString * const JSMessageBackupRange = @"ZSSEditor.backupRange();";
+NSString * const JSMessageGetSelectedText = @"ZSSEditor.getSelectedText();";
+NSString * const JSMessageInsertHTML = @"ZSSEditor.insertHTML(\"%@\");";
 
 @implementation LBWebViewJavaScriptBridge (RichEditor)
 
@@ -68,7 +78,89 @@ NSString * const JSMessageQuickLink     = @"ZSSEditor.quickLink();";
     return brige;
 }
 
+- (void)handleJSMessage:(JSMessageType)type {
+    
+}
+
 #pragma mark - invoke JavaScript
+- (void)alignLeft {
+    
+}
+- (void)alignCenter {
+    
+}
+- (void)alignRight {
+    
+}
+- (void)alignFull {
+    
+}
+- (void)setBold {
+    
+}
+- (void)setBlockQuote {
+    
+}
+- (void)setItalic {
+    
+}
+- (void)setSubscript {
+    
+}
+- (void)setUnderline {
+    
+}
+- (void)setSuperscript {
+    
+}
+- (void)setStrikethrough {
+    
+}
+- (void)setUnorderedList {
+    
+}
+- (void)setOrderedList {
+    
+}
+- (void)setHR {
+    
+}
+- (void)setIndent {
+    
+}
+- (void)setOutdent {
+    
+}
+- (void)setParagraph {
+    
+}
+- (void)removeFormat {
+    
+}
+- (void)setHeading:(NSString *)head {
+    
+}
+- (void)setFontSize:(NSInteger)size {
+    
+}
+- (void)setTextColor:(UIColor *)color {
+    
+    NSString *hex = [NSString stringWithFormat:@"#%06x",HexColorFromUIColor(color)];
+    NSString *trigger = [NSString stringWithFormat:JSMessageTextColor, hex];
+    [self evaluatingJavaScriptFromString:trigger];
+}
+- (void)setBackgroundColor:(UIColor *)color {
+    
+    NSString *hex = [NSString stringWithFormat:@"#%06x",HexColorFromUIColor(color)];
+    NSString *trigger = [NSString stringWithFormat:JSMessageBackgroundColor, hex];
+    [self evaluatingJavaScriptFromString:trigger];
+}
+- (void)insertHTML:(NSString *)html {
+    NSString *cleanedHTML = [self addSlashes:html];
+    NSString *trigger = [NSString stringWithFormat:JSMessageInsertHTML, cleanedHTML];
+    [self.webView stringByEvaluatingJavaScriptFromString:trigger];
+}
+
 - (void)insertLocalImage:(NSString *)url uniqueId:(NSString *)uniqueId {
     
     NSString *trigger = [NSString stringWithFormat:JSMessageInsertLocalImage, uniqueId, url];
@@ -122,6 +214,7 @@ NSString * const JSMessageQuickLink     = @"ZSSEditor.quickLink();";
     NSString *trigger = [NSString stringWithFormat:JSMessageSetImageEditText, text];
     [self evaluatingJavaScriptFromString:trigger];
 }
+
 - (void)insertVideo:(NSString *)videoURL posterImage:(NSString *)posterImageURL alt:(NSString *)alt {
     NSString *trigger = [NSString stringWithFormat:@"ZSSEditor.insertVideo(\"%@\", \"%@\", \"%@\");", videoURL, posterImageURL, alt];
     [self evaluatingJavaScriptFromString:trigger];
@@ -194,6 +287,29 @@ NSString * const JSMessageQuickLink     = @"ZSSEditor.quickLink();";
     [self evaluatingJavaScriptFromString:JSMessageQuickLink];
 }
 
+- (void)undo {
+    [self evaluatingJavaScriptFromString:JSMessageUndo];
+}
+- (void)redo {
+    [self evaluatingJavaScriptFromString:JSMessageRedo];
+}
+- (void)restoreSelection {
+    [self evaluatingJavaScriptFromString:JSMessageRestoreRange];
+}
+- (void)saveSelection {
+    [self evaluatingJavaScriptFromString:JSMessageBackupRange];
+}
+- (NSString *)getSelectedText {
+    
+    __block NSString *text = nil;
+    [self evaluatingJavaScriptFromString:JSMessageGetSelectedText handler:^(id result) {
+        
+        text = result;
+    }];
+    
+    return text;
+}
+
 #pragma mark - JavaScript Callback
 - (void) _addCallbackHandler {
     
@@ -259,10 +375,14 @@ NSString * const JSMessageQuickLink     = @"ZSSEditor.quickLink();";
     }];
     [self addScriptURLSchemeHandler:JSCallbackDomLoadedScheme handler:^(NSURL *URL, id parameter) {
         
+        [weakSelf insertHTML:@"<b>我啊</b>"];
+        
         if ([weakSelf.editDelegate respondsToSelector:@selector(javaScriptBridgeDidFinishLoadingDOM:)]) {
             
             [weakSelf.editDelegate javaScriptBridgeDidFinishLoadingDOM:weakSelf];
         }
+        
+        
     }];
     [self addScriptURLSchemeHandler:JSCallbackImageReplacedScheme handler:^(NSURL *URL, id parameter) {
         
@@ -350,8 +470,16 @@ NSString * const JSMessageQuickLink     = @"ZSSEditor.quickLink();";
     }];
 }
 
-- (NSString *)addSlashes:(NSString *)html
-{
+#pragma mark - assist function
+/**
+ *  @brief      Adds slashes to the specified HTML string, to prevent injections when calling JS
+ *              code.
+ *
+ *  @param      html        The HTML string to add slashes to.  Cannot be nil.
+ *
+ *  @returns    The HTML string with the added slashes.
+ */
+- (NSString *)addSlashes:(NSString *)html {
     html = [html stringByReplacingOccurrencesOfString:@"\\" withString:@"\\\\"];
     html = [html stringByReplacingOccurrencesOfString:@"\"" withString:@"\\\""];
     html = [html stringByReplacingOccurrencesOfString:@"\r"  withString:@"\\r"];
@@ -360,8 +488,7 @@ NSString * const JSMessageQuickLink     = @"ZSSEditor.quickLink();";
     return html;
 }
 
-- (NSString*)normalizeURL:(NSString*)url
-{
+- (NSString*)normalizeURL:(NSString*)url {
     static NSString* const kDefaultScheme = @"http://";
     static NSString* const kURLSchemePrefix = @"://";
     
@@ -375,15 +502,13 @@ NSString * const JSMessageQuickLink     = @"ZSSEditor.quickLink();";
     return normalizedURL;
 }
 
-- (NSString *)stringByDecodingURLFormat:(NSString *)string
-{
+- (NSString *)stringByDecodingURLFormat:(NSString *)string {
     NSString *result = [string stringByReplacingOccurrencesOfString:@"+" withString:@" "];
     result = [result stringByRemovingPercentEncoding];
     return result;
 }
 
-- (void)processStyles:(NSString *)styles
-{
+- (void)processStyles:(NSString *)styles {
     NSArray *styleStrings = [styles componentsSeparatedByString:kDefaultURLParameterSeparator];
     NSMutableArray *itemsModified = [[NSMutableArray alloc] init];
     
@@ -414,6 +539,41 @@ NSString * const JSMessageQuickLink     = @"ZSSEditor.quickLink();";
     {
         [self.editDelegate javaScriptBridge:self stylesForCurrentSelection:styleStrings];
     }
+}
+
+// 重写解析URL的query参数集
+- (NSDictionary *)parseParametersWithURL:(NSURL *)url {
+    
+    NSParameterAssert([url isKindOfClass:[NSURL class]]);
+    
+    NSString *query = url.query;
+    
+    NSArray *keyValuePairs = [query componentsSeparatedByString:kDefaultURLParameterSeparator];
+    
+    if (keyValuePairs.count == 0 || !keyValuePairs) return nil;
+    
+    NSMutableDictionary *tmp = @{}.mutableCopy;
+    
+    for (NSString *keyValuePair in keyValuePairs)
+    {
+        if ([keyValuePair isKindOfClass:[NSString class]])
+        {
+            NSArray *keyValue = [keyValuePair componentsSeparatedByString:kDefaultParameterPairSeparator];
+            
+            if (keyValue.count == 2)
+            {
+                [tmp setObject:[self stringByDecodingURLFormat:keyValue.lastObject] forKey:keyValue.firstObject];
+                continue;
+            }
+        }
+    }
+    
+    return tmp.copy;
+}
+
+- (void)webViewDidFinishLoad:(UIWebView *)webView {
+    
+    [self insertHTML:@"<b>我啊</b>"];
 }
 
 @end

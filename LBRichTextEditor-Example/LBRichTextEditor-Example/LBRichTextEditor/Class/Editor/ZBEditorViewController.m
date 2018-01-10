@@ -21,7 +21,7 @@
 
 @interface ZBEditorViewController ()<UIImagePickerControllerDelegate, UINavigationControllerDelegate>
 
-@property (nonatomic, strong) ZBReleaseTrainingViewModel *viewModel;
+//@property (nonatomic, strong) ZBReleaseTrainingViewModel *viewModel;
 
 // 绑定image和image的progress
 @property (nonatomic, strong) NSMutableDictionary *mediaAdded;
@@ -107,19 +107,19 @@
     
     // upload image
     UIImage *originImage = [UIImage imageWithData:imageData];
-    UIImage *image = [UIImage scaleImage:originImage toKb:2 * 1024];
-    
-    [self.viewModel UploadImageWithImages:@[image] callBack:^(CallBackStatus callBackStatus, NetworkModel *result) {
-        
-        if (result.status == NetworkModelStatusTypeSuccess)
-        {
-            [self.editorView replaceLocalImageWithRemoteImage:result.jsonDict[@"url"] uniqueId:imageID mediaId:[@(arc4random()) stringValue]];
-        }
-        else
-        {
-            [self.editorView removeImage:imageID];
-        }
-    }];
+//    UIImage *image = [UIImage scaleImage:originImage toKb:2 * 1024];
+//
+//    [self.viewModel UploadImageWithImages:@[image] callBack:^(CallBackStatus callBackStatus, NetworkModel *result) {
+//
+//        if (result.status == NetworkModelStatusTypeSuccess)
+//        {
+//            [self.editorView replaceLocalImageWithRemoteImage:result.jsonDict[@"url"] uniqueId:imageID mediaId:[@(arc4random()) stringValue]];
+//        }
+//        else
+//        {
+//            [self.editorView removeImage:imageID];
+//        }
+//    }];
 }
 
 //- (void)timerFireMethod:(NSTimer *)timer
@@ -144,14 +144,14 @@
 //}
 
 
-- (ZBReleaseTrainingViewModel *)viewModel
-{
-    if (!_viewModel)
-    {
-        _viewModel = [[ZBReleaseTrainingViewModel alloc] initWithViewController:self];
-    }
-    return _viewModel;
-}
+//- (ZBReleaseTrainingViewModel *)viewModel
+//{
+//    if (!_viewModel)
+//    {
+//        _viewModel = [[ZBReleaseTrainingViewModel alloc] initWithViewController:self];
+//    }
+//    return _viewModel;
+//}
 
 // 实现父类的图片点击回调
 - (void)editorViewController:(WPEditorViewController*)editorViewController
@@ -177,7 +177,7 @@
     
     ZBFontSelectController *vc = [ZBFontSelectController new];
     
-    [self lb_presentViewController:vc animateStyle:LBTransitionAnimatorFromBottomStyle delegate:nil presentFrame:CGRectMake(0, SCREEN_HEIGHT - 35 * 4, SCREEN_WIDTH, 35 * 4) backgroundColor:[UIColor colorWithRed:0 green:0 blue:0 alpha:0.3] animated:YES];
+//    [self lb_presentViewController:vc animateStyle:LBTransitionAnimatorFromBottomStyle delegate:nil presentFrame:CGRectMake(0, SCREEN_HEIGHT - 35 * 4, SCREEN_WIDTH, 35 * 4) backgroundColor:[UIColor colorWithRed:0 green:0 blue:0 alpha:0.3] animated:YES];
     
     __weak typeof(self) weakSelf = self;
     vc.selectFontBlock = ^(NSInteger tag) {

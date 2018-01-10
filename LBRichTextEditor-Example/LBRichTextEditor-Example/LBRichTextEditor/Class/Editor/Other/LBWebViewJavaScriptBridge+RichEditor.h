@@ -9,13 +9,16 @@
 #import "LBWebViewJavaScriptBridge.h"
 #import "WPImageMeta.h"
 #import <UIKit/UIKit.h>
+#import "LBEditorToolBarButton.h"
 
 @class LBWebViewJavaScriptBridge;
 @class WPImageMeta;
 
+static NSString* const kDefaultURLParameterSeparator = @"~"; // 参数分隔符 这里用~
+static NSString* const kDefaultParameterPairSeparator = @"="; // 键值对分隔符
+
 @protocol LBBrigeCallbackDelegate <NSObject>
 @optional
-
 // 文本改变
 - (void)javaScriptBridgeTextDidChange:(LBWebViewJavaScriptBridge *)bridge fieldId:(NSString *)fieldId yOffset:(CGFloat)yOffset height:(CGFloat)height;;
 // DOM加载完成
@@ -82,6 +85,8 @@ FOUNDATION_EXPORT NSString * const JSMessageFontSize;
 FOUNDATION_EXPORT NSString * const JSMessageHeading;
 FOUNDATION_EXPORT NSString * const JSMessageParagraph;
 FOUNDATION_EXPORT NSString * const JSMessageFormating;
+FOUNDATION_EXPORT NSString * const JSMessageTextColor;
+FOUNDATION_EXPORT NSString * const JSMessageBackgroundColor;
 // image
 FOUNDATION_EXPORT NSString * const JSMessageInsertLocalImage;
 FOUNDATION_EXPORT NSString * const JSMessageInsertRemoteImage;
@@ -108,6 +113,13 @@ FOUNDATION_EXPORT NSString * const JSMessageInsertLink;
 FOUNDATION_EXPORT NSString * const JSMessageUpdateLink;
 FOUNDATION_EXPORT NSString * const JSMessageUnlink;
 FOUNDATION_EXPORT NSString * const JSMessageQuickLink;
+// control
+FOUNDATION_EXPORT NSString * const JSMessageUndo;
+FOUNDATION_EXPORT NSString * const JSMessageRedo;
+FOUNDATION_EXPORT NSString * const JSMessageRestoreRange;
+FOUNDATION_EXPORT NSString * const JSMessageBackupRange;
+FOUNDATION_EXPORT NSString * const JSMessageGetSelectedText;
+FOUNDATION_EXPORT NSString * const JSMessageInsertHTML;
 
 // 用于回调的URL scheme
 static NSString * const JSCallbackInputScheme = @"callback-input";
@@ -131,6 +143,10 @@ static NSString * const JSCallbackPasteScheme = @"callback-paste";
 static NSString * const JSCallbackFocusInScheme = @"callback-focus-in";
 static NSString * const JSCallbackFocusOutScheme = @"callback-focus-out";
 
+// field id
+static NSString * const kWPEditorViewFieldTitleId = @"zss_field_title";
+static NSString * const kWPEditorViewFieldContentId = @"zss_field_content";
+
 @interface LBWebViewJavaScriptBridge (RichEditor)
 
 @property (nonatomic, strong) id<LBBrigeCallbackDelegate> editDelegate;
@@ -140,6 +156,8 @@ static NSString * const JSCallbackFocusOutScheme = @"callback-focus-out";
 @property (nonatomic, strong, readwrite) NSString *selectedImageAlt;
 
 + (instancetype)defaultBrige:(id)webView;
+
+- (void)handleJSMessage:(JSMessageType) type;
 
 - (void)alignLeft;
 - (void)alignCenter;
@@ -159,8 +177,11 @@ static NSString * const JSCallbackFocusOutScheme = @"callback-focus-out";
 - (void)setOutdent;
 - (void)setParagraph;
 - (void)removeFormat;
-- (void)setHeading:(NSString *) head;
-- (void)setFontSize:(NSInteger) size;
+- (void)setHeading:(NSString *)head;
+- (void)setFontSize:(NSInteger)size;
+- (void)setTextColor:(UIColor *)color;
+- (void)setBackgroundColor:(UIColor *)color;
+- (void)insertHTML:(NSString *) html;
 
 - (void)insertLocalImage:(NSString *)url uniqueId:(NSString *)uniqueId;
 - (void)insertImage:(NSString *)url alt:(NSString *)alt;
@@ -188,5 +209,11 @@ static NSString * const JSCallbackFocusOutScheme = @"callback-focus-out";
 - (void)updateLink:(NSString *)url title:(NSString *)title;
 - (void)quickLink;
 - (void)removeLink;
+
+- (void)undo;
+- (void)redo;
+- (void)restoreSelection;
+- (void)saveSelection; // 保存选择
+- (NSString *)getSelectedText;
 
 @end

@@ -13,13 +13,13 @@
 
 @property (nonatomic, strong) UIScrollView *contentView;
 
-@property (nonatomic, copy) void (^callBack)(LBEditorToolBarButtonType);
+@property (nonatomic, copy) void (^callBack)(JSMessageType);
 
 @end
 
 @implementation LBEditorToolBar
 
-- (instancetype)initWithFrame:(CGRect)frame items:(NSArray<LBEditorToolBarButton *> *)items callBack:(void (^ _Nullable)(LBEditorToolBarButtonType))callBack{
+- (instancetype)initWithFrame:(CGRect)frame items:(NSArray<LBEditorToolBarButton *> *)items callBack:(void (^ _Nullable)(JSMessageType))callBack{
     
     if (self = [super initWithFrame:frame])
     {
@@ -32,7 +32,7 @@
     return self;
 }
 
-- (instancetype)initWithFrame:(CGRect)frame callBack:(void (^ _Nullable)(LBEditorToolBarButtonType))callBack{
+- (instancetype)initWithFrame:(CGRect)frame callBack:(void (^ _Nullable)(JSMessageType))callBack{
     
     if (self = [super initWithFrame:frame])
     {

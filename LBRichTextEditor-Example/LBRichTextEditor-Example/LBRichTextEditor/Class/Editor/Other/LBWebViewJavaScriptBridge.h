@@ -8,9 +8,6 @@
 
 #import <Foundation/Foundation.h>
 
-static NSString* const kDefaultURLParameterSeparator = @"~"; // 参数分隔符 这里用~
-static NSString* const kDefaultParameterPairSeparator = @"="; // 键值对分隔符
-
 @interface LBWebViewJavaScriptBridge : NSObject
 
 @property (nonatomic, readonly, strong) id webView;

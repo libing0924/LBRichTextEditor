@@ -99,7 +99,7 @@
     
     
     __weak typeof(self) weakSelf = self;
-    _toolbarView = [[LBEditorToolBar alloc] initWithFrame:CGRectZero items:items.copy callBack:^(LBEditorToolBarButtonType type) {
+    _toolbarView = [[LBEditorToolBar alloc] initWithFrame:CGRectZero items:items.copy callBack:^(JSMessageType type) {
         
         __strong typeof(weakSelf) strongeSelf = weakSelf;
         
@@ -111,57 +111,7 @@
     }];
 }
 
-- (void) _setEditorAttribute:(LBEditorToolBarButtonType)type {
-    
-    switch (type) {
-        case LBEditorToolBarButtonTypeBold:
-        {
-            [self setBold];
-            break;
-        }
-        case LBEditorToolBarButtonTypeUnderLine:
-        {
-            [self setUnderline];
-            break;
-        }
-        case LBEditorToolBarButtonTypeTextColor:
-        {
-            [self textColor];
-            break;
-        }
-        case LBEditorToolBarButtonTypeBackColor:
-        {
-            [self bgColor];
-            break;
-        }
-        case LBEditorToolBarButtonTypeFont:
-        {
-            [self setFontSize];
-            break;
-        }
-        case LBEditorToolBarButtonTypeImage:
-        {
-            [self editorDidPressMedia];
-            break;
-        }
-        case LBEditorToolBarButtonTypeAligmentLeft:
-        {
-            [self setAligmentLeft];
-            break;
-        }
-        case LBEditorToolBarButtonTypeAligmentCenter:
-        {
-            [self setAligmentCenter];
-            break;
-        }
-        case LBEditorToolBarButtonTypeAligmentRight:
-        {
-            [self setAligmentRight];
-            break;
-        }
-        default:
-            break;
-    }
+- (void) _setEditorAttribute:(JSMessageType)type {
 }
 
 #pragma mark - UIViewController
@@ -272,7 +222,6 @@
         self.editorView.autoresizingMask = mask;
         self.editorView.backgroundColor = [UIColor whiteColor];
         self.editorView.sourceView.inputAccessoryView = self.toolbarView;
-        self.editorView.sourceViewTitleField.inputAccessoryView = self.toolbarView;
         
         // Default placeholder text
         self.bodyPlaceholderText = NSLocalizedString(@"Share your story here...", @"Placeholder for the post body.");
@@ -282,12 +231,6 @@
 }
 
 #pragma mark - Getters and Setters
-
-- (void)setTitleText:(NSString*)titleText
-{
-    [self.editorView.titleField setText:titleText];
-    [self.editorView.sourceViewTitleField setText:titleText];
-}
 
 - (NSString*)bodyText
 {
@@ -495,16 +438,8 @@
 - (void)editorView:(WPEditorView*)editorView
       fieldCreated:(WPEditorField*)field
 {
-    if (field == self.editorView.titleField) {
-        field.inputAccessoryView = self.toolbarView;
-        
-        [field setRightToLeftTextEnabled:[self isCurrentLanguageDirectionRTL]];
-        [field setMultiline:NO];
-        [field setPlaceholderColor:self.placeholderColor];
-        [field setPlaceholderText:self.titlePlaceholderText];
-        self.editorView.sourceViewTitleField.attributedPlaceholder = [[NSAttributedString alloc] initWithString:self.titlePlaceholderText
-                                                                                                     attributes:@{NSForegroundColorAttributeName: self.placeholderColor}];
-    } else if (field == self.editorView.contentField) {
+    
+    if (field == self.editorView.contentField) {
         field.inputAccessoryView = self.toolbarView;
         
         [field setRightToLeftTextEnabled:[self isCurrentLanguageDirectionRTL]];
@@ -623,24 +558,6 @@ didFailLoadWithError:(NSError *)error
 
 - (void)recoverFromViewSizeChange
 {
-    // This hack forces the input accessory view to refresh itself and resize properly.
-    if (self.isFirstSetupComplete) {
-        if ([self.editorView isInVisualMode]) {
-            WPEditorField *field = [self.editorView focusedField];
-            [self.editorView saveSelection];
-            [field blur];
-            [field focus];
-            [self.editorView restoreSelection];
-        } else {
-            if ([[self.editorView sourceViewTitleField] isFirstResponder]) {
-                [[self.editorView sourceViewTitleField] resignFirstResponder];
-                [[self.editorView sourceViewTitleField] becomeFirstResponder];
-            } else {
-                [[self.editorView sourceView] resignFirstResponder];
-                [[self.editorView sourceView] becomeFirstResponder];
-            }
-        }
-    }
 }
 
 - (BOOL)isCurrentLanguageDirectionRTL

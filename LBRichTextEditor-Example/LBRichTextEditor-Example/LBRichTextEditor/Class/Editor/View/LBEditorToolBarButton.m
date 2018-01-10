@@ -10,12 +10,12 @@
 
 @implementation LBEditorToolBarButton
 
-+ (instancetype)buttonWithFrame:(CGRect)frame normalImage:(UIImage *)normalImage selectedImage:(UIImage *)selectedImage type:(LBEditorToolBarButtonType)type {
++ (instancetype)buttonWithFrame:(CGRect)frame normalImage:(UIImage *)normalImage selectedImage:(UIImage *)selectedImage type:(JSMessageType)type {
     
     return [[LBEditorToolBarButton alloc] initWithFrame:frame normalImage:normalImage selectedImage:selectedImage type:type];
 }
 
-- (instancetype)initWithFrame:(CGRect)frame normalImage:(UIImage *)normalImage selectedImage:(UIImage *)selectedImage type:(LBEditorToolBarButtonType)type {
+- (instancetype)initWithFrame:(CGRect)frame normalImage:(UIImage *)normalImage selectedImage:(UIImage *)selectedImage type:(JSMessageType)type {
     
     if (self = [super initWithFrame:frame])
     {

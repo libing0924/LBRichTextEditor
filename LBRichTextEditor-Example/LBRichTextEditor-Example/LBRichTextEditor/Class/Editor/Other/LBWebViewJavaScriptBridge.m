@@ -104,7 +104,7 @@
     if ([self scriptURLSchemeIsExist:scheme])
     {
         // 解析URL
-        NSDictionary *parameter = [self _parseParametersWithURL:request.URL];
+        NSDictionary *parameter = [self parseParametersWithURL:request.URL];
         
         void(^handler)(NSURL *URL, id parameter) = [self.schemeMapper objectForKey:scheme];
         
@@ -125,12 +125,12 @@
     if ([self scriptURLSchemeIsExist:scheme])
     {
         // 解析URL
-        NSDictionary *parameter = [self _parseParametersWithURL:navigationAction.request.URL];
-        
+        NSDictionary *parameter = [self parseParametersWithURL:navigationAction.request.URL];
+    
         void(^handler)(NSURL *URL, id parameter) = [self.schemeMapper objectForKey:scheme];
         
         // 回调原生函数
-        handler(scheme, parameter);
+        handler(navigationAction.request.URL, parameter);
         
         decisionHandler(WKNavigationActionPolicyCancel);
     }
@@ -139,13 +139,13 @@
 }
 
 // 解析URL的query参数集
-- (NSDictionary *)_parseParametersWithURL:(NSURL *)url {
+- (NSDictionary *)parseParametersWithURL:(NSURL *)url {
     
     NSParameterAssert([url isKindOfClass:[NSURL class]]);
     
     NSString *query = url.query;
     
-    NSArray *keyValuePairs = [query componentsSeparatedByString:kDefaultURLParameterSeparator];
+    NSArray *keyValuePairs = [query componentsSeparatedByString:@"&"];
     
     if (keyValuePairs.count == 0 || !keyValuePairs) return nil;
     
@@ -155,7 +155,7 @@
     {
         if ([keyValuePair isKindOfClass:[NSString class]])
         {
-            NSArray *keyValue = [keyValuePair componentsSeparatedByString:kDefaultParameterPairSeparator];
+            NSArray *keyValue = [keyValuePair componentsSeparatedByString:@"="];
             
             if (keyValue.count == 2)
             {

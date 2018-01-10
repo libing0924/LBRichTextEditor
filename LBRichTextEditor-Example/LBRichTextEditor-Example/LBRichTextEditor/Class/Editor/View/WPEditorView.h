@@ -15,38 +15,29 @@
 @property (nonatomic, weak, readwrite) id<WPEditorViewDelegate> delegate;
 @property (nonatomic, assign, readonly, getter = isEditing) BOOL editing;
 
+@property (nonatomic, strong, readwrite) ZSSTextView *sourceView;
+
 #pragma mark - Properties: Selection
 @property (nonatomic, strong, readonly) NSString *selectedLinkTitle;
 @property (nonatomic, strong, readonly) NSString *selectedLinkURL;
 
 #pragma mark - Properties: Fields
-@property (nonatomic, strong, readonly) WPEditorField* contentField;
+@property (nonatomic, strong, readonly) WPEditorField *contentField;
 @property (nonatomic, strong, readonly) UIView *sourceContentDividerView;
 
+#pragma mark - Editing
+- (void)endEditing;
 
-#pragma mark - URL normalization
+#pragma mark - 编辑模式
+- (BOOL)isInCommonMode; // 是否普通编辑模式
+- (void)showHTMLSource; // 显示HTML源码
+- (void)showCommonEditor; // 显示普通编辑
+- (void)disableEditing;
+- (void)enableEditing;
 
-- (NSString*)normalizeURL:(NSString *)url;
 
-#pragma mark - Interaction
-
-- (void)insertHTML:(NSString *)html;
-
-- (void)undo;
-- (void)redo;
-
-#pragma mark - Text Access
-
-- (NSString*)contents;
-- (NSString*)title;
-
-#pragma mark - Selection
-
-- (void)restoreSelection;
-- (void)saveSelection;
-- (NSString *)selectedText;
-- (void)setSelectedColor:(UIColor *)color
-					 tag:(int)tag;
+#pragma mark - 获取HTML源码
+- (NSString *)contents;
 
 #pragma mark - Styles
 - (void)alignLeft;
@@ -69,6 +60,8 @@
 - (void)removeFormat;
 - (void)setHeading:(NSString *) head;
 - (void)setFontSize:(NSInteger) size;
+- (void)setSelectedColor:(UIColor *)color
+                     tag:(int)tag;
 
 #pragma mark - Images
 - (void)insertLocalImage:(NSString *)url uniqueId:(NSString *)uniqueId;
@@ -100,18 +93,12 @@
 - (void)quickLink;
 - (void)removeLink;
 
-#pragma mark - Editing
-
-/**
- *    @brief        Ends editing and forces any subview to resign first responder.
- */
-- (void)endEditing;
-
-#pragma mark - 编辑模式
-- (BOOL)isInCommonMode; // 是否普通编辑模式
-- (void)showHTMLSource; // 显示HTML源码
-- (void)showCommonEditor; // 显示普通编辑
-- (void)disableEditing;
-- (void)enableEditing;
+#pragma mark - control
+- (void)undo;
+- (void)redo;
+- (void)restoreSelection; // 回复选择的
+- (void)saveSelection; // 保存选择的
+- (NSString *)selectedText; // 获取选择的文字
+- (void)insertHTML:(NSString *)html; // 插入HTML
 
 @end

@@ -17,8 +17,8 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)addItems:(NSArray<LBEditorToolBarButton *> *) items;
 - (void)addItem:(LBEditorToolBarButton *) item;
 
-- (instancetype)initWithFrame:(CGRect)frame items:(NSArray<LBEditorToolBarButton *> *) items callBack:(void(^ __nullable)(LBEditorToolBarButtonType type)) callBack;
-- (instancetype)initWithFrame:(CGRect)frame callBack:(void(^ __nullable)(LBEditorToolBarButtonType type)) callBack;
+- (instancetype)initWithFrame:(CGRect)frame items:(NSArray<LBEditorToolBarButton *> * _Nullable )items callBack:(void(^ __nullable)(JSMessageType type)) callBack;
+- (instancetype)initWithFrame:(CGRect)frame callBack:(void(^ __nullable)(JSMessageType type)) callBack;
 
 @end
 NS_ASSUME_NONNULL_END
