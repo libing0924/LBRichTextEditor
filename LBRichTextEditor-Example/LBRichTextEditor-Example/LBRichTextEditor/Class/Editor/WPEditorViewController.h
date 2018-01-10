@@ -1,7 +1,7 @@
 #import <UIKit/UIKit.h>
 #import "HRColorPickerViewController.h"
-#import "WPEditorFormatbarView.h"
-#import "WPEditorStat.h"
+
+#import "LBEditorToolBar.h"
 
 @class WPEditorField;
 @class WPEditorView;
@@ -27,8 +27,6 @@ WPEditorViewControllerMode;
 - (void)editorTitleDidChange:(WPEditorViewController *)editorController;
 - (void)editorTextDidChange:(WPEditorViewController *)editorController;
 - (void)editorDidPressMedia:(WPEditorViewController *)editorController;
-- (void)editorTrackStat:(WPEditorStat)stat;
-
 
 - (void)editorFormatBarStatusChanged:(WPEditorViewController *)editorController
                              enabled:(BOOL)isEnabled;
@@ -62,8 +60,6 @@ WPEditorViewControllerMode;
 @interface WPEditorViewController : UIViewController
 
 @property (nonatomic, weak) id<WPEditorViewControllerDelegate> delegate;
-@property (nonatomic, copy) NSString *titleText;
-@property (nonatomic, copy) NSString *titlePlaceholderText;
 @property (nonatomic, copy) NSString *bodyText;
 @property (nonatomic, copy) NSString *bodyPlaceholderText;
 
@@ -73,8 +69,7 @@ WPEditorViewControllerMode;
 @property (nonatomic, strong, readonly) WPEditorView *editorView;
 
 #pragma mark - Toolbar
-
-@property (nonatomic, strong, readonly) WPEditorFormatbarView* toolbarView;
+@property (nonatomic, strong) LBEditorToolBar *toolbarView;
 
 #pragma mark - Initializers
 

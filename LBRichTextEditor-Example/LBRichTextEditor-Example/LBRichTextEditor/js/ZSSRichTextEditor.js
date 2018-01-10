@@ -223,7 +223,7 @@ ZSSEditor.getFocusedField = function() {
 };
 
 // MARK: - Selection
-
+// 后退
 ZSSEditor.backupRange = function(){
     var focusedField = this.getFocusedField();
     
@@ -239,7 +239,7 @@ ZSSEditor.backupRange = function(){
         }
     }
 };
-
+// 恢复
 ZSSEditor.restoreRange = function(){
     if (this.savedSelection) {
 		rangy.restoreSelection(this.savedSelection);
@@ -249,7 +249,7 @@ ZSSEditor.restoreRange = function(){
         this.savedFocusedField = null;
     }
 };
-
+// 获取选择的文本
 ZSSEditor.getSelectedText = function() {
 	var selection = window.getSelection();
 	

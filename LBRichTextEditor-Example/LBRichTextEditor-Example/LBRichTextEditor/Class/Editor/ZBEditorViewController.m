@@ -34,14 +34,11 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.navigationItem.rightBarButtonItem = [UIBarButtonItem itemWithTitle:@"保存" font:[UIFont systemFontOfSize:14] textColor:[UIColor whiteColor] target:self action:@selector(saveAction)];
-    
     self.bodyPlaceholderText = @"请编辑内容...";
 }
 
 - (void)editorDidPressMedia
 {
-    DDLogInfo(@"Pressed Media!");
     [self showPhotoPicker];
 }
 
@@ -154,27 +151,6 @@
         _viewModel = [[ZBReleaseTrainingViewModel alloc] initWithViewController:self];
     }
     return _viewModel;
-}
-
-- (void) saveAction {
-
-    NSString *htmlStr = [self.editorView contents];
-    NSLog(@"%@", htmlStr);
-    self.saveBlock(htmlStr);
-    
-    UIAlertController *controller = [UIAlertController alertControllerWithTitle:@"保存成功" message:@"是否继续编辑?" preferredStyle:UIAlertControllerStyleAlert];
-    __weak typeof(self) weakSelf = self;
-    __weak typeof(controller) weakC = controller;
-    [controller addAction:[UIAlertAction actionWithTitle:@"否" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-        [weakC dismissViewControllerAnimated:YES completion:nil];
-        [weakSelf.navigationController popViewControllerAnimated:YES];
-    }]];
-    [controller addAction:[UIAlertAction actionWithTitle:@"是" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-        [weakC dismissViewControllerAnimated:YES completion:nil];
-    }]];
-    
-    [self presentViewController:controller animated:YES completion:nil];
-    
 }
 
 // 实现父类的图片点击回调

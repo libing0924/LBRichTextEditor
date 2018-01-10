@@ -3,12 +3,11 @@
 #import <UIKit/UIKit.h>
 
 #import "WPEditorField.h"
-#import "WPEditorToolbarButton.h"
 #import "WPEditorView.h"
 #import "WPImageMeta.h"
 #import "ZSSBarButtonItem.h"
 
-@interface WPEditorViewController () <HRColorPickerViewControllerDelegate, WPEditorFormatbarViewDelegate, WPEditorViewDelegate>
+@interface WPEditorViewController () <HRColorPickerViewControllerDelegate, WPEditorViewDelegate>
 
 @property (nonatomic, strong) NSString *htmlString;
 @property (nonatomic, strong) NSArray *editorItemsEnabled;
@@ -28,10 +27,6 @@
 
 #pragma mark - Properties: Editor View
 @property (nonatomic, strong, readwrite) WPEditorView *editorView;
-
-#pragma mark - Properties: Toolbar
-
-@property (nonatomic, strong, readwrite) WPEditorFormatbarView* toolbarView;
 
 @end
 
@@ -91,11 +86,82 @@
 
 - (void)createToolbarView
 {
-    NSAssert(!_toolbarView, @"The toolbar view should not exist here.");
+    
+    NSMutableArray *items = [NSMutableArray new];
+    NSArray *normalImages = @[@"ZSSbold", @"ZSSunderline", @"ZSStextcolor", @"ZSSbgcolor", @"ZSSfonts", @"ZSSimageDevice", @"ZSSleftjustify", @"ZSScenterjustify", @"ZSSrightjustify"];
+    for (int i = 0; i < 9; i++)
+    {
+        UIImage *normalImage = [UIImage imageNamed:normalImages[i]];
+        UIImage *selectedImage = [UIImage imageNamed:@""];
+        LBEditorToolBarButton *button = [[LBEditorToolBarButton alloc] initWithFrame:CGRectMake(0, 0, 40, 40) normalImage:normalImage selectedImage:selectedImage type:100 + i];
+        [items addObject:button];
+    }
+    
+    
+    __weak typeof(self) weakSelf = self;
+    _toolbarView = [[LBEditorToolBar alloc] initWithFrame:CGRectZero items:items.copy callBack:^(LBEditorToolBarButtonType type) {
+        
+        __strong typeof(weakSelf) strongeSelf = weakSelf;
+        
+        if (strongeSelf)
+        {
+            [strongeSelf _setEditorAttribute:type];
+        }
+        
+    }];
+}
 
-    NSBundle *editorBundle = [NSBundle bundleForClass:[WPEditorFormatbarView class]];
-    _toolbarView = (WPEditorFormatbarView *)[[editorBundle loadNibNamed:NSStringFromClass([WPEditorFormatbarView class]) owner:nil options:nil] firstObject];
-    _toolbarView.delegate = self;
+- (void) _setEditorAttribute:(LBEditorToolBarButtonType)type {
+    
+    switch (type) {
+        case LBEditorToolBarButtonTypeBold:
+        {
+            [self setBold];
+            break;
+        }
+        case LBEditorToolBarButtonTypeUnderLine:
+        {
+            [self setUnderline];
+            break;
+        }
+        case LBEditorToolBarButtonTypeTextColor:
+        {
+            [self textColor];
+            break;
+        }
+        case LBEditorToolBarButtonTypeBackColor:
+        {
+            [self bgColor];
+            break;
+        }
+        case LBEditorToolBarButtonTypeFont:
+        {
+            [self setFontSize];
+            break;
+        }
+        case LBEditorToolBarButtonTypeImage:
+        {
+            [self editorDidPressMedia];
+            break;
+        }
+        case LBEditorToolBarButtonTypeAligmentLeft:
+        {
+            [self setAligmentLeft];
+            break;
+        }
+        case LBEditorToolBarButtonTypeAligmentCenter:
+        {
+            [self setAligmentCenter];
+            break;
+        }
+        case LBEditorToolBarButtonTypeAligmentRight:
+        {
+            [self setAligmentRight];
+            break;
+        }
+        default:
+            break;
+    }
 }
 
 #pragma mark - UIViewController
@@ -209,7 +275,6 @@
         self.editorView.sourceViewTitleField.inputAccessoryView = self.toolbarView;
         
         // Default placeholder text
-        self.titlePlaceholderText = NSLocalizedString(@"Post title",  @"Placeholder for the post title.");
         self.bodyPlaceholderText = NSLocalizedString(@"Share your story here...", @"Placeholder for the post body.");
     }
 	
@@ -218,26 +283,10 @@
 
 #pragma mark - Getters and Setters
 
-- (NSString*)titleText
-{    
-    return [self.editorView title];
-}
-
 - (void)setTitleText:(NSString*)titleText
 {
     [self.editorView.titleField setText:titleText];
     [self.editorView.sourceViewTitleField setText:titleText];
-}
-
-- (void)setTitlePlaceholderText:(NSString*)titlePlaceholderText
-{
-    NSParameterAssert(titlePlaceholderText);
-    if (![titlePlaceholderText isEqualToString:_titlePlaceholderText]) {
-        _titlePlaceholderText = titlePlaceholderText;
-        [self.editorView.titleField setPlaceholderText:_titlePlaceholderText];
-        self.editorView.sourceViewTitleField.attributedPlaceholder = [[NSAttributedString alloc] initWithString:_titlePlaceholderText
-                                                                                                     attributes:@{NSForegroundColorAttributeName: self.placeholderColor}];
-    }
 }
 
 - (NSString*)bodyText
@@ -346,67 +395,10 @@
 	[self tellOurDelegateEditingDidEnd];
 }
 
-#pragma mark - WPEditorFormatBarViewDelegate
-
-- (void)editorToolbarView:(WPEditorFormatbarView *)editorToolbarView tag:(WPEditorViewControllerElementTag)tag {
-
-    switch (tag) {
-        case kWPEditorViewControllerElementBold:
-        {
-            [self setBold];
-            break;
-        }
-        case kWPEditorViewControllerElementUnderLine:
-        {
-            [self setUnderline];
-            break;
-        }
-        case kWPEditorViewControllerElementTextColor:
-        {
-            [self textColor];
-            break;
-        }
-        case kWPEditorViewControllerElementBackColor:
-        {
-            [self bgColor];
-            break;
-        }
-        case kWPEditorViewControllerElementFont:
-        {
-            [self setFontSize];
-            break;
-        }
-        case kWPEditorViewControllerElementImage:
-        {
-            [self editorDidPressMedia];
-            break;
-        }
-        case kWPEditorViewControllerElementAligmentLeft:
-        {
-        
-            [self setAligmentLeft];
-            break;
-        }
-        case kWPEditorViewControllerElementAligmentCenter:
-        {
-            [self setAligmentCenter];
-            break;
-        }
-        case kWPEditorViewControllerElementAligmentRight:
-        {
-            [self setAligmentRight];
-            break;
-        }
-        default:
-            break;
-    }
-}
-
 - (void)setBold
 {
     [self.editorView setBold];
     
-    [self.delegate editorTrackStat:WPEditorStatTappedBold];
 }
 
 
@@ -414,7 +406,6 @@
 {
 	[self.editorView setUnderline];
     
-    [self.delegate editorTrackStat:WPEditorStatTappedUnderline];
 }
 
 - (void)setAligmentLeft {

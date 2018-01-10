@@ -15,20 +15,15 @@
 		D66943FD1FFC748A00CCD597 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D66943FC1FFC748A00CCD597 /* main.m */; };
 		D66944071FFC748A00CCD597 /* LBRichTextEditor_ExampleTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D66944061FFC748A00CCD597 /* LBRichTextEditor_ExampleTests.m */; };
 		D66944121FFC748A00CCD597 /* LBRichTextEditor_ExampleUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = D66944111FFC748A00CCD597 /* LBRichTextEditor_ExampleUITests.m */; };
-		D66944EB1FFC794400CCD597 /* WPEditorToolbarButton.m in Sources */ = {isa = PBXBuildFile; fileRef = D66944C81FFC793F00CCD597 /* WPEditorToolbarButton.m */; };
 		D66944EC1FFC794400CCD597 /* WPEditorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D66944C91FFC793F00CCD597 /* WPEditorViewController.m */; };
 		D66944EE1FFC794400CCD597 /* ZSSTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = D66944CF1FFC793F00CCD597 /* ZSSTextView.m */; };
 		D66944EF1FFC794400CCD597 /* ZSSBarButtonItem.m in Sources */ = {isa = PBXBuildFile; fileRef = D66944D31FFC794000CCD597 /* ZSSBarButtonItem.m */; };
 		D66944F01FFC794400CCD597 /* WPEditorView.m in Sources */ = {isa = PBXBuildFile; fileRef = D66944D41FFC794000CCD597 /* WPEditorView.m */; };
-		D66944F21FFC794400CCD597 /* LBEditorToolView.m in Sources */ = {isa = PBXBuildFile; fileRef = D66944D61FFC794100CCD597 /* LBEditorToolView.m */; };
-		D66944F31FFC794400CCD597 /* WPEditorLoggingConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = D66944D91FFC794100CCD597 /* WPEditorLoggingConfiguration.m */; };
 		D66944F41FFC794400CCD597 /* ZBEditorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D66944DC1FFC794100CCD597 /* ZBEditorViewController.m */; };
 		D66944F51FFC794400CCD597 /* WPEditorField.m in Sources */ = {isa = PBXBuildFile; fileRef = D66944DE1FFC794200CCD597 /* WPEditorField.m */; };
-		D66944F61FFC794400CCD597 /* WPEditorFormatbarView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D66944DF1FFC794200CCD597 /* WPEditorFormatbarView.xib */; };
 		D66944F81FFC794400CCD597 /* ZBFontSelectController.m in Sources */ = {isa = PBXBuildFile; fileRef = D66944E41FFC794300CCD597 /* ZBFontSelectController.m */; };
 		D66944F91FFC794400CCD597 /* UIWebView+GUIFixes.m in Sources */ = {isa = PBXBuildFile; fileRef = D66944E61FFC794300CCD597 /* UIWebView+GUIFixes.m */; };
 		D66944FA1FFC794400CCD597 /* WPImageMeta.m in Sources */ = {isa = PBXBuildFile; fileRef = D66944E81FFC794400CCD597 /* WPImageMeta.m */; };
-		D66944FB1FFC794400CCD597 /* WPEditorFormatbarView.m in Sources */ = {isa = PBXBuildFile; fileRef = D66944E91FFC794400CCD597 /* WPEditorFormatbarView.m */; };
 		D66944FC1FFC794400CCD597 /* ZBFontSelectController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D66944EA1FFC794400CCD597 /* ZBFontSelectController.xib */; };
 		D66945171FFC796700CCD597 /* HRColorCursor.m in Sources */ = {isa = PBXBuildFile; fileRef = D66944FF1FFC796400CCD597 /* HRColorCursor.m */; };
 		D66945181FFC796700CCD597 /* HRColorPickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = D66945011FFC796400CCD597 /* HRColorPickerView.m */; };
@@ -78,6 +73,14 @@
 		D66945691FFC798B00CCD597 /* ZSSimageDevice.png in Resources */ = {isa = PBXBuildFile; fileRef = D66945571FFC798A00CCD597 /* ZSSimageDevice.png */; };
 		D669456A1FFC798B00CCD597 /* ZSSunderline@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D66945581FFC798A00CCD597 /* ZSSunderline@2x.png */; };
 		D669456B1FFC798B00CCD597 /* ZSSbgcolor@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D66945591FFC798B00CCD597 /* ZSSbgcolor@2x.png */; };
+		D693ADFE20035B24005F8A1C /* LBEditorToolBar.m in Sources */ = {isa = PBXBuildFile; fileRef = D693ADFD20035B24005F8A1C /* LBEditorToolBar.m */; };
+		D693AE0120035B3D005F8A1C /* LBEditorToolBarButton.m in Sources */ = {isa = PBXBuildFile; fileRef = D693AE0020035B3D005F8A1C /* LBEditorToolBarButton.m */; };
+		D693AE0B2003787E005F8A1C /* UIView+HGExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = D693AE042003787C005F8A1C /* UIView+HGExtension.m */; };
+		D693AE0C2003787E005F8A1C /* LBPresentationController.m in Sources */ = {isa = PBXBuildFile; fileRef = D693AE062003787D005F8A1C /* LBPresentationController.m */; };
+		D693AE0D2003787E005F8A1C /* UIViewController+LBAnimator.m in Sources */ = {isa = PBXBuildFile; fileRef = D693AE072003787D005F8A1C /* UIViewController+LBAnimator.m */; };
+		D693AE0E2003787E005F8A1C /* LBTransitionAnimator.m in Sources */ = {isa = PBXBuildFile; fileRef = D693AE092003787E005F8A1C /* LBTransitionAnimator.m */; };
+		D693AE1520045FDB005F8A1C /* LBWebViewJavaScriptBridge.m in Sources */ = {isa = PBXBuildFile; fileRef = D693AE1420045FDB005F8A1C /* LBWebViewJavaScriptBridge.m */; };
+		D693AE182004676A005F8A1C /* LBWebViewJavaScriptBridge+RichEditor.m in Sources */ = {isa = PBXBuildFile; fileRef = D693AE172004676A005F8A1C /* LBWebViewJavaScriptBridge+RichEditor.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -114,34 +117,24 @@
 		D669440D1FFC748A00CCD597 /* LBRichTextEditor-ExampleUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "LBRichTextEditor-ExampleUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D66944111FFC748A00CCD597 /* LBRichTextEditor_ExampleUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LBRichTextEditor_ExampleUITests.m; sourceTree = "<group>"; };
 		D66944131FFC748A00CCD597 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		D66944C81FFC793F00CCD597 /* WPEditorToolbarButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WPEditorToolbarButton.m; sourceTree = "<group>"; };
 		D66944C91FFC793F00CCD597 /* WPEditorViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WPEditorViewController.m; sourceTree = "<group>"; };
-		D66944CA1FFC793F00CCD597 /* WPEditorStat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WPEditorStat.h; sourceTree = "<group>"; };
 		D66944CE1FFC793F00CCD597 /* ZBFontSelectController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZBFontSelectController.h; sourceTree = "<group>"; };
 		D66944CF1FFC793F00CCD597 /* ZSSTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZSSTextView.m; sourceTree = "<group>"; };
 		D66944D01FFC794000CCD597 /* UIWebView+GUIFixes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIWebView+GUIFixes.h"; sourceTree = "<group>"; };
 		D66944D11FFC794000CCD597 /* WPEditorViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WPEditorViewController.h; sourceTree = "<group>"; };
-		D66944D21FFC794000CCD597 /* WPEditorToolbarButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WPEditorToolbarButton.h; sourceTree = "<group>"; };
 		D66944D31FFC794000CCD597 /* ZSSBarButtonItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZSSBarButtonItem.m; sourceTree = "<group>"; };
 		D66944D41FFC794000CCD597 /* WPEditorView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WPEditorView.m; sourceTree = "<group>"; };
-		D66944D61FFC794100CCD597 /* LBEditorToolView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LBEditorToolView.m; sourceTree = "<group>"; };
 		D66944D71FFC794100CCD597 /* WPEditorField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WPEditorField.h; sourceTree = "<group>"; };
-		D66944D81FFC794100CCD597 /* WPEditorFormatbarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WPEditorFormatbarView.h; sourceTree = "<group>"; };
-		D66944D91FFC794100CCD597 /* WPEditorLoggingConfiguration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WPEditorLoggingConfiguration.m; sourceTree = "<group>"; };
 		D66944DB1FFC794100CCD597 /* ZSSTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZSSTextView.h; sourceTree = "<group>"; };
 		D66944DC1FFC794100CCD597 /* ZBEditorViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZBEditorViewController.m; sourceTree = "<group>"; };
 		D66944DD1FFC794100CCD597 /* ZBEditorViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZBEditorViewController.h; sourceTree = "<group>"; };
 		D66944DE1FFC794200CCD597 /* WPEditorField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WPEditorField.m; sourceTree = "<group>"; };
-		D66944DF1FFC794200CCD597 /* WPEditorFormatbarView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WPEditorFormatbarView.xib; sourceTree = "<group>"; };
-		D66944E01FFC794200CCD597 /* WPEditorLoggingConfiguration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WPEditorLoggingConfiguration.h; sourceTree = "<group>"; };
 		D66944E11FFC794200CCD597 /* WPImageMeta.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WPImageMeta.h; sourceTree = "<group>"; };
 		D66944E31FFC794300CCD597 /* WPEditorView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WPEditorView.h; sourceTree = "<group>"; };
 		D66944E41FFC794300CCD597 /* ZBFontSelectController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZBFontSelectController.m; sourceTree = "<group>"; };
 		D66944E51FFC794300CCD597 /* ZSSBarButtonItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZSSBarButtonItem.h; sourceTree = "<group>"; };
 		D66944E61FFC794300CCD597 /* UIWebView+GUIFixes.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIWebView+GUIFixes.m"; sourceTree = "<group>"; };
-		D66944E71FFC794400CCD597 /* LBEditorToolView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LBEditorToolView.h; sourceTree = "<group>"; };
 		D66944E81FFC794400CCD597 /* WPImageMeta.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WPImageMeta.m; sourceTree = "<group>"; };
-		D66944E91FFC794400CCD597 /* WPEditorFormatbarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WPEditorFormatbarView.m; sourceTree = "<group>"; };
 		D66944EA1FFC794400CCD597 /* ZBFontSelectController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ZBFontSelectController.xib; sourceTree = "<group>"; };
 		D66944FE1FFC796400CCD597 /* HRColorCursor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRColorCursor.h; sourceTree = "<group>"; };
 		D66944FF1FFC796400CCD597 /* HRColorCursor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRColorCursor.m; sourceTree = "<group>"; };
@@ -205,6 +198,25 @@
 		D66945571FFC798A00CCD597 /* ZSSimageDevice.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ZSSimageDevice.png; sourceTree = "<group>"; };
 		D66945581FFC798A00CCD597 /* ZSSunderline@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ZSSunderline@2x.png"; sourceTree = "<group>"; };
 		D66945591FFC798B00CCD597 /* ZSSbgcolor@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ZSSbgcolor@2x.png"; sourceTree = "<group>"; };
+		D693ADFC20035B24005F8A1C /* LBEditorToolBar.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LBEditorToolBar.h; sourceTree = "<group>"; };
+		D693ADFD20035B24005F8A1C /* LBEditorToolBar.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LBEditorToolBar.m; sourceTree = "<group>"; };
+		D693ADFF20035B3D005F8A1C /* LBEditorToolBarButton.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LBEditorToolBarButton.h; sourceTree = "<group>"; };
+		D693AE0020035B3D005F8A1C /* LBEditorToolBarButton.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LBEditorToolBarButton.m; sourceTree = "<group>"; };
+		D693AE022003787C005F8A1C /* UIView+HGExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+HGExtension.h"; sourceTree = "<group>"; };
+		D693AE032003787C005F8A1C /* LBTransitionAnimator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LBTransitionAnimator.h; sourceTree = "<group>"; };
+		D693AE042003787C005F8A1C /* UIView+HGExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+HGExtension.m"; sourceTree = "<group>"; };
+		D693AE052003787C005F8A1C /* UIViewController+LBAnimator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+LBAnimator.h"; sourceTree = "<group>"; };
+		D693AE062003787D005F8A1C /* LBPresentationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LBPresentationController.m; sourceTree = "<group>"; };
+		D693AE072003787D005F8A1C /* UIViewController+LBAnimator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+LBAnimator.m"; sourceTree = "<group>"; };
+		D693AE082003787E005F8A1C /* LBPresentationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LBPresentationController.h; sourceTree = "<group>"; };
+		D693AE092003787E005F8A1C /* LBTransitionAnimator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LBTransitionAnimator.m; sourceTree = "<group>"; };
+		D693AE0A2003787E005F8A1C /* LBTransitionAnimatorDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LBTransitionAnimatorDelegate.h; sourceTree = "<group>"; };
+		D693AE1020045A49005F8A1C /* LBEditorViewProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LBEditorViewProtocol.h; sourceTree = "<group>"; };
+		D693AE1320045FDB005F8A1C /* LBWebViewJavaScriptBridge.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LBWebViewJavaScriptBridge.h; sourceTree = "<group>"; };
+		D693AE1420045FDB005F8A1C /* LBWebViewJavaScriptBridge.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LBWebViewJavaScriptBridge.m; sourceTree = "<group>"; };
+		D693AE162004676A005F8A1C /* LBWebViewJavaScriptBridge+RichEditor.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "LBWebViewJavaScriptBridge+RichEditor.h"; sourceTree = "<group>"; };
+		D693AE172004676A005F8A1C /* LBWebViewJavaScriptBridge+RichEditor.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "LBWebViewJavaScriptBridge+RichEditor.m"; sourceTree = "<group>"; };
+		D693AE192004C05A005F8A1C /* LBBrigeCallbackProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LBBrigeCallbackProtocol.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -360,22 +372,12 @@
 		D66944C71FFC793300CCD597 /* Editor */ = {
 			isa = PBXGroup;
 			children = (
-				D66944E71FFC794400CCD597 /* LBEditorToolView.h */,
-				D66944D61FFC794100CCD597 /* LBEditorToolView.m */,
+				D693AE1220045F5C005F8A1C /* Other */,
+				D693ADFB20035AF4005F8A1C /* View */,
 				D66944D01FFC794000CCD597 /* UIWebView+GUIFixes.h */,
 				D66944E61FFC794300CCD597 /* UIWebView+GUIFixes.m */,
 				D66944D71FFC794100CCD597 /* WPEditorField.h */,
 				D66944DE1FFC794200CCD597 /* WPEditorField.m */,
-				D66944D81FFC794100CCD597 /* WPEditorFormatbarView.h */,
-				D66944E91FFC794400CCD597 /* WPEditorFormatbarView.m */,
-				D66944DF1FFC794200CCD597 /* WPEditorFormatbarView.xib */,
-				D66944E01FFC794200CCD597 /* WPEditorLoggingConfiguration.h */,
-				D66944D91FFC794100CCD597 /* WPEditorLoggingConfiguration.m */,
-				D66944CA1FFC793F00CCD597 /* WPEditorStat.h */,
-				D66944D21FFC794000CCD597 /* WPEditorToolbarButton.h */,
-				D66944C81FFC793F00CCD597 /* WPEditorToolbarButton.m */,
-				D66944E31FFC794300CCD597 /* WPEditorView.h */,
-				D66944D41FFC794000CCD597 /* WPEditorView.m */,
 				D66944D11FFC794000CCD597 /* WPEditorViewController.h */,
 				D66944C91FFC793F00CCD597 /* WPEditorViewController.m */,
 				D66944E11FFC794200CCD597 /* WPImageMeta.h */,
@@ -396,6 +398,7 @@
 		D66944FD1FFC795800CCD597 /* Vender */ = {
 			isa = PBXGroup;
 			children = (
+				D693AE0F20037883005F8A1C /* UIViewController+LBAnimator */,
 				D66945091FFC796500CCD597 /* NSObject-SafeExpectations-umbrella.h */,
 				D66945081FFC796500CCD597 /* NSDictionary+SafeExpectations.h */,
 				D669450A1FFC796500CCD597 /* NSDictionary+SafeExpectations.m */,
@@ -423,6 +426,49 @@
 				D66945061FFC796500CCD597 /* HRColorUtil.m */,
 			);
 			path = Vender;
+			sourceTree = "<group>";
+		};
+		D693ADFB20035AF4005F8A1C /* View */ = {
+			isa = PBXGroup;
+			children = (
+				D693ADFC20035B24005F8A1C /* LBEditorToolBar.h */,
+				D693ADFD20035B24005F8A1C /* LBEditorToolBar.m */,
+				D693ADFF20035B3D005F8A1C /* LBEditorToolBarButton.h */,
+				D693AE0020035B3D005F8A1C /* LBEditorToolBarButton.m */,
+				D66944E31FFC794300CCD597 /* WPEditorView.h */,
+				D66944D41FFC794000CCD597 /* WPEditorView.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		D693AE0F20037883005F8A1C /* UIViewController+LBAnimator */ = {
+			isa = PBXGroup;
+			children = (
+				D693AE082003787E005F8A1C /* LBPresentationController.h */,
+				D693AE062003787D005F8A1C /* LBPresentationController.m */,
+				D693AE032003787C005F8A1C /* LBTransitionAnimator.h */,
+				D693AE092003787E005F8A1C /* LBTransitionAnimator.m */,
+				D693AE0A2003787E005F8A1C /* LBTransitionAnimatorDelegate.h */,
+				D693AE022003787C005F8A1C /* UIView+HGExtension.h */,
+				D693AE042003787C005F8A1C /* UIView+HGExtension.m */,
+				D693AE052003787C005F8A1C /* UIViewController+LBAnimator.h */,
+				D693AE072003787D005F8A1C /* UIViewController+LBAnimator.m */,
+			);
+			name = "UIViewController+LBAnimator";
+			path = "New Group";
+			sourceTree = "<group>";
+		};
+		D693AE1220045F5C005F8A1C /* Other */ = {
+			isa = PBXGroup;
+			children = (
+				D693AE1020045A49005F8A1C /* LBEditorViewProtocol.h */,
+				D693AE192004C05A005F8A1C /* LBBrigeCallbackProtocol.h */,
+				D693AE1320045FDB005F8A1C /* LBWebViewJavaScriptBridge.h */,
+				D693AE1420045FDB005F8A1C /* LBWebViewJavaScriptBridge.m */,
+				D693AE162004676A005F8A1C /* LBWebViewJavaScriptBridge+RichEditor.h */,
+				D693AE172004676A005F8A1C /* LBWebViewJavaScriptBridge+RichEditor.m */,
+			);
+			path = Other;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -536,7 +582,6 @@
 				D66945671FFC798B00CCD597 /* ZSStextcolor@2x.png in Resources */,
 				D669453F1FFC797F00CCD597 /* shortcode.js in Resources */,
 				D66945451FFC797F00CCD597 /* rangy-classapplier.js in Resources */,
-				D66944F61FFC794400CCD597 /* WPEditorFormatbarView.xib in Resources */,
 				D66945471FFC797F00CCD597 /* rangy-textrange.js in Resources */,
 				D66945411FFC797F00CCD597 /* wpposter.svg in Resources */,
 				D66945651FFC798B00CCD597 /* ZSSrightjustify@2x.png in Resources */,
@@ -597,17 +642,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D693ADFE20035B24005F8A1C /* LBEditorToolBar.m in Sources */,
 				D66944F51FFC794400CCD597 /* WPEditorField.m in Sources */,
 				D66945211FFC796700CCD597 /* CYRTextStorage.m in Sources */,
 				D66945171FFC796700CCD597 /* HRColorCursor.m in Sources */,
 				D66944FA1FFC794400CCD597 /* WPImageMeta.m in Sources */,
 				D66944F01FFC794400CCD597 /* WPEditorView.m in Sources */,
+				D693AE182004676A005F8A1C /* LBWebViewJavaScriptBridge+RichEditor.m in Sources */,
 				D669451A1FFC796700CCD597 /* HRColorPickerViewController.m in Sources */,
 				D66943F21FFC748A00CCD597 /* ViewController.m in Sources */,
 				D66944EE1FFC794400CCD597 /* ZSSTextView.m in Sources */,
 				D66945191FFC796700CCD597 /* CYRLayoutManager.m in Sources */,
 				D66943FD1FFC748A00CCD597 /* main.m in Sources */,
-				D66944F21FFC794400CCD597 /* LBEditorToolView.m in Sources */,
+				D693AE0C2003787E005F8A1C /* LBPresentationController.m in Sources */,
 				D66943EF1FFC748A00CCD597 /* AppDelegate.m in Sources */,
 				D66944EC1FFC794400CCD597 /* WPEditorViewController.m in Sources */,
 				D66944EF1FFC794400CCD597 /* ZSSBarButtonItem.m in Sources */,
@@ -615,13 +662,15 @@
 				D669451F1FFC796700CCD597 /* HRCgUtil.m in Sources */,
 				D66944F81FFC794400CCD597 /* ZBFontSelectController.m in Sources */,
 				D66945181FFC796700CCD597 /* HRColorPickerView.m in Sources */,
-				D66944EB1FFC794400CCD597 /* WPEditorToolbarButton.m in Sources */,
+				D693AE0120035B3D005F8A1C /* LBEditorToolBarButton.m in Sources */,
 				D66944F41FFC794400CCD597 /* ZBEditorViewController.m in Sources */,
+				D693AE0B2003787E005F8A1C /* UIView+HGExtension.m in Sources */,
+				D693AE0E2003787E005F8A1C /* LBTransitionAnimator.m in Sources */,
 				D66945201FFC796700CCD597 /* HRBrightnessCursor.m in Sources */,
-				D66944F31FFC794400CCD597 /* WPEditorLoggingConfiguration.m in Sources */,
 				D66944F91FFC794400CCD597 /* UIWebView+GUIFixes.m in Sources */,
 				D669451D1FFC796700CCD597 /* CYRToken.m in Sources */,
-				D66944FB1FFC794400CCD597 /* WPEditorFormatbarView.m in Sources */,
+				D693AE0D2003787E005F8A1C /* UIViewController+LBAnimator.m in Sources */,
+				D693AE1520045FDB005F8A1C /* LBWebViewJavaScriptBridge.m in Sources */,
 				D669451C1FFC796700CCD597 /* NSDictionary+SafeExpectations.m in Sources */,
 				D669451B1FFC796700CCD597 /* HRColorUtil.m in Sources */,
 			);
