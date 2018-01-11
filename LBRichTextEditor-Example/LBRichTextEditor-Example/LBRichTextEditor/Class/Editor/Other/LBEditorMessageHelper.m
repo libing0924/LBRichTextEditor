@@ -6,7 +6,7 @@
 //  Copyright © 2018年 李冰. All rights reserved.
 //
 
-#import "LBWebViewJavaScriptBridge+RichEditor.h"
+#import "LBEditorMessageHelper.h"
 #import "HRColorUtil.h"
 
 // 基本属性
@@ -66,11 +66,11 @@ NSString * const JSMessageBackupRange = @"ZSSEditor.backupRange();";
 NSString * const JSMessageGetSelectedText = @"ZSSEditor.getSelectedText();";
 NSString * const JSMessageInsertHTML = @"ZSSEditor.insertHTML(\"%@\");";
 
-@implementation LBWebViewJavaScriptBridge (RichEditor)
+@implementation LBEditorMessageHelper
 
 + (instancetype)defaultBrige:(id)webView {
     
-    LBWebViewJavaScriptBridge *brige = [[LBWebViewJavaScriptBridge alloc] initWithWebView:webView];
+    LBEditorMessageHelper *brige = [[LBEditorMessageHelper alloc] initWithWebView:webView];
     
     // add callback
     [brige _addCallbackHandler];
@@ -546,7 +546,7 @@ NSString * const JSMessageInsertHTML = @"ZSSEditor.insertHTML(\"%@\");";
     
     NSParameterAssert([url isKindOfClass:[NSURL class]]);
     
-    NSString *query = url.query;
+    NSString *query = url.resourceSpecifier;
     
     NSArray *keyValuePairs = [query componentsSeparatedByString:kDefaultURLParameterSeparator];
     

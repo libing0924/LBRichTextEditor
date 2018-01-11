@@ -12,6 +12,9 @@
 NS_ASSUME_NONNULL_BEGIN
 @interface LBEditorToolBar : UIView
 
+@property (nonatomic, strong) UIScrollView *contentView;
+
+// default is 10.0
 @property (nonatomic, assign) CGFloat itemSpace;
 
 - (void)addItems:(NSArray<LBEditorToolBarButton *> *) items;

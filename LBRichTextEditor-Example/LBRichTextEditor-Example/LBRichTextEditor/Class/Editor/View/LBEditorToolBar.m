@@ -9,9 +9,10 @@
 #import "LBEditorToolBar.h"
 #import "LBEditorToolBarButton.h"
 
-@interface LBEditorToolBar()<UIScrollViewDelegate>
+#define DEFAULT_ITEM_SPACE 10.0
+#define DEFAULT_BACKGROUND_COLOR [UIColor colorWithRed:241.0 / 255.0f green:241.0 / 255.0f blue:241.0 / 255.0f alpha:1.0]
 
-@property (nonatomic, strong) UIScrollView *contentView;
+@interface LBEditorToolBar()<UIScrollViewDelegate>
 
 @property (nonatomic, copy) void (^callBack)(JSMessageType);
 
@@ -23,10 +24,12 @@
     
     if (self = [super initWithFrame:frame])
     {
+        _itemSpace = DEFAULT_ITEM_SPACE;
+        self.backgroundColor = DEFAULT_BACKGROUND_COLOR;
+        _callBack = callBack;
         
         [self _initializeItems];
         [self addItems:items];
-        _callBack = callBack;
     }
     
     return self;
@@ -36,8 +39,11 @@
     
     if (self = [super initWithFrame:frame])
     {
-        [self _initializeItems];
+        _itemSpace = DEFAULT_ITEM_SPACE;
+        self.backgroundColor = DEFAULT_BACKGROUND_COLOR;
         _callBack = callBack;
+        
+        [self _initializeItems];
     }
     
     return self;
@@ -45,11 +51,15 @@
 
 - (void) _initializeItems {
     
-    _contentView = [[UIScrollView alloc] init];
+    UIView *line = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width, 0.5)];
+    line.backgroundColor = [UIColor blackColor];
+    [self addSubview:line];
+    
+    _contentView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 1, self.frame.size.width, 44)];
     _contentView.contentSize = CGSizeZero;
     _contentView.delegate = self;
+    _contentView.autoresizingMask = UIViewAutoresizingFlexibleWidth;
     [self addSubview:_contentView];
-    
 }
 
 - (void)addItems:(NSArray<LBEditorToolBarButton *> *)items {
@@ -61,6 +71,7 @@
             [self addItem:button];
         }
     }
+    
 }
 
 - (void)addItem:(LBEditorToolBarButton *)item {
@@ -73,6 +84,8 @@
     [item addTarget:self action:@selector(_itemAction:) forControlEvents:UIControlEventTouchUpInside];
     
     [self.contentView addSubview:item];
+    
+    self.contentView.contentSize = CGSizeMake(CGRectGetMaxX(item.frame) + _itemSpace, 0);
 }
 
 - (void)setItemSpace:(CGFloat)itemSpace {
@@ -101,6 +114,11 @@
     {
         self.callBack(sender.type);
     }
+}
+
+- (void)setFrame:(CGRect)frame {
+    NSLog(@"%@", NSStringFromCGRect(frame));
+    [super setFrame:frame];
 }
 
 @end

@@ -12,7 +12,7 @@
 #import "WPEditorField.h"
 #import "ZSSTextView.h"
 // 
-#import "LBWebViewJavaScriptBridge+RichEditor.h"
+#import "LBEditorMessageHelper.h"
 
 static const CGFloat UITextFieldLeftRightInset = 20.0;
 static const CGFloat UITextFieldFieldHeight = 55.0;
@@ -22,9 +22,9 @@ static const CGFloat HTMLViewLeftRightInset = 15.0;
 
 static NSString* const WPEditorViewWebViewContentSizeKey = @"contentSize";
 
-@interface WPEditorView () <UITextViewDelegate, UIWebViewDelegate, UITextFieldDelegate, LBBrigeCallbackDelegate>
+@interface WPEditorView () <UITextViewDelegate, UIWebViewDelegate, UITextFieldDelegate, LBEditorMessageDelegate>
 
-@property (nonatomic, strong) LBWebViewJavaScriptBridge *javaScriptBridge;
+@property (nonatomic, strong) LBEditorMessageHelper *javaScriptBridge;
 
 #pragma mark - Cached caret & line data
 @property (nonatomic, strong, readwrite) NSNumber *caretYOffset;
@@ -83,6 +83,8 @@ static NSString* const WPEditorViewWebViewContentSizeKey = @"contentSize";
 		[self createWebViewWithFrame:childFrame];
         // 加载HTML编辑器
 		[self setupHTMLEditor];
+        
+        self.javaScriptBridge = [LBEditorMessageHelper defaultBrige:self.webView];
 	}
 	
 	return self;
@@ -691,7 +693,6 @@ static NSString* const WPEditorViewWebViewContentSizeKey = @"contentSize";
         [self.sourceView setSelectedRange:self.selectionBackup];
         self.selectionBackup = NSMakeRange(0, 0);
     }
-    
 }
 
 - (void)saveSelection
@@ -723,7 +724,7 @@ static NSString* const WPEditorViewWebViewContentSizeKey = @"contentSize";
 }
 
 #pragma mark - JS的回调
-- (void)javaScriptBridgeTextDidChange:(LBWebViewJavaScriptBridge *)bridge fieldId:(NSString *)fieldId yOffset:(CGFloat)yOffset height:(CGFloat)height{
+- (void)javaScriptBridgeTextDidChange:(LBEditorMessageHelper *)bridge fieldId:(NSString *)fieldId yOffset:(CGFloat)yOffset height:(CGFloat)height{
 
     self.caretYOffset = @(yOffset);
     self.lineHeight = @(height);
@@ -739,38 +740,38 @@ static NSString* const WPEditorViewWebViewContentSizeKey = @"contentSize";
     [self scrollToCaretAnimated:NO];
 }
 
-- (void)javaScriptBridgeDidFinishLoadingDOM:(LBWebViewJavaScriptBridge *)bridge {
+- (void)javaScriptBridgeDidFinishLoadingDOM:(LBEditorMessageHelper *)bridge {
     
     [self.contentField handleDOMLoaded];
 }
 
-- (BOOL)javaScriptBridge:(LBWebViewJavaScriptBridge *)bridge linkTapped:(NSURL *)url title:(NSString *)title {
+- (BOOL)javaScriptBridge:(LBEditorMessageHelper *)bridge linkTapped:(NSURL *)url title:(NSString *)title {
     
     return YES;
 }
 
-- (BOOL)javaScriptBridge:(LBWebViewJavaScriptBridge *)bridge imageTapped:(NSString *)imageId url:(NSURL *)url {
+- (BOOL)javaScriptBridge:(LBEditorMessageHelper *)bridge imageTapped:(NSString *)imageId url:(NSURL *)url {
     
     return YES;
 }
 
-- (void)javaScriptBridge:(LBWebViewJavaScriptBridge *)bridge imageTapped:(NSString *)imageId url:(NSURL *)url imageMeta:(WPImageMeta *)imageMeta {
+- (void)javaScriptBridge:(LBEditorMessageHelper *)bridge imageTapped:(NSString *)imageId url:(NSURL *)url imageMeta:(WPImageMeta *)imageMeta {
     
 }
 
-- (void)javaScriptBridge:(LBWebViewJavaScriptBridge *)bridge videoTapped:(NSString *)videoID url:(NSURL *)url {
+- (void)javaScriptBridge:(LBEditorMessageHelper *)bridge videoTapped:(NSString *)videoID url:(NSURL *)url {
     
 }
 
-- (void)javaScriptBridge:(LBWebViewJavaScriptBridge *)bridge imageReplaced:(NSString *)imageId {
+- (void)javaScriptBridge:(LBEditorMessageHelper *)bridge imageReplaced:(NSString *)imageId {
     
 }
 
-- (void)javaScriptBridge:(LBWebViewJavaScriptBridge *)bridge videoReplaced:(NSString *)videoID {
+- (void)javaScriptBridge:(LBEditorMessageHelper *)bridge videoReplaced:(NSString *)videoID {
     
 }
 
-- (void)javaScriptBridge:(LBWebViewJavaScriptBridge *)bridge videoStardFullScreen:(NSString *)videoID {
+- (void)javaScriptBridge:(LBEditorMessageHelper *)bridge videoStardFullScreen:(NSString *)videoID {
     
     [self saveSelection];
     // FIXME: SergioEstevao 2015/03/25 - It looks there is a bug on iOS 8 that makes
@@ -780,51 +781,51 @@ static NSString* const WPEditorViewWebViewContentSizeKey = @"contentSize";
     [firstResponder resignFirstResponder];
 }
 
-- (void)javaScriptBridge:(LBWebViewJavaScriptBridge *)bridge videoEndedFullScreen:(NSString *)videoID {
+- (void)javaScriptBridge:(LBEditorMessageHelper *)bridge videoEndedFullScreen:(NSString *)videoID {
     
     [self restoreSelection];
 }
 
-- (void)javaScriptBridge:(LBWebViewJavaScriptBridge *)bridge mediaRemoved:(NSString *)mediaID {
+- (void)javaScriptBridge:(LBEditorMessageHelper *)bridge mediaRemoved:(NSString *)mediaID {
     
 }
 
-- (void)javaScriptBridge:(LBWebViewJavaScriptBridge *)bridge imagePasted:(UIImage *)image {
+- (void)javaScriptBridge:(LBEditorMessageHelper *)bridge imagePasted:(UIImage *)image {
     
 }
 
-- (void)javaScriptBridge:(LBWebViewJavaScriptBridge *)bridge videoPressInfoRequest:(NSString *)videoPressID {
+- (void)javaScriptBridge:(LBEditorMessageHelper *)bridge videoPressInfoRequest:(NSString *)videoPressID {
     
 }
 
-- (void)javaScriptBridge:(LBWebViewJavaScriptBridge *)bridge fieldCreated:(NSString *)fieldId {
+- (void)javaScriptBridge:(LBEditorMessageHelper *)bridge fieldCreated:(NSString *)fieldId {
     
     WPEditorField* newField = [self createFieldWithId:fieldId];
 }
 
-- (void)javaScriptBridge:(LBWebViewJavaScriptBridge *)bridge stylesForCurrentSelection:(NSArray*)styles {
+- (void)javaScriptBridge:(LBEditorMessageHelper *)bridge stylesForCurrentSelection:(NSArray*)styles {
     
 }
-- (void)javaScriptBridge:(LBWebViewJavaScriptBridge *)bridge selectionChancgeYOffset:(CGFloat)yOffset height:(CGFloat)height {
+- (void)javaScriptBridge:(LBEditorMessageHelper *)bridge selectionChancgeYOffset:(CGFloat)yOffset height:(CGFloat)height {
     
     self.caretYOffset = @(yOffset);
     self.lineHeight = @(height);
     [self scrollToCaretAnimated:NO];
 }
 
-- (void)javaScriptBridgeTitleDidChange:(LBWebViewJavaScriptBridge *)bridge {
+- (void)javaScriptBridgeTitleDidChange:(LBEditorMessageHelper *)bridge {
     
 }
 
-- (void)javaScriptBridge:(LBWebViewJavaScriptBridge *)bridge fieldFocusedIn:(NSString *)fieldId {
+- (void)javaScriptBridge:(LBEditorMessageHelper *)bridge fieldFocusedIn:(NSString *)fieldId {
     
 }
 
-- (void)javaScriptBridge:(LBWebViewJavaScriptBridge *)bridge fieldFocusedOut:(NSString *)fieldId {
+- (void)javaScriptBridge:(LBEditorMessageHelper *)bridge fieldFocusedOut:(NSString *)fieldId {
     
 }
 
-- (void)javaScriptBridge:(LBWebViewJavaScriptBridge *)bridge newField:(NSString *)fieldId {
+- (void)javaScriptBridge:(LBEditorMessageHelper *)bridge newField:(NSString *)fieldId {
     
 }
 

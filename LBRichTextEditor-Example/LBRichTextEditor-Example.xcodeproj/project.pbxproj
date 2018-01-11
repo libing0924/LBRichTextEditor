@@ -80,7 +80,7 @@
 		D693AE0D2003787E005F8A1C /* UIViewController+LBAnimator.m in Sources */ = {isa = PBXBuildFile; fileRef = D693AE072003787D005F8A1C /* UIViewController+LBAnimator.m */; };
 		D693AE0E2003787E005F8A1C /* LBTransitionAnimator.m in Sources */ = {isa = PBXBuildFile; fileRef = D693AE092003787E005F8A1C /* LBTransitionAnimator.m */; };
 		D693AE1520045FDB005F8A1C /* LBWebViewJavaScriptBridge.m in Sources */ = {isa = PBXBuildFile; fileRef = D693AE1420045FDB005F8A1C /* LBWebViewJavaScriptBridge.m */; };
-		D693AE182004676A005F8A1C /* LBWebViewJavaScriptBridge+RichEditor.m in Sources */ = {isa = PBXBuildFile; fileRef = D693AE172004676A005F8A1C /* LBWebViewJavaScriptBridge+RichEditor.m */; };
+		D693AE182004676A005F8A1C /* LBEditorMessageHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = D693AE172004676A005F8A1C /* LBEditorMessageHelper.m */; };
 		D693AE1E200605CD005F8A1C /* LBEditorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D693AE1D200605CD005F8A1C /* LBEditorViewController.m */; };
 		D693AE2120060978005F8A1C /* UIWebView+HackishAccessoryHiding.m in Sources */ = {isa = PBXBuildFile; fileRef = D693AE2020060978005F8A1C /* UIWebView+HackishAccessoryHiding.m */; };
 /* End PBXBuildFile section */
@@ -216,8 +216,8 @@
 		D693AE1020045A49005F8A1C /* LBEditorViewProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LBEditorViewProtocol.h; sourceTree = "<group>"; };
 		D693AE1320045FDB005F8A1C /* LBWebViewJavaScriptBridge.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LBWebViewJavaScriptBridge.h; sourceTree = "<group>"; };
 		D693AE1420045FDB005F8A1C /* LBWebViewJavaScriptBridge.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LBWebViewJavaScriptBridge.m; sourceTree = "<group>"; };
-		D693AE162004676A005F8A1C /* LBWebViewJavaScriptBridge+RichEditor.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "LBWebViewJavaScriptBridge+RichEditor.h"; sourceTree = "<group>"; };
-		D693AE172004676A005F8A1C /* LBWebViewJavaScriptBridge+RichEditor.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "LBWebViewJavaScriptBridge+RichEditor.m"; sourceTree = "<group>"; };
+		D693AE162004676A005F8A1C /* LBEditorMessageHelper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LBEditorMessageHelper.h; sourceTree = "<group>"; };
+		D693AE172004676A005F8A1C /* LBEditorMessageHelper.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LBEditorMessageHelper.m; sourceTree = "<group>"; };
 		D693AE192004C05A005F8A1C /* LBBrigeCallbackProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LBBrigeCallbackProtocol.h; sourceTree = "<group>"; };
 		D693AE1C200605CD005F8A1C /* LBEditorViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LBEditorViewController.h; sourceTree = "<group>"; };
 		D693AE1D200605CD005F8A1C /* LBEditorViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LBEditorViewController.m; sourceTree = "<group>"; };
@@ -472,8 +472,8 @@
 				D693AE192004C05A005F8A1C /* LBBrigeCallbackProtocol.h */,
 				D693AE1320045FDB005F8A1C /* LBWebViewJavaScriptBridge.h */,
 				D693AE1420045FDB005F8A1C /* LBWebViewJavaScriptBridge.m */,
-				D693AE162004676A005F8A1C /* LBWebViewJavaScriptBridge+RichEditor.h */,
-				D693AE172004676A005F8A1C /* LBWebViewJavaScriptBridge+RichEditor.m */,
+				D693AE162004676A005F8A1C /* LBEditorMessageHelper.h */,
+				D693AE172004676A005F8A1C /* LBEditorMessageHelper.m */,
 				D693AE1F20060978005F8A1C /* UIWebView+HackishAccessoryHiding.h */,
 				D693AE2020060978005F8A1C /* UIWebView+HackishAccessoryHiding.m */,
 			);
@@ -666,7 +666,7 @@
 				D66945171FFC796700CCD597 /* HRColorCursor.m in Sources */,
 				D66944FA1FFC794400CCD597 /* WPImageMeta.m in Sources */,
 				D66944F01FFC794400CCD597 /* WPEditorView.m in Sources */,
-				D693AE182004676A005F8A1C /* LBWebViewJavaScriptBridge+RichEditor.m in Sources */,
+				D693AE182004676A005F8A1C /* LBEditorMessageHelper.m in Sources */,
 				D693AE1E200605CD005F8A1C /* LBEditorViewController.m in Sources */,
 				D669451A1FFC796700CCD597 /* HRColorPickerViewController.m in Sources */,
 				D66943F21FFC748A00CCD597 /* ViewController.m in Sources */,

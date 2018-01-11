@@ -8,6 +8,7 @@
 
 #import "AppDelegate.h"
 #import "LBEditorViewController.h"
+#import "ZBEditorViewController.h"
 
 @interface AppDelegate ()
 

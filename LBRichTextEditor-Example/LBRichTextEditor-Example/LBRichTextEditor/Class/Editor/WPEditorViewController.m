@@ -94,12 +94,13 @@
         UIImage *normalImage = [UIImage imageNamed:normalImages[i]];
         UIImage *selectedImage = [UIImage imageNamed:@""];
         LBEditorToolBarButton *button = [[LBEditorToolBarButton alloc] initWithFrame:CGRectMake(0, 0, 40, 40) normalImage:normalImage selectedImage:selectedImage type:100 + i];
+        button.backgroundColor = [UIColor blueColor];
         [items addObject:button];
     }
     
     
     __weak typeof(self) weakSelf = self;
-    _toolbarView = [[LBEditorToolBar alloc] initWithFrame:CGRectZero items:items.copy callBack:^(JSMessageType type) {
+    _toolbarView = [[LBEditorToolBar alloc] initWithFrame:CGRectMake(0, 0, CGRectGetWidth(self.view.frame), 44) items:items.copy callBack:^(JSMessageType type) {
         
         __strong typeof(weakSelf) strongeSelf = weakSelf;
         
@@ -109,6 +110,8 @@
         }
         
     }];
+    _toolbarView.backgroundColor = [UIColor redColor];
+    [self.view addSubview:_toolbarView];
 }
 
 - (void) _setEditorAttribute:(JSMessageType)type {
@@ -121,9 +124,12 @@
     [super viewDidLoad];	
     self.isFirstSetupComplete = NO;
     self.didFinishLoadingEditor = NO;
-    [self createToolbarView];
     [self buildTextViews];
     [self customizeAppearance];
+    [self createToolbarView];
+    
+    self.automaticallyAdjustsScrollViewInsets = NO;
+    self.toolbarView.contentView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
 }
 
 - (void)customizeAppearance {
