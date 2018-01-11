@@ -17,16 +17,16 @@
 @property (nonatomic, strong, readwrite) NSNumber *lineHeight;
 @property (nonatomic, assign, readwrite) NSInteger lastEditorHeight;
 
-// 编辑工具栏
+// Tool bar for edit
 @property (nonatomic, strong) LBEditorToolBar *toolBar;
 
-// 显示HTML源码的view层
+// View for display HTML source code
 @property (nonatomic, strong) ZSSTextView *sourceView;
 
-// 文本编辑器
+// Text editor
 @property (nonatomic, strong) UIWebView *editorView;
 
-// native和编辑器JS交互工具
+// Native interaction with JavaScript helper
 @property (nonatomic, strong) LBEditorMessageHelper *messageHelper;
 
 @end
@@ -115,7 +115,7 @@
     __weak typeof(self) weakSelf= self;
     LBEditorToolBar *toolBar = [[LBEditorToolBar alloc] initWithFrame:CGRectMake(0, self.view.frame.size.height - 40, self.view.frame.size.width, 40) items:items.copy callBack:^(JSMessageType type) {
         
-        // 工具栏消息
+        // Tool bar send message to message helper
         [weakSelf.messageHelper handleJSMessage:type];
     }];
     
@@ -146,9 +146,9 @@
     int curve = [[info objectForKey:UIKeyboardAnimationCurveUserInfoKey] intValue];
     CGRect keyboardEnd = [[info objectForKey:UIKeyboardFrameEndUserInfoKey] CGRectValue];
     // Keyboard Size
-    //Checks if IOS8, gets correct keyboard height
+    // Checks if IOS8, gets correct keyboard height
     CGFloat keyboardHeight = UIInterfaceOrientationIsLandscape(orientation) ? ([[[UIDevice currentDevice] systemVersion] floatValue] >= 8.000000) ? keyboardEnd.size.height : keyboardEnd.size.width : keyboardEnd.size.height;
-    // 匹配动画曲线
+    // animation cure
     UIViewAnimationOptions animationOptions = curve << 16;
     
     const int extraHeight = 10;
@@ -282,7 +282,7 @@
     
 }
 
-#pragma mark - 添加内容时处理滚动
+#pragma mark - refresh scroll view
 - (void)scrollToCaretAnimated:(BOOL)animated {
     
     BOOL notEnoughInfoToScroll = self.caretYOffset == nil || self.lineHeight == nil;
@@ -309,7 +309,9 @@
         [self.editorView.scrollView scrollRectToVisible:targetRect animated:animated];
     }
 }
+// Get viewport rect
 - (CGRect)viewport {
+    
     UIScrollView *scrollView = self.editorView.scrollView;
     
     CGRect viewport;
@@ -322,7 +324,7 @@
     
     return viewport;
 }
-// 刷新视窗
+// refresh viewport
 - (void)refreshVisibleViewportAndContentSize {
     [self.messageHelper evaluatingJavaScriptFromString:@"ZSSEditor.refreshVisibleViewportSize();"];
 
