@@ -371,8 +371,8 @@ ZSSEditor.defaultParagraphSeparatorTag = function() {
 // MARK: - Styles
 
 ZSSEditor.setBold = function() {
-	document.execCommand('bold', false, null);
-	ZSSEditor.sendEnabledStyles();
+    document.execCommand('bold', false, null);
+    ZSSEditor.sendEnabledStyles();
 };
 
 ZSSEditor.setItalic = function() {

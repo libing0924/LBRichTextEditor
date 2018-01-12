@@ -51,13 +51,14 @@
     return self;
 }
 
+- (void)evaluatingJavaScriptFromString:(NSString *)string {
+    
+    [self evaluatingJavaScriptFromString:string handler:nil];
+}
+
 - (void)evaluatingJavaScriptFromString:(NSString *)string handler:(void (^)(id))handler {
     
     [self _evaluatingJavaScriptFromString:string handler:handler];
-}
-
-- (void)evaluatingJavaScriptFromString:(NSString *)string {
-    [self evaluatingJavaScriptFromString:string handler:nil];
 }
 
 - (void)addScriptMessageHandler:(NSString *)messageName handler:(void (^)(id))handler {
@@ -80,9 +81,13 @@
     
     if ([_webView isKindOfClass:[UIWebView class]])
     {
-        JSContext *context = [self.webView valueForKeyPath:@"documentView.webView.mainFrame.javaScriptContext"];
+        UIWebView *webView = (UIWebView *)_webView;
         
-        JSValue *resultValue = [context evaluateScript:string];
+//        JSContext *context = [self.webView valueForKeyPath:@"documentView.webView.mainFrame.javaScriptContext"];
+//
+//        JSValue *resultValue = [context evaluateScript:string];
+        
+        id resultValue = [webView stringByEvaluatingJavaScriptFromString:string];
         
         if (handler) handler(resultValue);
     }

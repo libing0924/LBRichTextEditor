@@ -218,7 +218,7 @@
 		D693AE1420045FDB005F8A1C /* LBWebViewJavaScriptBridge.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LBWebViewJavaScriptBridge.m; sourceTree = "<group>"; };
 		D693AE162004676A005F8A1C /* LBEditorMessageHelper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LBEditorMessageHelper.h; sourceTree = "<group>"; };
 		D693AE172004676A005F8A1C /* LBEditorMessageHelper.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LBEditorMessageHelper.m; sourceTree = "<group>"; };
-		D693AE192004C05A005F8A1C /* LBBrigeCallbackProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LBBrigeCallbackProtocol.h; sourceTree = "<group>"; };
+		D693AE192004C05A005F8A1C /* LBEditorMessageProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LBEditorMessageProtocol.h; sourceTree = "<group>"; };
 		D693AE1C200605CD005F8A1C /* LBEditorViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LBEditorViewController.h; sourceTree = "<group>"; };
 		D693AE1D200605CD005F8A1C /* LBEditorViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LBEditorViewController.m; sourceTree = "<group>"; };
 		D693AE1F20060978005F8A1C /* UIWebView+HackishAccessoryHiding.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIWebView+HackishAccessoryHiding.h"; sourceTree = "<group>"; };
@@ -387,8 +387,6 @@
 				D66944DE1FFC794200CCD597 /* WPEditorField.m */,
 				D66944D11FFC794000CCD597 /* WPEditorViewController.h */,
 				D66944C91FFC793F00CCD597 /* WPEditorViewController.m */,
-				D66944E11FFC794200CCD597 /* WPImageMeta.h */,
-				D66944E81FFC794400CCD597 /* WPImageMeta.m */,
 				D66944DD1FFC794100CCD597 /* ZBEditorViewController.h */,
 				D66944DC1FFC794100CCD597 /* ZBEditorViewController.m */,
 				D66944CE1FFC793F00CCD597 /* ZBFontSelectController.h */,
@@ -469,13 +467,15 @@
 			isa = PBXGroup;
 			children = (
 				D693AE1020045A49005F8A1C /* LBEditorViewProtocol.h */,
-				D693AE192004C05A005F8A1C /* LBBrigeCallbackProtocol.h */,
+				D693AE192004C05A005F8A1C /* LBEditorMessageProtocol.h */,
 				D693AE1320045FDB005F8A1C /* LBWebViewJavaScriptBridge.h */,
 				D693AE1420045FDB005F8A1C /* LBWebViewJavaScriptBridge.m */,
 				D693AE162004676A005F8A1C /* LBEditorMessageHelper.h */,
 				D693AE172004676A005F8A1C /* LBEditorMessageHelper.m */,
 				D693AE1F20060978005F8A1C /* UIWebView+HackishAccessoryHiding.h */,
 				D693AE2020060978005F8A1C /* UIWebView+HackishAccessoryHiding.m */,
+				D66944E11FFC794200CCD597 /* WPImageMeta.h */,
+				D66944E81FFC794400CCD597 /* WPImageMeta.m */,
 			);
 			path = Other;
 			sourceTree = "<group>";

@@ -11,6 +11,8 @@
 
 @interface LBEditorViewController : UIViewController <UIWebViewDelegate, UITextViewDelegate>
 
+- (NSString *)getHTML;
+
 - (LBEditorToolBar *)loadToolBar;
 
 @end

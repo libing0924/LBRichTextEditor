@@ -109,14 +109,15 @@
     {
         UIImage *normalImage = [UIImage imageNamed:normalImages[i]];
         UIImage *selectedImage = [UIImage imageNamed:@""];
-        LBEditorToolBarButton *button = [[LBEditorToolBarButton alloc] initWithFrame:CGRectMake(0, 0, 40, 40) normalImage:normalImage selectedImage:selectedImage type:i];
+        LBEditorToolBarButton *button = [[LBEditorToolBarButton alloc] initWithFrame:CGRectMake(0, 0, 40, 40) normalImage:normalImage selectedImage:selectedImage type:i + 1];
         [items addObject:button];
     }
     __weak typeof(self) weakSelf= self;
     LBEditorToolBar *toolBar = [[LBEditorToolBar alloc] initWithFrame:CGRectMake(0, self.view.frame.size.height - 40, self.view.frame.size.width, 40) items:items.copy callBack:^(JSMessageType type) {
         
-        // Tool bar send message to message helper
-        [weakSelf.messageHelper handleJSMessage:type];
+        // Handle message
+        [weakSelf handleJSMessage:type];
+
     }];
     
     return toolBar;
@@ -134,6 +135,12 @@
     NSURL *editorURL = [bundle URLForResource:@"editor" withExtension:@"html"];
     [self.editorView loadRequest:[NSURLRequest requestWithURL:editorURL]];
     
+}
+
+#pragma mark - publick method
+- (NSString *)getHTML {
+    
+    return [self.messageHelper getHTML];
 }
 
 - (void)keyboardWillShowOrHide:(NSNotification *)notification {
@@ -282,6 +289,100 @@
     
 }
 
+#pragma mark - Handle Message
+- (void) handleJSMessage:(JSMessageType)type {
+    
+    switch (type) {
+        case JSMessageTypeAttributeJustifyLeft:
+        {
+            [self.messageHelper alignLeft];
+            break;
+        }
+        case JSMessageTypeAttributeJustifyCenter:
+        {
+            [self.messageHelper alignCenter];
+            break;
+        }
+        case JSMessageTypeAttributeJustifyRight:
+        {
+            [self.messageHelper alignRight];
+            break;
+        }
+        case JSMessageTypeAttributeJustifyFull:
+        {
+            
+            break;
+        }
+        case JSMessageTypeAttributeBlod:
+        {
+            
+            break;
+        }
+        case JSMessageTypeAttributeBlockquote:
+        {
+            
+            break;
+        }
+        case JSMessageTypeAttributeItalic:
+        {
+            
+            break;
+        }
+        case JSMessageTypeAttributeSubscript:
+        {
+            
+            break;
+        }
+        case JSMessageTypeAttributeUnderline:
+        {
+            
+            break;
+        }
+        case JSMessageTypeAttributeSuperscript:
+        {
+            
+            break;
+        }
+        case JSMessageTypeAttributeStrikeThrough:
+        {
+            
+            break;
+        }
+        case JSMessageTypeAttributeUnorderedList:
+        {
+            
+            break;
+        }
+        case JSMessageTypeAttributeOrderedList:
+        {
+            
+            break;
+        }
+        case JSMessageTypeAttributeHorizontalRule:
+        {
+            
+            break;
+        }
+        case JSMessageTypeAttributeIndent:
+        {
+            
+            break;
+        }
+        case JSMessageTypeAttributeOutdent:
+        {
+            
+            break;
+        }
+        case JSMessageTypeAttributeFontSize:
+        {
+            
+            break;
+        }
+        default:
+            break;
+    }
+}
+
 #pragma mark - refresh scroll view
 - (void)scrollToCaretAnimated:(BOOL)animated {
     
@@ -338,4 +439,5 @@
     self.lastEditorHeight = newHeight;
     self.editorView.scrollView.contentSize = CGSizeMake(CGRectGetWidth(self.view.frame), newHeight);
 }
+
 @end

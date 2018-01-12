@@ -29,7 +29,7 @@ NSString * const JSMessageOutdent            = @"ZSSEditor.setOutdent();";
 NSString * const JSMessageFontSize           = @"ZSSEditor.setFontSize(%ld);"; // 1-15
 NSString * const JSMessageHeading            = @"ZSSEditor.setHeading('%@');"; // h1 h2 h3 h4 h5 h6
 NSString * const JSMessageParagraph          = @"ZSSEditor.setParagraph()";
-NSString * const JSMessageFormating          = @"ZSSEditor.removeFormating();";
+NSString * const JSMessageRemoveFormating          = @"ZSSEditor.removeFormating();";
 NSString * const JSMessageTextColor          = @"ZSSEditor.setTextColor(\"%@\");";
 NSString * const JSMessageBackgroundColor    = @"ZSSEditor.setBackgroundColor(\"%@\");";
 // image
@@ -65,6 +65,7 @@ NSString * const JSMessageRestoreRange = @"ZSSEditor.restoreRange();";
 NSString * const JSMessageBackupRange = @"ZSSEditor.backupRange();";
 NSString * const JSMessageGetSelectedText = @"ZSSEditor.getSelectedText();";
 NSString * const JSMessageInsertHTML = @"ZSSEditor.insertHTML(\"%@\");";
+NSString * const JSMessageGetHTML = @"ZSSEditor.getField(\"zss_field_content\").getHTML();";
 
 @implementation LBEditorMessageHelper
 
@@ -78,70 +79,88 @@ NSString * const JSMessageInsertHTML = @"ZSSEditor.insertHTML(\"%@\");";
     return brige;
 }
 
-- (void)handleJSMessage:(JSMessageType)type {
-    
-}
-
 #pragma mark - invoke JavaScript
 - (void)alignLeft {
     
+    [self evaluatingJavaScriptFromString:JSMessageJustifyLeft];
 }
 - (void)alignCenter {
     
+    [self evaluatingJavaScriptFromString:JSMessageJustifyCenter];
 }
 - (void)alignRight {
     
+    [self evaluatingJavaScriptFromString:JSMessageJustifyRight];
 }
 - (void)alignFull {
     
+    [self evaluatingJavaScriptFromString:JSMessageJustifyFull];
 }
 - (void)setBold {
     
+    [self evaluatingJavaScriptFromString:JSMessageBlod];
 }
 - (void)setBlockQuote {
     
+    [self evaluatingJavaScriptFromString:JSMessageBlockquote];
 }
 - (void)setItalic {
     
+    [self evaluatingJavaScriptFromString:JSMessageItalic];
 }
 - (void)setSubscript {
     
+    [self evaluatingJavaScriptFromString:JSMessageSubscript];
 }
 - (void)setUnderline {
     
+    [self evaluatingJavaScriptFromString:JSMessageUnderline];
 }
 - (void)setSuperscript {
     
+    [self evaluatingJavaScriptFromString:JSMessageSuperscript];
 }
 - (void)setStrikethrough {
     
+    [self evaluatingJavaScriptFromString:JSMessageStrikeThrough];
 }
 - (void)setUnorderedList {
     
+    [self evaluatingJavaScriptFromString:JSMessageUnorderedList];
 }
 - (void)setOrderedList {
     
+    [self evaluatingJavaScriptFromString:JSMessageOrderedList];
 }
 - (void)setHR {
     
+    [self evaluatingJavaScriptFromString:JSMessageHorizontalRule];
 }
 - (void)setIndent {
     
+    [self evaluatingJavaScriptFromString:JSMessageIndent];
 }
 - (void)setOutdent {
     
+    [self evaluatingJavaScriptFromString:JSMessageOutdent];
 }
 - (void)setParagraph {
     
+    [self evaluatingJavaScriptFromString:JSMessageParagraph];
 }
 - (void)removeFormat {
     
+    [self evaluatingJavaScriptFromString:JSMessageRemoveFormating];
 }
 - (void)setHeading:(NSString *)head {
     
+    NSString *trigger = [NSString stringWithFormat:JSMessageHeading, head];
+    [self evaluatingJavaScriptFromString:trigger];
 }
 - (void)setFontSize:(NSInteger)size {
     
+    NSString *trigger = [NSString stringWithFormat:JSMessageFontSize, size];
+    [self evaluatingJavaScriptFromString:trigger];
 }
 - (void)setTextColor:(UIColor *)color {
     
@@ -308,6 +327,16 @@ NSString * const JSMessageInsertHTML = @"ZSSEditor.insertHTML(\"%@\");";
     }];
     
     return text;
+}
+- (NSString *)getHTML {
+    
+    __block NSString *HTML = nil;
+    [self evaluatingJavaScriptFromString:JSMessageGetHTML handler:^(id result) {
+        
+        HTML = result;
+    }];
+    
+    return HTML;
 }
 
 #pragma mark - JavaScript Callback
