@@ -2023,28 +2023,28 @@ ZSSEditor.sendEnabledStyles = function(e) {
 
 	var items = [];
 	
-    var focusedField = this.getFocusedField();
+//    var focusedField = this.getFocusedField();
     
-    if (focusedField && !focusedField.hasNoStyle) {
+//    if (focusedField && !focusedField.hasNoStyle) {
         // Find all relevant parent tags
-        var parentTags = ZSSEditor.parentTags();
-        
-        for (var i = 0; i < parentTags.length; i++) {
-            var currentNode = parentTags[i];
-            
-            if (currentNode.nodeName.toLowerCase() == 'a') {
-                ZSSEditor.currentEditingLink = currentNode;
-                
-                var title = encodeURIComponent(currentNode.text);
-                var href = encodeURIComponent(currentNode.href);
-                
-                items.push('link-title:' + title);
-                items.push('link:' + href);
-            } else if (currentNode.nodeName == NodeName.BLOCKQUOTE) {
-                items.push('blockquote');
-            }
-        }
-        
+//        var parentTags = ZSSEditor.parentTags();
+//
+//        for (var i = 0; i < parentTags.length; i++) {
+//            var currentNode = parentTags[i];
+//
+//            if (currentNode.nodeName.toLowerCase() == 'a') {
+//                ZSSEditor.currentEditingLink = currentNode;
+//
+//                var title = encodeURIComponent(currentNode.text);
+//                var href = encodeURIComponent(currentNode.href);
+//
+//                items.push('link-title:' + title);
+//                items.push('link:' + href);
+//            } else if (currentNode.nodeName == NodeName.BLOCKQUOTE) {
+//                items.push('blockquote');
+//            }
+//        }
+    
         if (ZSSEditor.isCommandEnabled('bold')) {
             items.push('bold');
         }
@@ -2097,9 +2097,33 @@ ZSSEditor.sendEnabledStyles = function(e) {
         if (formatBlock.length > 0) {
             items.push(formatBlock);
         }
+    
+    
         
         // Use jQuery to figure out those that are not supported
         if (typeof(e) != "undefined") {
+            
+            // The target element
+            var s = ZSSEditor.getSelectedNode();
+            var t = $(s);
+            var nodeName = e.target.nodeName.toLowerCase();
+            
+            // Link
+            if (nodeName == 'a') {
+                ZSSEditor.currentEditingLink = t;
+                var title = t.attr('title');
+                items.push('link:'+t.attr('href'));
+                if (t.attr('title') !== undefined) {
+                    items.push('link-title:'+t.attr('title'));
+                }
+                
+            } else {
+                ZSSEditor.currentEditingLink = null;
+            }
+            // Blockquote
+            if (nodeName == 'blockquote') {
+                items.push('indent');
+            }
             
             // The target element
             var t = $(e.target);
@@ -2155,9 +2179,26 @@ ZSSEditor.sendEnabledStyles = function(e) {
                 }
             }
         }
-    }
+//    }
 
 	ZSSEditor.stylesCallback(items);
+};
+
+ZSSEditor.getSelectedNode = function() {
+    var node,selection;
+    if (window.getSelection) {
+        selection = getSelection();
+        node = selection.anchorNode;
+    }
+    if (!node && document.selection) {
+        selection = document.selection
+        var range = selection.getRangeAt ? selection.getRangeAt(0) : selection.createRange();
+        node = range.commonAncestorContainer ? range.commonAncestorContainer :
+        range.parentElement ? range.parentElement() : range.item(0);
+    }
+    if (node) {
+        return (node.nodeName == "#text" ? node.parentNode : node);
+    }
 };
 
 // MARK: - Advanced Node Manipulation

@@ -51,7 +51,7 @@ FOUNDATION_EXPORT NSString * const JSMessageRemoveImage;
 FOUNDATION_EXPORT NSString * const JSMessageSetImageEditText;
 // video
 FOUNDATION_EXPORT NSString * const JSMessageInsertVideo;
-FOUNDATION_EXPORT NSString * const JSMessageInsertProgressVideoPosterImage;
+FOUNDATION_EXPORT NSString * const JSMessageInsertProgressVideoPoster;
 FOUNDATION_EXPORT NSString * const JSMessageSetProgressOnVideo;
 FOUNDATION_EXPORT NSString * const JSMessageReplaceLocalVideoWithRemote;
 FOUNDATION_EXPORT NSString * const JSMessageMarkVideoUploadFailed;
@@ -74,6 +74,7 @@ FOUNDATION_EXPORT NSString * const JSMessageInsertHTML;
 FOUNDATION_EXPORT NSString * const JSMessageGetHTML;
 
 // 用于回调的URL scheme
+static NSString * const JSCallbackSelectionStyleScheme = @"callback-selection-style";
 static NSString * const JSCallbackInputScheme = @"callback-input";
 static NSString * const JSCallbackLinkTapScheme = @"callback-link-tap";
 static NSString * const JSCallbackImageTapScheme = @"callback-image-tap";
@@ -82,7 +83,6 @@ static NSString * const JSCallbackLogScheme = @"callback-log";
 static NSString * const JSCallbackLogErrorScheme = @"callback-log-error";
 static NSString * const JSCallbackNewFieldScheme = @"callback-new-field";
 static NSString * const JSCallbackSelectionChangeScheme = @"callback-selection-changed";
-static NSString * const JSCallbackSelectionStyleScheme = @"callback-selection-style";
 static NSString * const JSCallbackDomLoadedScheme = @"callback-dom-loaded";
 static NSString * const JSCallbackImageReplacedScheme = @"callback-image-replaced";
 static NSString * const JSCallbackVideoReplacedScheme = @"callback-video-replaced";
@@ -108,8 +108,6 @@ static NSString * const kWPEditorViewFieldContentId = @"zss_field_content";
 @property (nonatomic, strong, readwrite) NSString *selectedImageAlt;
 
 + (instancetype)defaultBrige:(id)webView;
-
-- (void)handleJSMessage:(JSMessageType) type;
 
 - (void)alignLeft;
 - (void)alignCenter;

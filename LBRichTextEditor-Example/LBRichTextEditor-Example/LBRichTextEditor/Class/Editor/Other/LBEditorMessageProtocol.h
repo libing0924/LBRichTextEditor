@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "LBEditorToolBarButton.h"
+//#import "LBEditorToolBarButton.h"
 
 @class LBEditorMessageHelper;
 @class WPImageMeta;

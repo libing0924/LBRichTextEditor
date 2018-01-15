@@ -436,10 +436,10 @@
 		D693ADFB20035AF4005F8A1C /* View */ = {
 			isa = PBXGroup;
 			children = (
-				D693ADFC20035B24005F8A1C /* LBEditorToolBar.h */,
-				D693ADFD20035B24005F8A1C /* LBEditorToolBar.m */,
 				D693ADFF20035B3D005F8A1C /* LBEditorToolBarButton.h */,
 				D693AE0020035B3D005F8A1C /* LBEditorToolBarButton.m */,
+				D693ADFC20035B24005F8A1C /* LBEditorToolBar.h */,
+				D693ADFD20035B24005F8A1C /* LBEditorToolBar.m */,
 				D66944E31FFC794300CCD597 /* WPEditorView.h */,
 				D66944D41FFC794000CCD597 /* WPEditorView.m */,
 			);
@@ -470,12 +470,12 @@
 				D693AE192004C05A005F8A1C /* LBEditorMessageProtocol.h */,
 				D693AE1320045FDB005F8A1C /* LBWebViewJavaScriptBridge.h */,
 				D693AE1420045FDB005F8A1C /* LBWebViewJavaScriptBridge.m */,
-				D693AE162004676A005F8A1C /* LBEditorMessageHelper.h */,
-				D693AE172004676A005F8A1C /* LBEditorMessageHelper.m */,
 				D693AE1F20060978005F8A1C /* UIWebView+HackishAccessoryHiding.h */,
 				D693AE2020060978005F8A1C /* UIWebView+HackishAccessoryHiding.m */,
 				D66944E11FFC794200CCD597 /* WPImageMeta.h */,
 				D66944E81FFC794400CCD597 /* WPImageMeta.m */,
+				D693AE162004676A005F8A1C /* LBEditorMessageHelper.h */,
+				D693AE172004676A005F8A1C /* LBEditorMessageHelper.m */,
 			);
 			path = Other;
 			sourceTree = "<group>";

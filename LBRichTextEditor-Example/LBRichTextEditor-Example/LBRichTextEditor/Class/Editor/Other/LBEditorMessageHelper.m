@@ -45,8 +45,8 @@ NSString * const JSMessageRemoveImage                   = @"ZSSEditor.removeImag
 NSString * const JSMessageSetImageEditText              = @"ZSSEditor.localizedEditText = \"%@\"";
 // video
 NSString * const JSMessageInsertVideo                       = @"ZSSEditor.insertVideo(\"%@\", \"%@\", \"%@\");";
-NSString * const JSMessageInsertProgressVideoPosterImage    = @"ZSSEditor.insertInProgressVideoWithIDUsingPosterImage(\"%@\", \"%@\");";
-NSString * const JSMessageSetProgressOnVideo                   = @"ZSSEditor.setProgressOnVideo(\"%@\", %f);";
+NSString * const JSMessageInsertProgressVideoPoster         = @"ZSSEditor.insertInProgressVideoWithIDUsingPosterImage(\"%@\", \"%@\");";
+NSString * const JSMessageSetProgressOnVideo                = @"ZSSEditor.setProgressOnVideo(\"%@\", %f);";
 NSString * const JSMessageReplaceLocalVideoWithRemote       = @"ZSSEditor.replaceLocalVideoWithRemoteVideo(\"%@\", \"%@\", \"%@\", \"%@\");";
 NSString * const JSMessageMarkVideoUploadFailed             = @"ZSSEditor.markVideoUploadFailed(\"%@\", \"%@\");";
 NSString * const JSMessageUnmarkVideoUploadFailed           = @"ZSSEditor.unmarkVideoUploadFailed(\"%@\");";
@@ -177,7 +177,7 @@ NSString * const JSMessageGetHTML = @"ZSSEditor.getField(\"zss_field_content\").
 - (void)insertHTML:(NSString *)html {
     NSString *cleanedHTML = [self addSlashes:html];
     NSString *trigger = [NSString stringWithFormat:JSMessageInsertHTML, cleanedHTML];
-    [self.webView stringByEvaluatingJavaScriptFromString:trigger];
+    [self evaluatingJavaScriptFromString:trigger];
 }
 
 - (void)insertLocalImage:(NSString *)url uniqueId:(NSString *)uniqueId {
@@ -235,15 +235,15 @@ NSString * const JSMessageGetHTML = @"ZSSEditor.getField(\"zss_field_content\").
 }
 
 - (void)insertVideo:(NSString *)videoURL posterImage:(NSString *)posterImageURL alt:(NSString *)alt {
-    NSString *trigger = [NSString stringWithFormat:@"ZSSEditor.insertVideo(\"%@\", \"%@\", \"%@\");", videoURL, posterImageURL, alt];
+    NSString *trigger = [NSString stringWithFormat:JSMessageInsertVideo, videoURL, posterImageURL, alt];
     [self evaluatingJavaScriptFromString:trigger];
 }
 - (void)insertInProgressVideoWithID:(NSString *)uniqueId usingPosterImage:(NSString *)posterImageURL {
-    NSString *trigger = [NSString stringWithFormat:@"ZSSEditor.insertInProgressVideoWithIDUsingPosterImage(\"%@\", \"%@\");", uniqueId, posterImageURL];
+    NSString *trigger = [NSString stringWithFormat:JSMessageInsertProgressVideoPoster, uniqueId, posterImageURL];
     [self evaluatingJavaScriptFromString:trigger];
 }
 - (void)setProgress:(double)progress onVideo:(NSString *)uniqueId {
-    NSString *trigger = [NSString stringWithFormat:@"ZSSEditor.setProgressOnVideo(\"%@\", %f);", uniqueId, progress];
+    NSString *trigger = [NSString stringWithFormat:JSMessageSetProgressOnVideo, uniqueId, progress];
     [self evaluatingJavaScriptFromString:trigger];
 }
 - (void)replaceLocalVideoWithID:(NSString *)uniqueID forRemoteVideo:(NSString *)videoURL remotePoster:(NSString *)posterURL videoPress:(NSString *)videoPressID {
@@ -255,27 +255,27 @@ NSString * const JSMessageGetHTML = @"ZSSEditor.getField(\"zss_field_content\").
     if (!posterURLSafe) {
         posterURLSafe = @"";
     }
-    NSString *trigger = [NSString stringWithFormat:@"ZSSEditor.replaceLocalVideoWithRemoteVideo(\"%@\", \"%@\", \"%@\", \"%@\");", uniqueID, videoURL, posterURLSafe, videoPressSafeID];
+    NSString *trigger = [NSString stringWithFormat:JSMessageReplaceLocalVideoWithRemote, uniqueID, videoURL, posterURLSafe, videoPressSafeID];
     [self evaluatingJavaScriptFromString:trigger];
 }
 - (void)markVideo:(NSString *)uniqueId failedUploadWithMessage:(NSString *) message {
-    NSString *trigger = [NSString stringWithFormat:@"ZSSEditor.markVideoUploadFailed(\"%@\", \"%@\");", uniqueId, message];
+    NSString *trigger = [NSString stringWithFormat:JSMessageMarkVideoUploadFailed, uniqueId, message];
     [self evaluatingJavaScriptFromString:trigger];
 }
 - (void)unmarkVideoFailedUpload:(NSString *)uniqueId {
-    NSString *trigger = [NSString stringWithFormat:@"ZSSEditor.unmarkVideoUploadFailed(\"%@\");", uniqueId];
+    NSString *trigger = [NSString stringWithFormat:JSMessageUnmarkVideoUploadFailed, uniqueId];
     [self evaluatingJavaScriptFromString:trigger];
 }
 - (void)removeVideo:(NSString *)uniqueId {
-    NSString *trigger = [NSString stringWithFormat:@"ZSSEditor.removeVideo(\"%@\");", uniqueId];
+    NSString *trigger = [NSString stringWithFormat:JSMessageRemoveVideo, uniqueId];
     [self evaluatingJavaScriptFromString:trigger];
 }
 - (void)setVideoPress:(NSString *)videoPressID source:(NSString *)videoURL poster:(NSString *)posterURL {
-    NSString *trigger = [NSString stringWithFormat:@"ZSSEditor.setVideoPressLinks(\"%@\", \"%@\", \"%@\");", videoPressID, videoURL, posterURL];
+    NSString *trigger = [NSString stringWithFormat:JSMessageSetVideoPressLinks, videoPressID, videoURL, posterURL];
     [self evaluatingJavaScriptFromString:trigger];
 }
 - (void)pauseAllVideos {
-    NSString *trigger = [NSString stringWithFormat:@"ZSSEditor.pauseAllVideos();"];
+    NSString *trigger = [NSString stringWithFormat:JSMessagePauseAllVideos];
     [self evaluatingJavaScriptFromString:trigger];
 }
 
@@ -347,15 +347,19 @@ NSString * const JSMessageGetHTML = @"ZSSEditor.getField(\"zss_field_content\").
         
         if ([weakSelf.editDelegate respondsToSelector:@selector(javaScriptBridgeTextDidChange:fieldId:yOffset:height:)]) {
             
-            [weakSelf.editDelegate javaScriptBridgeTextDidChange:weakSelf fieldId:parameter[@"id"] yOffset:[parameter[@"yOffset"] floatValue] height:[parameter[@"height"] floatValue]];
+            NSString *uniqueID   = parameter[@"id"];
+            CGFloat yOffset      = [parameter[@"yOffset"] floatValue];
+            CGFloat height       = [parameter[@"height"] floatValue];
+            
+            [weakSelf.editDelegate javaScriptBridgeTextDidChange:weakSelf fieldId:uniqueID yOffset:yOffset height:height];
         }
     }];
     [self addScriptURLSchemeHandler:JSCallbackLinkTapScheme handler:^(NSURL *URL, id parameter) {
         
         if ([weakSelf.editDelegate respondsToSelector:@selector(javaScriptBridge:linkTapped:title:)]) {
             
-            NSString *urlStr = parameter[@"url"];
-            NSString *title = parameter[@"title"];
+            NSString *urlStr    = parameter[@"url"];
+            NSString *title     = parameter[@"title"];
             
             NSURL *url = [NSURL URLWithString:urlStr];
             
@@ -367,8 +371,8 @@ NSString * const JSMessageGetHTML = @"ZSSEditor.getField(\"zss_field_content\").
         if ([weakSelf.editDelegate respondsToSelector:@selector(javaScriptBridge:imageTapped:url:imageMeta:)]) {
             
             NSString *urlStr = parameter[@"url"];
-            NSString *ID = parameter[@"id"];
-            NSString *meta = parameter[@"meta"];
+            NSString *ID     = parameter[@"id"];
+            NSString *meta   = parameter[@"meta"];
             
             NSURL *url = [NSURL URLWithString:urlStr];
             WPImageMeta *imageMeta = [WPImageMeta imageMetaFromJSONString:meta];
@@ -380,11 +384,11 @@ NSString * const JSMessageGetHTML = @"ZSSEditor.getField(\"zss_field_content\").
         
         if ([weakSelf.editDelegate respondsToSelector:@selector(javaScriptBridge:videoTapped:url:)]) {
             
-            NSString *urlStr = parameter[@"url"];
-            NSString *ID = parameter[@"id"];
+            NSString *urlStr    = parameter[@"url"];
+            NSString *uniqueID  = parameter[@"id"];
             
             NSURL *url = [NSURL URLWithString:urlStr];
-            [weakSelf.editDelegate javaScriptBridge:weakSelf videoTapped:ID url:url];
+            [weakSelf.editDelegate javaScriptBridge:weakSelf videoTapped:uniqueID url:url];
         }
     }];
     [self addScriptURLSchemeHandler:JSCallbackNewFieldScheme handler:^(NSURL *URL, id parameter) {
@@ -392,14 +396,17 @@ NSString * const JSMessageGetHTML = @"ZSSEditor.getField(\"zss_field_content\").
         if ([weakSelf.editDelegate respondsToSelector:@selector(javaScriptBridge:newField:)]) {
             
             // id为zss_field_title、zss_field_content其中之一
-            [weakSelf.editDelegate javaScriptBridge:weakSelf newField:parameter[@"id"]];
+            NSString *uniqueID = parameter[@"id"];
+            [weakSelf.editDelegate javaScriptBridge:weakSelf newField:uniqueID];
         }
     }];
     [self addScriptURLSchemeHandler:JSCallbackSelectionChangeScheme handler:^(NSURL *URL, id parameter) {
         
         if ([weakSelf.editDelegate respondsToSelector:@selector(javaScriptBridge:selectionChancgeYOffset:height:)]) {
             
-            [weakSelf.editDelegate javaScriptBridge:weakSelf selectionChancgeYOffset:[parameter[@"yOffset"] floatValue] height:[parameter[@"height"] floatValue]];
+            CGFloat yOffset = [parameter[@"yOffset"] floatValue];
+            CGFloat height  = [parameter[@"height"] floatValue];
+            [weakSelf.editDelegate javaScriptBridge:weakSelf selectionChancgeYOffset:yOffset height:height];
         }
     }];
     [self addScriptURLSchemeHandler:JSCallbackDomLoadedScheme handler:^(NSURL *URL, id parameter) {
@@ -417,21 +424,23 @@ NSString * const JSMessageGetHTML = @"ZSSEditor.getField(\"zss_field_content\").
         
         if ([weakSelf.editDelegate respondsToSelector:@selector(javaScriptBridge:imageReplaced:)]) {
             
-            [weakSelf.editDelegate javaScriptBridge:weakSelf imageReplaced:parameter[@"id"]];
+            NSString *uniqueID = parameter[@"id"];
+            [weakSelf.editDelegate javaScriptBridge:weakSelf imageReplaced:uniqueID];
         }
     }];
     [self addScriptURLSchemeHandler:JSCallbackVideoReplacedScheme handler:^(NSURL *URL, id parameter) {
         
         if ([weakSelf.editDelegate respondsToSelector:@selector(javaScriptBridge:videoReplaced:)]) {
             
-            [weakSelf.editDelegate javaScriptBridge:weakSelf videoReplaced:parameter[@"id"]];
+            NSString *uniqueID = parameter[@"id"];
+            [weakSelf.editDelegate javaScriptBridge:weakSelf videoReplaced:uniqueID];
         }
     }];
     [self addScriptURLSchemeHandler:JSCallbackVideoFullScreenStartedScheme handler:^(NSURL *URL, id parameter) {
         
         if ([weakSelf.editDelegate respondsToSelector:@selector(javaScriptBridge:videoStardFullScreen:)]) {
             
-            [weakSelf.webView stringByEvaluatingJavaScriptFromString:@"ZSSEditor.backupRange();"];
+            [weakSelf evaluatingJavaScriptFromString:JSMessageBackupRange];
             [weakSelf.editDelegate javaScriptBridge:weakSelf videoStardFullScreen:nil];
         }
     }];
@@ -439,22 +448,24 @@ NSString * const JSMessageGetHTML = @"ZSSEditor.getField(\"zss_field_content\").
         
         if ([weakSelf.editDelegate respondsToSelector:@selector(javaScriptBridge:videoEndedFullScreen:)]) {
             
+            [weakSelf evaluatingJavaScriptFromString:JSMessageRestoreRange];
             [weakSelf.editDelegate javaScriptBridge:weakSelf videoEndedFullScreen:nil];
-            [weakSelf.webView stringByEvaluatingJavaScriptFromString:@"ZSSEditor.restoreRange();"];
         }
     }];
     [self addScriptURLSchemeHandler:JSCallbackVideoPressInfoRequestScheme handler:^(NSURL *URL, id parameter) {
         
         if ([weakSelf.editDelegate respondsToSelector:@selector(javaScriptBridge:videoPressInfoRequest:)]) {
             
-            [weakSelf.editDelegate javaScriptBridge:weakSelf videoPressInfoRequest:parameter[@"id"]];
+            NSString *uniqueID = parameter[@"id"];
+            [weakSelf.editDelegate javaScriptBridge:weakSelf videoPressInfoRequest:uniqueID];
         }
     }];
     [self addScriptURLSchemeHandler:JSCallbackMediaRemovedScheme handler:^(NSURL *URL, id parameter) {
         
         if ([weakSelf.editDelegate respondsToSelector:@selector(javaScriptBridge:mediaRemoved:)]) {
             
-            [weakSelf.editDelegate javaScriptBridge:weakSelf mediaRemoved:parameter[@"id"]];
+            NSString *uniqueID = parameter[@"id"];
+            [weakSelf.editDelegate javaScriptBridge:weakSelf mediaRemoved:uniqueID];
         }
     }];
     [self addScriptURLSchemeHandler:JSCallbackPasteScheme handler:^(NSURL *URL, id parameter) {
@@ -470,14 +481,16 @@ NSString * const JSMessageGetHTML = @"ZSSEditor.getField(\"zss_field_content\").
         
         if ([weakSelf.editDelegate respondsToSelector:@selector(javaScriptBridge:fieldFocusedIn:)]) {
             
-            [weakSelf.editDelegate javaScriptBridge:weakSelf fieldFocusedIn:parameter[@"id"]];
+            NSString *uniqueID = parameter[@"id"];
+            [weakSelf.editDelegate javaScriptBridge:weakSelf fieldFocusedIn:uniqueID];
         }
     }];
     [self addScriptURLSchemeHandler:JSCallbackFocusOutScheme handler:^(NSURL *URL, id parameter) {
         
         if ([weakSelf.editDelegate respondsToSelector:@selector(javaScriptBridge:fieldFocusedOut:)]) {
             
-            [weakSelf.editDelegate javaScriptBridge:weakSelf fieldFocusedOut:parameter[@"id"]];
+            NSString *uniqueID = parameter[@"id"];
+            [weakSelf.editDelegate javaScriptBridge:weakSelf fieldFocusedOut:uniqueID];
         }
     }];
     

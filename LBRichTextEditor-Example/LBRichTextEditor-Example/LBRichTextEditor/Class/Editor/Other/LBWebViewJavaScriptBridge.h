@@ -5,7 +5,7 @@
 //  Created by 李冰 on 2018/1/9.
 //  Copyright © 2018年 李冰. All rights reserved.
 //
-
+// Using for WKWebView and UIWebView compatibility;
 #import <Foundation/Foundation.h>
 
 @interface LBWebViewJavaScriptBridge : NSObject
