@@ -102,16 +102,14 @@
 
 - (LBEditorToolBar *)loadToolBar {
     
-    NSMutableArray *items = [NSMutableArray new];
-    NSArray *normalImages = @[@"ZSSbold", @"ZSSunderline", @"ZSStextcolor", @"ZSSbgcolor", @"ZSSfonts", @"ZSSimageDevice", @"ZSSleftjustify", @"ZSScenterjustify", @"ZSSrightjustify"];
+    NSArray *items = [self toolBarButtonItems];
     
-    for (int i = 0; i < 9; i++)
+    if (!items)
     {
-        UIImage *normalImage = [UIImage imageNamed:normalImages[i]];
-        UIImage *selectedImage = [UIImage imageNamed:@""];
-        LBEditorToolBarButton *button = [[LBEditorToolBarButton alloc] initWithFrame:CGRectMake(0, 0, 40, 40) normalImage:normalImage selectedImage:selectedImage type:i + 1];
-        [items addObject:button];
+        
+        items = [self _normalButtonItems];
     }
+    
     __weak typeof(self) weakSelf= self;
     LBEditorToolBar *toolBar = [[LBEditorToolBar alloc] initWithFrame:CGRectMake(0, self.view.frame.size.height - 40, self.view.frame.size.width, 40) items:items.copy callBack:^(JSMessageType type) {
         
@@ -121,6 +119,11 @@
     }];
     
     return toolBar;
+}
+
+- (NSArray *)toolBarButtonItems {
+    
+    return nil;
 }
 
 - (void)createJavaScriptBridge {
@@ -438,6 +441,23 @@
 
     self.lastEditorHeight = newHeight;
     self.editorView.scrollView.contentSize = CGSizeMake(CGRectGetWidth(self.view.frame), newHeight);
+}
+
+- (NSArray *)_normalButtonItems {
+    
+    NSArray *normalImages = @[@"LBBlod_normal", @"LBItalic_normal", @"LBUnderline_normal", @"LBThroughline_normal", @"LBTextColor_normal", @"LBBGColor_normal", @"LBTextSize_normal", @"LBImage", @"LBVideo"];
+    NSArray *types = @[@(JSMessageTypeAttributeBlod), @(JSMessageTypeAttributeItalic), @(JSMessageTypeAttributeUnderline), @(JSMessageTypeAttributeStrikeThrough), @(JSMessageTypeAttributeTextColor), @(JSMessageTypeAttributeBackgroundColor), @(JSMessageTypeAttributeFontSize), @(JSMessageTypeImageInsertLocal), @(JSMessageTypeVideoInsertLocal)];
+    
+    NSMutableArray *tmpItems = @[].mutableCopy;
+    for (int i = 0; i < 9; i++)
+    {
+        UIImage *normalImage = [UIImage imageNamed:normalImages[i]];
+        UIImage *selectedImage = [UIImage imageNamed:@""];
+        LBEditorToolBarButton *button = [[LBEditorToolBarButton alloc] initWithFrame:CGRectMake(0, 0, 40, 40) normalImage:normalImage selectedImage:selectedImage type:[types[i] integerValue]];
+        [tmpItems addObject:button];
+    }
+    
+    return tmpItems.copy;
 }
 
 @end

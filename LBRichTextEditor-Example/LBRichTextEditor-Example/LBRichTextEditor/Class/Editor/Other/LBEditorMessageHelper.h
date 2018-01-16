@@ -74,6 +74,7 @@ FOUNDATION_EXPORT NSString * const JSMessageInsertHTML;
 FOUNDATION_EXPORT NSString * const JSMessageGetHTML;
 
 // 用于回调的URL scheme
+// 编辑样式改变回调
 static NSString * const JSCallbackSelectionStyleScheme = @"callback-selection-style";
 static NSString * const JSCallbackInputScheme = @"callback-input";
 static NSString * const JSCallbackLinkTapScheme = @"callback-link-tap";

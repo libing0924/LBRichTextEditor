@@ -13,6 +13,6 @@
 
 - (NSString *)getHTML;
 
-- (LBEditorToolBar *)loadToolBar;
+- (NSArray *)loadToolBarButtonItems;
 
 @end

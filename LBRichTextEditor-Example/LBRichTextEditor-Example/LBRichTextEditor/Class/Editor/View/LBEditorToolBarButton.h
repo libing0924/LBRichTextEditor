@@ -30,6 +30,8 @@ typedef NS_ENUM(NSInteger, JSMessageType) {
     JSMessageTypeAttributeHeading, // H标签
     JSMessageTypeAttributeParagraph, // 段落
     JSMessageTypeAttributeFormating, // 格式化
+    JSMessageTypeAttributeTextColor, // 字体颜色
+    JSMessageTypeAttributeBackgroundColor, // 背景色
     
     JSMessageTypeImageInsertLocal = 200, // 插入本地图片
     JSMessageTypeImageInsertRemote, // 插入远程图片
