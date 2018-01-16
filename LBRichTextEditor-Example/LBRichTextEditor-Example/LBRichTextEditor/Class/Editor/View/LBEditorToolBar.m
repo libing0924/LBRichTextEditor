@@ -9,7 +9,7 @@
 #import "LBEditorToolBar.h"
 #import "LBEditorToolBarButton.h"
 
-#define DEFAULT_ITEM_SPACE 10.0
+#define DEFAULT_ITEM_SPACE 2.0
 #define DEFAULT_BACKGROUND_COLOR [UIColor colorWithRed:241.0 / 255.0f green:241.0 / 255.0f blue:241.0 / 255.0f alpha:1.0]
 
 @interface LBEditorToolBar()<UIScrollViewDelegate>
@@ -52,10 +52,11 @@
 - (void) _initializeItems {
     
     UIView *line = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width, 0.5)];
-    line.backgroundColor = [UIColor blackColor];
+    line.backgroundColor = [UIColor colorWithRed:0.25 green:0.25 blue:0.25 alpha:1];
     [self addSubview:line];
     
-    _contentView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 1, self.frame.size.width, 44)];
+    _contentView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 1, self.frame.size.width, 50)];
+    _contentView.showsHorizontalScrollIndicator = NO;
     _contentView.contentSize = CGSizeZero;
     _contentView.delegate = self;
     _contentView.autoresizingMask = UIViewAutoresizingFlexibleWidth;

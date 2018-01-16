@@ -19,6 +19,7 @@
     
     if (self = [super initWithFrame:frame])
     {
+        
         [self setImage:normalImage forState:UIControlStateNormal];
         [self setImage:selectedImage forState:UIControlStateSelected];
         _type = type;

@@ -104,18 +104,10 @@
     
     NSArray *items = [self toolBarButtonItems];
     
-    if (!items)
-    {
-        
-        items = [self _normalButtonItems];
-    }
+    if (!items) items = [self _defaultButtonItems];
     
-    __weak typeof(self) weakSelf= self;
-    LBEditorToolBar *toolBar = [[LBEditorToolBar alloc] initWithFrame:CGRectMake(0, self.view.frame.size.height - 40, self.view.frame.size.width, 40) items:items.copy callBack:^(JSMessageType type) {
+    LBEditorToolBar *toolBar = [[LBEditorToolBar alloc] initWithFrame:CGRectMake(0, self.view.frame.size.height - 50, self.view.frame.size.width, 50) items:items.copy callBack:^(JSMessageType type) {
         
-        // Handle message
-        [weakSelf handleJSMessage:type];
-
     }];
     
     return toolBar;
@@ -141,10 +133,6 @@
 }
 
 #pragma mark - publick method
-- (NSString *)getHTML {
-    
-    return [self.messageHelper getHTML];
-}
 
 - (void)keyboardWillShowOrHide:(NSNotification *)notification {
     
@@ -169,18 +157,18 @@
         [UIView animateWithDuration:duration delay:0 options:animationOptions animations:^{
             
             // tool bar
-            self.toolBar.frame = CGRectMake(0, self.view.frame.size.height - keyboardHeight - 40, self.view.frame.size.width, 40);
+            self.toolBar.frame = CGRectMake(0, self.view.frame.size.height - keyboardHeight - 50, self.view.frame.size.width, 50);
             
             // Editor View
             CGRect editorFrame = self.editorView.frame;
-            editorFrame.size.height = (self.view.frame.size.height - keyboardHeight) - 40 - extraHeight;
+            editorFrame.size.height = (self.view.frame.size.height - keyboardHeight) - 50 - extraHeight;
             self.editorView.frame = editorFrame;
             self.editorView.scrollView.contentInset = UIEdgeInsetsZero;
             self.editorView.scrollView.scrollIndicatorInsets = UIEdgeInsetsZero;
             
             // Source View
             CGRect sourceFrame = self.sourceView.frame;
-            sourceFrame.size.height = (self.view.frame.size.height - keyboardHeight) - 40 - extraHeight;
+            sourceFrame.size.height = (self.view.frame.size.height - keyboardHeight) - 50 - extraHeight;
             self.sourceView.frame = sourceFrame;
             
         } completion:nil];
@@ -192,16 +180,16 @@
         [UIView animateWithDuration:duration delay:0 options:animationOptions animations:^{
             
             // tool bar
-            self.toolBar.frame = CGRectMake(0, self.view.frame.size.height - 40, self.view.frame.size.width, 40);
+            self.toolBar.frame = CGRectMake(0, self.view.frame.size.height - 50, self.view.frame.size.width, 50);
             
             // Editor View
-            self.editorView.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height - 40);
+            self.editorView.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height - 50);
             self.editorView.scrollView.contentInset = UIEdgeInsetsZero;
             self.editorView.scrollView.scrollIndicatorInsets = UIEdgeInsetsZero;
             
             // Source View
             CGRect sourceFrame = self.sourceView.frame;
-            sourceFrame.size.height = ((self.view.frame.size.height - 40) - extraHeight);
+            sourceFrame.size.height = ((self.view.frame.size.height - 50) - extraHeight);
             self.sourceView.frame = sourceFrame;
             
             
@@ -292,99 +280,215 @@
     
 }
 
-#pragma mark - Handle Message
-- (void) handleJSMessage:(JSMessageType)type {
+#pragma mark - Call JS Message
+- (void)alignLeft {
     
-    switch (type) {
-        case JSMessageTypeAttributeJustifyLeft:
-        {
-            [self.messageHelper alignLeft];
-            break;
-        }
-        case JSMessageTypeAttributeJustifyCenter:
-        {
-            [self.messageHelper alignCenter];
-            break;
-        }
-        case JSMessageTypeAttributeJustifyRight:
-        {
-            [self.messageHelper alignRight];
-            break;
-        }
-        case JSMessageTypeAttributeJustifyFull:
-        {
-            
-            break;
-        }
-        case JSMessageTypeAttributeBlod:
-        {
-            
-            break;
-        }
-        case JSMessageTypeAttributeBlockquote:
-        {
-            
-            break;
-        }
-        case JSMessageTypeAttributeItalic:
-        {
-            
-            break;
-        }
-        case JSMessageTypeAttributeSubscript:
-        {
-            
-            break;
-        }
-        case JSMessageTypeAttributeUnderline:
-        {
-            
-            break;
-        }
-        case JSMessageTypeAttributeSuperscript:
-        {
-            
-            break;
-        }
-        case JSMessageTypeAttributeStrikeThrough:
-        {
-            
-            break;
-        }
-        case JSMessageTypeAttributeUnorderedList:
-        {
-            
-            break;
-        }
-        case JSMessageTypeAttributeOrderedList:
-        {
-            
-            break;
-        }
-        case JSMessageTypeAttributeHorizontalRule:
-        {
-            
-            break;
-        }
-        case JSMessageTypeAttributeIndent:
-        {
-            
-            break;
-        }
-        case JSMessageTypeAttributeOutdent:
-        {
-            
-            break;
-        }
-        case JSMessageTypeAttributeFontSize:
-        {
-            
-            break;
-        }
-        default:
-            break;
-    }
+    [self.messageHelper alignLeft];
 }
+- (void)alignCenter {
+    
+    [self.messageHelper alignCenter];
+}
+- (void)alignRight {
+    
+    [self.messageHelper alignRight];
+}
+- (void)alignFull {
+    
+    [self.messageHelper alignFull];
+}
+- (void)setBold {
+    
+    [self.messageHelper setBold];
+}
+- (void)setBlockQuote {
+    
+    [self.messageHelper setBlockQuote];
+}
+- (void)setItalic {
+    
+    [self.messageHelper setItalic];
+}
+- (void)setSubscript {
+    
+    [self.messageHelper setSubscript];
+}
+- (void)setUnderline {
+    
+    [self.messageHelper setUnderline];
+}
+- (void)setSuperscript {
+    
+    [self.messageHelper setSuperscript];
+}
+- (void)setStrikethrough {
+    
+    [self.messageHelper setStrikethrough];
+}
+- (void)setUnorderedList {
+    
+    [self.messageHelper setUnorderedList];
+}
+- (void)setOrderedList {
+    
+    [self.messageHelper setOrderedList];
+}
+- (void)setHR {
+    
+    [self.messageHelper setHR];
+}
+- (void)setIndent {
+    
+    [self.messageHelper setIndent];
+}
+- (void)setOutdent {
+    
+    [self.messageHelper setOutdent];
+}
+- (void)setParagraph {
+    
+    [self.messageHelper setParagraph];
+}
+- (void)removeFormat {
+    
+    [self.messageHelper removeFormat];
+}
+- (void)setHeading:(NSString *)head {
+    
+    [self.messageHelper setHeading:head];
+}
+- (void)setFontSize:(NSInteger)size {
+    
+    [self.messageHelper setFontSize:size];
+}
+- (void)setTextColor:(UIColor *)color {
+    
+    [self.messageHelper setTextColor:color];
+}
+- (void)setBackgroundColor:(UIColor *)color {
+    
+    [self.messageHelper setBackgroundColor:color];
+}
+- (void)insertHTML:(NSString *)html {
+    [self.messageHelper insertHTML:html];
+}
+- (void)insertLocalImage:(NSString *)url uniqueId:(NSString *)uniqueId {
+    
+    [self.messageHelper insertLocalImage:url uniqueId:uniqueId];
+}
+- (void)insertImage:(NSString *)url alt:(NSString *)alt {
+    
+    [self.messageHelper insertImage:url alt:alt];
+}
+- (void)replaceLocalImageWithRemoteImage:(NSString *)url uniqueId:(NSString *)uniqueId mediaId:(NSString *)mediaId {
+    
+    [self.messageHelper replaceLocalImageWithRemoteImage:url uniqueId:uniqueId mediaId:mediaId];
+}
+- (void)updateImage:(NSString *)url alt:(NSString *)alt {
+    
+    [self.messageHelper updateImage:url alt:alt];
+}
+- (void)updateCurrentImageMeta:(WPImageMeta *)imageMeta {
+    
+    [self.messageHelper updateCurrentImageMeta:imageMeta];
+}
+- (void)setProgress:(double) progress onImage:(NSString *)uniqueId {
+    
+    [self.messageHelper setProgress:progress onImage:uniqueId];
+}
+- (void)markImage:(NSString *)uniqueId failedUploadWithMessage:(NSString *) message {
+    
+    [self.messageHelper markImage:uniqueId failedUploadWithMessage:message];
+}
+- (void)unmarkImageFailedUpload:(NSString *)uniqueId {
+    
+    [self.messageHelper unmarkImageFailedUpload:uniqueId];
+}
+- (void)removeImage:(NSString *)uniqueId {
+    
+    [self.messageHelper removeImage:uniqueId];
+}
+- (void)setImageEditText:(NSString *)text {
+    
+    [self.messageHelper setImageEditText:text];
+}
+- (void)insertVideo:(NSString *)videoURL posterImage:(NSString *)posterImageURL alt:(NSString *)alt {
+    
+    [self.messageHelper insertVideo:videoURL posterImage:posterImageURL alt:alt];
+}
+- (void)insertInProgressVideoWithID:(NSString *)uniqueId usingPosterImage:(NSString *)posterImageURL {
+    
+    [self.messageHelper insertInProgressVideoWithID:uniqueId usingPosterImage:posterImageURL];
+}
+- (void)setProgress:(double)progress onVideo:(NSString *)uniqueId {
+    
+    [self.messageHelper setProgress:progress onVideo:uniqueId];
+}
+- (void)replaceLocalVideoWithID:(NSString *)uniqueID forRemoteVideo:(NSString *)videoURL remotePoster:(NSString *)posterURL videoPress:(NSString *)videoPressID {
+    
+    [self.messageHelper replaceLocalVideoWithID:uniqueID forRemoteVideo:videoURL remotePoster:posterURL videoPress:videoPressID];
+}
+- (void)markVideo:(NSString *)uniqueId failedUploadWithMessage:(NSString *) message {
+    
+    [self.messageHelper markVideo:uniqueId failedUploadWithMessage:message];
+}
+- (void)unmarkVideoFailedUpload:(NSString *)uniqueId {
+    
+    [self.messageHelper unmarkVideoFailedUpload:uniqueId];
+}
+- (void)removeVideo:(NSString *)uniqueId {
+    
+    [self.messageHelper removeVideo:uniqueId];
+}
+- (void)setVideoPress:(NSString *)videoPressID source:(NSString *)videoURL poster:(NSString *)posterURL {
+    
+    [self.messageHelper setVideoPress:videoPressID source:videoURL poster:posterURL];
+}
+- (void)pauseAllVideos {
+    
+    [self.messageHelper pauseAllVideos];
+}
+- (void)insertLink:(NSString *)url title:(NSString *)title {
+    
+    [self.messageHelper insertLink:url title:title];
+}
+- (void)updateLink:(NSString *)url title:(NSString *)title {
+    
+    [self.messageHelper updateLink:url title:title];
+}
+- (void)quickLink {
+    
+    [self.messageHelper quickLink];
+}
+- (void)removeLink {
+    
+    [self.messageHelper removeLink];
+}
+- (void)undo {
+    
+    [self.messageHelper undo];
+}
+- (void)redo {
+    
+    [self.messageHelper redo];
+}
+- (void)restoreSelection {
+    
+    [self.messageHelper restoreSelection];
+}
+- (void)saveSelection {
+    
+    [self.messageHelper saveSelection];
+}
+- (NSString *)getSelectedText {
+    
+    return [self.messageHelper getSelectedText];
+}
+- (NSString *)getHTML {
+    
+    return [self.messageHelper getHTML];
+}
+
 
 #pragma mark - refresh scroll view
 - (void)scrollToCaretAnimated:(BOOL)animated {
@@ -443,7 +547,7 @@
     self.editorView.scrollView.contentSize = CGSizeMake(CGRectGetWidth(self.view.frame), newHeight);
 }
 
-- (NSArray *)_normalButtonItems {
+- (NSArray *)_defaultButtonItems {
     
     NSArray *normalImages = @[@"LBBlod_normal", @"LBItalic_normal", @"LBUnderline_normal", @"LBThroughline_normal", @"LBTextColor_normal", @"LBBGColor_normal", @"LBTextSize_normal", @"LBImage", @"LBVideo"];
     NSArray *types = @[@(JSMessageTypeAttributeBlod), @(JSMessageTypeAttributeItalic), @(JSMessageTypeAttributeUnderline), @(JSMessageTypeAttributeStrikeThrough), @(JSMessageTypeAttributeTextColor), @(JSMessageTypeAttributeBackgroundColor), @(JSMessageTypeAttributeFontSize), @(JSMessageTypeImageInsertLocal), @(JSMessageTypeVideoInsertLocal)];
@@ -453,7 +557,7 @@
     {
         UIImage *normalImage = [UIImage imageNamed:normalImages[i]];
         UIImage *selectedImage = [UIImage imageNamed:@""];
-        LBEditorToolBarButton *button = [[LBEditorToolBarButton alloc] initWithFrame:CGRectMake(0, 0, 40, 40) normalImage:normalImage selectedImage:selectedImage type:[types[i] integerValue]];
+        LBEditorToolBarButton *button = [[LBEditorToolBarButton alloc] initWithFrame:CGRectMake(0, 0, 50, 50) normalImage:normalImage selectedImage:selectedImage type:[types[i] integerValue]];
         [tmpItems addObject:button];
     }
     

@@ -108,12 +108,12 @@
     
     if ([self scriptURLSchemeIsExist:scheme])
     {
-        // 解析URL
+        // Analyse URL
         NSDictionary *parameter = [self parseParametersWithURL:request.URL];
         
         void(^handler)(NSURL *URL, id parameter) = [self.schemeMapper objectForKey:scheme];
         
-        // 回调原生函数
+        // Callback native function
         handler(request.URL, parameter);
         
         return NO;
@@ -129,12 +129,12 @@
     
     if ([self scriptURLSchemeIsExist:scheme])
     {
-        // 解析URL
+        // Analyse URL
         NSDictionary *parameter = [self parseParametersWithURL:navigationAction.request.URL];
     
         void(^handler)(NSURL *URL, id parameter) = [self.schemeMapper objectForKey:scheme];
         
-        // 回调原生函数
+        // Callback native function
         handler(navigationAction.request.URL, parameter);
         
         decisionHandler(WKNavigationActionPolicyCancel);
@@ -143,7 +143,7 @@
     decisionHandler(WKNavigationActionPolicyAllow);
 }
 
-// 解析URL的query参数集
+// Analyse URL query parameter set
 - (NSDictionary *)parseParametersWithURL:(NSURL *)url {
     
     NSParameterAssert([url isKindOfClass:[NSURL class]]);

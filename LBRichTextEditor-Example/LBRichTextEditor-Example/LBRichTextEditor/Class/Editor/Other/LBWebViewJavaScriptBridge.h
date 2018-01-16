@@ -16,37 +16,37 @@
 
 
 /**
- 原生调用JS函数
+ Native call JS function
 
- @param string JS函数名
- @param handler 处理JS函数的返回结果
+ @param string JS function name
+ @param handler Handle result by JS return
  */
 - (void)evaluatingJavaScriptFromString:(NSString *)string handler:(void(^)(id result))handler;
 - (void)evaluatingJavaScriptFromString:(NSString *)string;
 
 /**
- JS根据函数名调用原生函数
+ JS call native with function name
 
- @param messageName JS函数名
- @param handler 原生函数
+ @param messageName The JS function name which need binded with Native function
+ @param handler Native function
  */
 - (void)addScriptMessageHandler:(NSString *)messageName handler:(void(^)(id parameter))handler;
 
 
 /**
- JS根据scheme调用原生函数
+ JS call native with scheme name
 
- @param schemeName scheme name
- @param handler 原生函数
+ @param schemeName The scheme name which need intercepted
+ @param handler Native function
  */
 - (void)addScriptURLSchemeHandler:(NSString *)schemeName handler:(void(^)(NSURL *URL, id parameter))handler;
 
 
 /**
- 判断scheme是否添加到监听列表
+ Whether Scheme contained in mapper
 
  @param schemeName scheme name
- @return YES存在监听列表 NO不存在
+ @return YES exist Otherwise not
  */
 - (BOOL)scriptURLSchemeIsExist:(NSString *)schemeName;
 
