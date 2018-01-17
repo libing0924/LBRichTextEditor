@@ -7,8 +7,6 @@
 //
 
 #import "LBEditorViewController.h"
-#import "ZSSTextView.h"
-#import "LBEditorMessageHelper.h"
 #import "UIWebView+HackishAccessoryHiding.h"
 
 @interface LBEditorViewController ()<LBEditorMessageDelegate>
@@ -16,18 +14,6 @@
 @property (nonatomic, strong, readwrite) NSNumber *caretYOffset;
 @property (nonatomic, strong, readwrite) NSNumber *lineHeight;
 @property (nonatomic, assign, readwrite) NSInteger lastEditorHeight;
-
-// Tool bar for edit
-@property (nonatomic, strong) LBEditorToolBar *toolBar;
-
-// View for display HTML source code
-@property (nonatomic, strong) ZSSTextView *sourceView;
-
-// Text editor
-@property (nonatomic, strong) UIWebView *editorView;
-
-// Native interaction with JavaScript helper
-@property (nonatomic, strong) LBEditorMessageHelper *messageHelper;
 
 @end
 
@@ -39,8 +25,6 @@
     [self createSourceView];
     
     [self createEditorView];
-    
-    [self createToolBar];
     
     [self createJavaScriptBridge];
     
@@ -93,31 +77,6 @@
     
 }
 
-- (void)createToolBar {
-    
-    self.toolBar = [self loadToolBar];
-    
-    [self.view addSubview:self.toolBar];
-}
-
-- (LBEditorToolBar *)loadToolBar {
-    
-    NSArray *items = [self toolBarButtonItems];
-    
-    if (!items) items = [self _defaultButtonItems];
-    
-    LBEditorToolBar *toolBar = [[LBEditorToolBar alloc] initWithFrame:CGRectMake(0, self.view.frame.size.height - 50, self.view.frame.size.width, 50) items:items.copy callBack:^(JSMessageType type) {
-        
-    }];
-    
-    return toolBar;
-}
-
-- (NSArray *)toolBarButtonItems {
-    
-    return nil;
-}
-
 - (void)createJavaScriptBridge {
     
     self.messageHelper = [LBEditorMessageHelper defaultBrige:self.editorView];
@@ -134,70 +93,7 @@
 
 #pragma mark - publick method
 
-- (void)keyboardWillShowOrHide:(NSNotification *)notification {
-    
-    // Orientation
-    UIInterfaceOrientation orientation = [UIApplication sharedApplication].statusBarOrientation;
-    // User Info
-    NSDictionary *info = notification.userInfo;
-    CGFloat duration = [[info objectForKey:UIKeyboardAnimationDurationUserInfoKey] floatValue];
-    int curve = [[info objectForKey:UIKeyboardAnimationCurveUserInfoKey] intValue];
-    CGRect keyboardEnd = [[info objectForKey:UIKeyboardFrameEndUserInfoKey] CGRectValue];
-    // Keyboard Size
-    // Checks if IOS8, gets correct keyboard height
-    CGFloat keyboardHeight = UIInterfaceOrientationIsLandscape(orientation) ? ([[[UIDevice currentDevice] systemVersion] floatValue] >= 8.000000) ? keyboardEnd.size.height : keyboardEnd.size.width : keyboardEnd.size.height;
-    // animation cure
-    UIViewAnimationOptions animationOptions = curve << 16;
-    
-    const int extraHeight = 10;
-    
-    if ([notification.name isEqualToString:UIKeyboardWillShowNotification])
-    {
-        
-        [UIView animateWithDuration:duration delay:0 options:animationOptions animations:^{
-            
-            // tool bar
-            self.toolBar.frame = CGRectMake(0, self.view.frame.size.height - keyboardHeight - 50, self.view.frame.size.width, 50);
-            
-            // Editor View
-            CGRect editorFrame = self.editorView.frame;
-            editorFrame.size.height = (self.view.frame.size.height - keyboardHeight) - 50 - extraHeight;
-            self.editorView.frame = editorFrame;
-            self.editorView.scrollView.contentInset = UIEdgeInsetsZero;
-            self.editorView.scrollView.scrollIndicatorInsets = UIEdgeInsetsZero;
-            
-            // Source View
-            CGRect sourceFrame = self.sourceView.frame;
-            sourceFrame.size.height = (self.view.frame.size.height - keyboardHeight) - 50 - extraHeight;
-            self.sourceView.frame = sourceFrame;
-            
-        } completion:nil];
-        
-    }
-    else
-    {
-        
-        [UIView animateWithDuration:duration delay:0 options:animationOptions animations:^{
-            
-            // tool bar
-            self.toolBar.frame = CGRectMake(0, self.view.frame.size.height - 50, self.view.frame.size.width, 50);
-            
-            // Editor View
-            self.editorView.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height - 50);
-            self.editorView.scrollView.contentInset = UIEdgeInsetsZero;
-            self.editorView.scrollView.scrollIndicatorInsets = UIEdgeInsetsZero;
-            
-            // Source View
-            CGRect sourceFrame = self.sourceView.frame;
-            sourceFrame.size.height = ((self.view.frame.size.height - 50) - extraHeight);
-            self.sourceView.frame = sourceFrame;
-            
-            
-        } completion:nil];
-        
-    }
-    
-}
+- (void)keyboardWillShowOrHide:(NSNotification *)notification { }
 
 #pragma mark - LBEditorMessageDelegate
 - (void)javaScriptBridgeTextDidChange:(LBEditorMessageHelper *)bridge fieldId:(NSString *)fieldId yOffset:(CGFloat)yOffset height:(CGFloat)height{
@@ -545,23 +441,6 @@
 
     self.lastEditorHeight = newHeight;
     self.editorView.scrollView.contentSize = CGSizeMake(CGRectGetWidth(self.view.frame), newHeight);
-}
-
-- (NSArray *)_defaultButtonItems {
-    
-    NSArray *normalImages = @[@"LBBlod_normal", @"LBItalic_normal", @"LBUnderline_normal", @"LBThroughline_normal", @"LBTextColor_normal", @"LBBGColor_normal", @"LBTextSize_normal", @"LBImage", @"LBVideo"];
-    NSArray *types = @[@(JSMessageTypeAttributeBlod), @(JSMessageTypeAttributeItalic), @(JSMessageTypeAttributeUnderline), @(JSMessageTypeAttributeStrikeThrough), @(JSMessageTypeAttributeTextColor), @(JSMessageTypeAttributeBackgroundColor), @(JSMessageTypeAttributeFontSize), @(JSMessageTypeImageInsertLocal), @(JSMessageTypeVideoInsertLocal)];
-    
-    NSMutableArray *tmpItems = @[].mutableCopy;
-    for (int i = 0; i < 9; i++)
-    {
-        UIImage *normalImage = [UIImage imageNamed:normalImages[i]];
-        UIImage *selectedImage = [UIImage imageNamed:@""];
-        LBEditorToolBarButton *button = [[LBEditorToolBarButton alloc] initWithFrame:CGRectMake(0, 0, 50, 50) normalImage:normalImage selectedImage:selectedImage type:[types[i] integerValue]];
-        [tmpItems addObject:button];
-    }
-    
-    return tmpItems.copy;
 }
 
 @end

@@ -99,17 +99,7 @@
     }
     
     
-    __weak typeof(self) weakSelf = self;
-    _toolbarView = [[LBEditorToolBar alloc] initWithFrame:CGRectMake(0, 0, CGRectGetWidth(self.view.frame), 44) items:items.copy callBack:^(JSMessageType type) {
-        
-        __strong typeof(weakSelf) strongeSelf = weakSelf;
-        
-        if (strongeSelf)
-        {
-            [strongeSelf _setEditorAttribute:type];
-        }
-        
-    }];
+    _toolbarView = [[LBEditorToolBar alloc] initWithFrame:CGRectMake(0, 0, CGRectGetWidth(self.view.frame), 44) items:items.copy delegate:self];
     _toolbarView.backgroundColor = [UIColor redColor];
     [self.view addSubview:_toolbarView];
 }

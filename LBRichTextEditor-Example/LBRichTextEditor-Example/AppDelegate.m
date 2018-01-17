@@ -7,7 +7,7 @@
 //
 
 #import "AppDelegate.h"
-#import "LBEditorViewController.h"
+#import "LBCommonEditorController.h"
 #import "ZBEditorViewController.h"
 
 @interface AppDelegate ()
@@ -20,7 +20,7 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-    LBEditorViewController *vc = [LBEditorViewController new];
+    LBCommonEditorController *vc = [LBCommonEditorController new];
     self.window.rootViewController = vc;
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];

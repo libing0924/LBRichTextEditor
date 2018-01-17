@@ -10,6 +10,15 @@
 #import "LBEditorToolBarButton.h"
 
 NS_ASSUME_NONNULL_BEGIN
+@class LBEditorToolBar, LBEditorToolBarButton;
+
+@protocol LBEditorToolBarDelegate <NSObject>
+@optional
+- (void) toolBar:(LBEditorToolBar *)toolBar didClickedButton:(LBEditorToolBarButton *)button type:(JSMessageType)type;
+
+@end
+
+
 @interface LBEditorToolBar : UIView
 
 @property (nonatomic, strong) UIScrollView *contentView;
@@ -17,11 +26,13 @@ NS_ASSUME_NONNULL_BEGIN
 // default is 10.0
 @property (nonatomic, assign) CGFloat itemSpace;
 
+@property (nonatomic, weak) id<LBEditorToolBarDelegate> delegate;
+
 - (void)addItems:(NSArray<LBEditorToolBarButton *> *) items;
 - (void)addItem:(LBEditorToolBarButton *) item;
 
-- (instancetype)initWithFrame:(CGRect)frame items:(NSArray<LBEditorToolBarButton *> * _Nullable )items callBack:(void(^ __nullable)(JSMessageType type)) callBack;
-- (instancetype)initWithFrame:(CGRect)frame callBack:(void(^ __nullable)(JSMessageType type)) callBack;
+- (instancetype)initWithFrame:(CGRect)frame items:(NSArray<LBEditorToolBarButton *> * _Nullable )items delegate:(id<LBEditorToolBarDelegate> _Nullable) delegate;
+- (instancetype)initWithFrame:(CGRect)frame delegate:(id<LBEditorToolBarDelegate> _Nullable) delegate;
 
 @end
 NS_ASSUME_NONNULL_END

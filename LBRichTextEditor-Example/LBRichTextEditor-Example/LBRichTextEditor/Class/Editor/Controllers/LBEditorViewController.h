@@ -7,14 +7,24 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ZSSTextView.h"
 #import "LBEditorToolBar.h"
+#import "LBEditorMessageHelper.h"
 
 @class WPImageMeta;
 
 @interface LBEditorViewController : UIViewController <UIWebViewDelegate, UITextViewDelegate>
 
-- (NSArray *)loadToolBarButtonItems;
+// View for display HTML source code
+@property (nonatomic, strong) ZSSTextView *sourceView;
 
+// Text editor
+@property (nonatomic, strong) UIWebView *editorView;
+
+// Native interaction with JavaScript helper
+@property (nonatomic, strong) LBEditorMessageHelper *messageHelper;
+
+- (void)keyboardWillShowOrHide:(NSNotification *)notification;
 
 - (void)alignLeft;
 - (void)alignCenter;

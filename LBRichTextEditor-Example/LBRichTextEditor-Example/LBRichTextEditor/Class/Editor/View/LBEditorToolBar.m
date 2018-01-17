@@ -9,24 +9,22 @@
 #import "LBEditorToolBar.h"
 #import "LBEditorToolBarButton.h"
 
-#define DEFAULT_ITEM_SPACE 2.0
+#define DEFAULT_ITEM_SPACE 0.0
 #define DEFAULT_BACKGROUND_COLOR [UIColor colorWithRed:241.0 / 255.0f green:241.0 / 255.0f blue:241.0 / 255.0f alpha:1.0]
 
 @interface LBEditorToolBar()<UIScrollViewDelegate>
-
-@property (nonatomic, copy) void (^callBack)(JSMessageType);
 
 @end
 
 @implementation LBEditorToolBar
 
-- (instancetype)initWithFrame:(CGRect)frame items:(NSArray<LBEditorToolBarButton *> *)items callBack:(void (^ _Nullable)(JSMessageType))callBack{
+- (instancetype)initWithFrame:(CGRect)frame items:(NSArray<LBEditorToolBarButton *> *)items delegate:(id<LBEditorToolBarDelegate> _Nullable)delegate {
     
     if (self = [super initWithFrame:frame])
     {
         _itemSpace = DEFAULT_ITEM_SPACE;
         self.backgroundColor = DEFAULT_BACKGROUND_COLOR;
-        _callBack = callBack;
+        _delegate = delegate;
         
         [self _initializeItems];
         [self addItems:items];
@@ -35,13 +33,13 @@
     return self;
 }
 
-- (instancetype)initWithFrame:(CGRect)frame callBack:(void (^ _Nullable)(JSMessageType))callBack{
+- (instancetype)initWithFrame:(CGRect)frame delegate:(id<LBEditorToolBarDelegate> _Nullable)delegate {
     
     if (self = [super initWithFrame:frame])
     {
         _itemSpace = DEFAULT_ITEM_SPACE;
         self.backgroundColor = DEFAULT_BACKGROUND_COLOR;
-        _callBack = callBack;
+        _delegate = delegate;
         
         [self _initializeItems];
     }
@@ -52,7 +50,7 @@
 - (void) _initializeItems {
     
     UIView *line = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width, 0.5)];
-    line.backgroundColor = [UIColor colorWithRed:0.25 green:0.25 blue:0.25 alpha:1];
+    line.backgroundColor = [UIColor colorWithRed:0.7 green:0.7 blue:0.7 alpha:1];
     [self addSubview:line];
     
     _contentView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 1, self.frame.size.width, 50)];
@@ -111,9 +109,11 @@
 #pragma MARK - action
 - (void)_itemAction:(LBEditorToolBarButton *) sender {
     
-    if (self.callBack)
+    sender.selected = !sender.selected;
+    
+    if ([self.delegate respondsToSelector:@selector(toolBar:didClickedButton:type:)])
     {
-        self.callBack(sender.type);
+        [self.delegate toolBar:self didClickedButton:sender type:sender.type];
     }
 }
 
