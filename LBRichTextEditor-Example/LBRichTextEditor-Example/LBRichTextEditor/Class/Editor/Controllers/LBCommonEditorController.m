@@ -71,6 +71,15 @@
             [self setBackgroundColor:[UIColor blueColor]];
             break;
         }
+            case JSMessageTypeAttributeFontSize:
+        {
+            [self setFontSize:7];
+            break;
+        }
+            case JSMessageTypeVideoInsertLocal:
+        {
+//            self insertLocalImage:<#(NSString *)#> uniqueId:<#(NSString *)#>
+        }
             
         default:
             break;
