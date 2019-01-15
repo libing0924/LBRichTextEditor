@@ -22,12 +22,16 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    // create display view with HTML source code
     [self createSourceView];
     
+    // create editing view
     [self createEditorView];
     
+    // create bridge
     [self createJavaScriptBridge];
     
+    // load HTML source
     [self loadResource];
 }
 
@@ -436,7 +440,7 @@
     [self.messageHelper evaluatingJavaScriptFromString:@"ZSSEditor.logMainElementSizes();"];
 #endif
 
-    NSString* newHeightString = [self.editorView stringByEvaluatingJavaScriptFromString:@"$(document.body).height();"];
+    NSString *newHeightString = [self.editorView stringByEvaluatingJavaScriptFromString:@"$(document.body).height();"];
     NSInteger newHeight = [newHeightString integerValue];
 
     self.lastEditorHeight = newHeight;

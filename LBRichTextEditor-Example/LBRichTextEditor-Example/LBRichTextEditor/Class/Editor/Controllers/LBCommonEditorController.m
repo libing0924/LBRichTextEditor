@@ -123,8 +123,7 @@
     
     const int extraHeight = 10;
     
-    if ([notification.name isEqualToString:UIKeyboardWillShowNotification])
-    {
+    if ([notification.name isEqualToString:UIKeyboardWillShowNotification]) {
         
         [UIView animateWithDuration:duration delay:0 options:animationOptions animations:^{
             
@@ -145,9 +144,7 @@
             
         } completion:nil];
         
-    }
-    else
-    {
+    } else {
         
         [UIView animateWithDuration:duration delay:0 options:animationOptions animations:^{
             
